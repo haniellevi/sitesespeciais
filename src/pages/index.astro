@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import SpotlightCard from '../components/SpotlightCard.astro';
-import Calculadora from '../components/Calculadora.astro';
+import CalculadoraMini from '../components/CalculadoraMini.astro';
 import AntesDepois from '../components/AntesDepois.astro';
 
 const homeSchema = [
@@ -119,8 +119,16 @@ const homeSchema = [
           <a href="/diagnostico" class="btn btn--primary btn--large">
             Diagnóstico Gratuito do meu site →
           </a>
-          <a href="#cases" class="btn btn--outline btn--large">
-            Ver antes e depois
+          <a
+            href="https://wa.me/5589994711318?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20reforma%20de%20site."
+            target="_blank"
+            rel="noopener"
+            class="btn btn--outline btn--large"
+          >
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" style="flex-shrink:0">
+              <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.932 15.932 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.334 22.616c-.39 1.1-1.932 2.014-3.164 2.28-.842.18-1.94.322-5.642-1.212-4.738-1.962-7.792-6.778-8.03-7.094-.228-.316-1.916-2.554-1.916-4.872 0-2.318 1.212-3.456 1.642-3.928.39-.428 1.028-.626 1.638-.626.198 0 .376.01.536.018.47.02.706.048 1.016.788.39.926 1.338 3.244 1.456 3.48.118.236.236.554.078.87-.148.326-.278.47-.514.742-.236.272-.46.48-.696.774-.218.254-.462.526-.198.996.264.46 1.174 1.878 2.52 3.044 1.732 1.498 3.192 1.964 3.644 2.182.352.17.772.138 1.046-.158.348-.376.778-.998 1.214-1.614.312-.44.704-.494 1.094-.336.396.148 2.506 1.182 2.936 1.396.43.216.716.322.822.498.104.176.104 1.022-.286 2.122z"/>
+            </svg>
+            Falar no WhatsApp
           </a>
         </div>
 
@@ -137,9 +145,9 @@ const homeSchema = [
     </section>
 
     <!-- ══════════════════════════════════════════════
-         S2 — CALCULADORA
+         S2 — CALCULADORA MINI
          ══════════════════════════════════════════════ -->
-    <Calculadora />
+    <CalculadoraMini />
 
     <!-- ══════════════════════════════════════════════
          S3 — SINTOMAS DE SITE DOENTE
@@ -199,6 +207,32 @@ const homeSchema = [
         <div class="text-center" style="margin-top: 3rem;">
           <a href="/diagnostico" class="btn btn--primary btn--large reveal">
             Ver o diagnóstico do meu site →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S3.5 — MINI PROVA SOCIAL (entre sintomas e casos)
+         ══════════════════════════════════════════════ -->
+    <section class="section-mini-prova" aria-label="Depoimento de cliente">
+      <div class="container container--narrow">
+        <div class="mini-prova-card reveal">
+          <div class="mini-prova-stars">★★★★★</div>
+          <blockquote class="mini-prova-quote">
+            "Em dois meses após a reforma, meus agendamentos online triplicaram.
+            Antes recebia 3–4 por semana pelo site — hoje recebo mais de 15.
+            O investimento se pagou no primeiro mês."
+          </blockquote>
+          <div class="mini-prova-autor">
+            <div class="mini-prova-avatar">CP</div>
+            <div>
+              <strong>Dr. Carlos Pinheiro</strong>
+              <span>Clínica Pinheiro · Bom Jesus, PI — <em>reforma de site</em></span>
+            </div>
+          </div>
+          <a href="/diagnostico" class="mini-prova-cta">
+            Quero o mesmo resultado para o meu site →
           </a>
         </div>
       </div>
@@ -563,12 +597,24 @@ const homeSchema = [
           <a href="/diagnostico" class="btn btn--primary btn--large">
             Diagnóstico Gratuito do meu site →
           </a>
-          <a href="https://cal.com/raniellevi/30min" target="_blank" rel="noopener" class="btn btn--outline btn--large">
-            Ou agendar uma conversa de 30min
+          <a
+            href="https://wa.me/5589994711318?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20gratuito%20do%20meu%20site."
+            target="_blank"
+            rel="noopener"
+            class="btn btn--outline btn--large"
+          >
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" style="flex-shrink:0">
+              <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.932 15.932 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.334 22.616c-.39 1.1-1.932 2.014-3.164 2.28-.842.18-1.94.322-5.642-1.212-4.738-1.962-7.792-6.778-8.03-7.094-.228-.316-1.916-2.554-1.916-4.872 0-2.318 1.212-3.456 1.642-3.928.39-.428 1.028-.626 1.638-.626.198 0 .376.01.536.018.47.02.706.048 1.016.788.39.926 1.338 3.244 1.456 3.48.118.236.236.554.078.87-.148.326-.278.47-.514.742-.236.272-.46.48-.696.774-.218.254-.462.526-.198.996.264.46 1.174 1.878 2.52 3.044 1.732 1.498 3.192 1.964 3.644 2.182.352.17.772.138 1.046-.158.348-.376.778-.998 1.214-1.614.312-.44.704-.494 1.094-.336.396.148 2.506 1.182 2.936 1.396.43.216.716.322.822.498.104.176.104 1.022-.286 2.122z"/>
+            </svg>
+            Falar direto no WhatsApp
           </a>
         </div>
+        <p class="cta-final__cal reveal reveal-delay-5">
+          Prefere videochamada?
+          <a href="https://cal.com/raniellevi/30min" target="_blank" rel="noopener">Agende 30min pelo Cal.com →</a>
+        </p>
 
-        <p class="cta-final__guarantee reveal reveal-delay-5">
+        <p class="cta-final__guarantee reveal reveal-delay-6">
           Garantia de 7 dias · Sem pressão de venda · Resultado em 14 dias
         </p>
       </div>
@@ -1156,8 +1202,111 @@ const homeSchema = [
   letter-spacing: 0.04em;
 }
 
-/* reveal delay adicional */
+/* reveal delays adicionais */
 .reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* ── S3.5 Mini prova social ─────────────────────── */
+.section-mini-prova {
+  padding-block: 2.5rem;
+}
+
+.mini-prova-card {
+  background: linear-gradient(135deg, rgba(79, 209, 197, 0.04) 0%, var(--card) 60%);
+  border: 1px solid var(--luxota-border);
+  border-left: 3px solid var(--luxota-accent);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mini-prova-stars {
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  font-size: 0.9rem;
+}
+
+.mini-prova-quote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--foreground);
+  line-height: 1.65;
+  font-style: italic;
+  margin: 0;
+}
+
+.mini-prova-quote::before { content: '\201C'; }
+.mini-prova-quote::after  { content: '\201D'; }
+
+.mini-prova-autor {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mini-prova-avatar {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--luxota-accent), var(--primary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--luxota-bg);
+  flex-shrink: 0;
+}
+
+.mini-prova-autor strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.mini-prova-autor span {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+.mini-prova-autor em {
+  font-style: normal;
+  color: var(--luxota-accent);
+}
+
+.mini-prova-cta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+
+.mini-prova-cta:hover { color: var(--accent-hover); }
+
+/* ── CTA Final cal link ─────────────────────────── */
+.cta-final__cal {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: -0.5rem;
+}
+
+.cta-final__cal a {
+  color: var(--luxota-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.cta-final__cal a:hover { opacity: 0.8; }
 
 /* ── Text center utility ───────────────────────────── */
 .text-center { text-align: center; }

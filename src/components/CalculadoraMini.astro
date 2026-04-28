@@ -1,0 +1,232 @@
+---
+// CalculadoraMini — versão reduzida para homepage
+// 2 campos apenas (setor + ticket), resultado dramático, CTA direto para /diagnostico
+// Versão completa disponível em /calculadora
+---
+
+<section class="section calc-mini-section" id="calculadora">
+  <div class="container container--narrow">
+    <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+      <p class="eyebrow">Calculadora Gratuita</p>
+      <h2 class="section__h2">Quanto seu site está te custando?</h2>
+      <p class="section__sub">2 perguntas. Veja o número real em 30 segundos.</p>
+    </div>
+
+    <div class="calc-mini-wrapper reveal reveal-delay-1">
+
+      <!-- Painel de entradas -->
+      <div class="calc-mini-inputs">
+        <div class="calc-mini-field">
+          <label class="calc-mini-label" for="mini-setor">Qual é o seu setor?</label>
+          <select class="form-input" id="mini-setor">
+            <option value="clinica">Clínica / Saúde</option>
+            <option value="advocacia">Advocacia</option>
+            <option value="imobiliaria">Imobiliária</option>
+            <option value="academia">Academia / Estética</option>
+            <option value="restaurante">Restaurante / Alimentação</option>
+            <option value="servicos">Serviços em geral</option>
+          </select>
+        </div>
+
+        <div class="calc-mini-field">
+          <label class="calc-mini-label" for="mini-ticket">
+            Valor médio que um cliente paga (R$)
+          </label>
+          <input
+            type="number"
+            class="form-input"
+            id="mini-ticket"
+            value="1500"
+            min="200"
+            step="100"
+          />
+          <span class="calc-mini-hint">O quanto cada novo cliente vale para o seu negócio</span>
+        </div>
+      </div>
+
+      <!-- Painel de resultado -->
+      <div class="calc-mini-output">
+        <p class="calc-mini-result-label">Seu site está te custando todo mês:</p>
+
+        <div class="calc-mini-valor">
+          <span class="calc-mini-currency">R$</span>
+          <span id="mini-resultado" class="calc-mini-numero">11.250</span>
+          <span class="calc-mini-mes">/mês</span>
+        </div>
+
+        <p class="calc-mini-footnote">
+          Sites antigos convertem 0,5% das visitas. Sites modernos convertem 3%.
+          <br>Diferença calculada para o seu setor.
+        </p>
+
+        <a
+          href="/diagnostico"
+          class="btn btn--primary calc-mini-cta"
+        >
+          Diagnóstico Gratuito do meu site →
+        </a>
+
+        <a href="/calculadora" class="calc-mini-link">
+          Ver análise completa com mais detalhes →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.calc-mini-section {
+  background: linear-gradient(180deg, transparent, rgba(79, 209, 197, 0.02) 50%, transparent);
+}
+
+.calc-mini-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--border);
+}
+
+@media (max-width: 680px) {
+  .calc-mini-wrapper { grid-template-columns: 1fr; }
+}
+
+.calc-mini-inputs {
+  background: var(--card);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.calc-mini-output {
+  background: var(--bg-raised);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+.calc-mini-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.calc-mini-field { display: flex; flex-direction: column; }
+
+.calc-mini-hint {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+/* Resultado */
+.calc-mini-result-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.calc-mini-valor {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  line-height: 1;
+}
+
+.calc-mini-currency {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  color: var(--error);
+}
+
+.calc-mini-numero {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--error);
+  transition: all 0.35s var(--ease-out);
+}
+
+.calc-mini-mes {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  align-self: flex-end;
+  padding-bottom: 0.45rem;
+}
+
+.calc-mini-footnote {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.calc-mini-cta {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.25rem;
+  min-height: 50px;
+}
+
+.calc-mini-link {
+  font-size: 0.78rem;
+  color: var(--luxota-accent);
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.calc-mini-link:hover { opacity: 1; }
+</style>
+
+<script>
+  // Visitas padrão por setor (visitantes mensais estimados para negócio local ativo)
+  const visitasPorSetor: Record<string, number> = {
+    clinica:      400,
+    advocacia:    280,
+    imobiliaria:  320,
+    academia:     480,
+    restaurante:  600,
+    servicos:     300,
+  };
+
+  const setorEl    = document.getElementById('mini-setor')    as HTMLSelectElement | null;
+  const ticketEl   = document.getElementById('mini-ticket')   as HTMLInputElement  | null;
+  const resultadoEl = document.getElementById('mini-resultado') as HTMLElement | null;
+
+  function fmt(n: number): string {
+    return Math.round(n).toLocaleString('pt-BR');
+  }
+
+  function calcular(): void {
+    const setor   = setorEl?.value   || 'servicos';
+    const ticket  = parseFloat(ticketEl?.value || '1500');
+    const visitas = visitasPorSetor[setor] ?? 300;
+
+    const taxaRuim = 0.005;
+    const taxaBom  = 0.03;
+    const perdidos = visitas * (taxaBom - taxaRuim);
+    const perda    = perdidos * ticket;
+
+    if (resultadoEl) resultadoEl.textContent = fmt(perda);
+  }
+
+  setorEl?.addEventListener('change', calcular);
+  ticketEl?.addEventListener('input', calcular);
+
+  calcular();
+</script>
