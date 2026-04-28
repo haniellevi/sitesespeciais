@@ -1,0 +1,553 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Calculadora — Quanto seu site está te custando? | Sites Especiais"
+  description="Descubra em 30 segundos quanto dinheiro você perde todo mês com um site que não converte. Gratuito e sem compromisso."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <section class="section calc-hero">
+      <div class="container container--narrow text-center">
+        <p class="eyebrow reveal">Calculadora Gratuita</p>
+        <h1 class="calc-hero__h1 reveal reveal-delay-1">
+          Quanto seu site está<br>
+          <span class="text-gradient">te custando por mês?</span>
+        </h1>
+        <p class="calc-hero__sub reveal reveal-delay-2">
+          Cada visita que não vira cliente é receita que foi embora sem você nem saber.
+          Preencha os campos abaixo e descubra o número real.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container" style="max-width: 880px;">
+
+        <div class="calc-card reveal">
+
+          <!-- Passo 1: Inputs -->
+          <div class="calc-step" id="step-1">
+            <h2 class="calc-step__title">Sobre seu negócio</h2>
+
+            <div class="calc-fields">
+              <div class="calc-field">
+                <label class="calc-label" for="c-setor">Qual seu setor?</label>
+                <select class="form-input" id="c-setor">
+                  <option value="Clínica / Saúde">Clínica / Saúde</option>
+                  <option value="Advocacia">Advocacia</option>
+                  <option value="Imobiliária">Imobiliária</option>
+                  <option value="Academia / Estética">Academia / Estética</option>
+                  <option value="Restaurante / Alimentação">Restaurante / Alimentação</option>
+                  <option value="Serviços em geral" selected>Serviços em geral</option>
+                </select>
+              </div>
+
+              <div class="calc-field">
+                <label class="calc-label" for="c-ticket">
+                  Valor médio que um cliente gasta com você (R$)
+                </label>
+                <input type="number" class="form-input" id="c-ticket" value="1500" min="100" step="100" />
+              </div>
+
+              <div class="calc-field">
+                <label class="calc-label" for="c-visitas">
+                  Quantas pessoas visitam seu site por mês?
+                </label>
+                <input type="number" class="form-input" id="c-visitas" value="300" min="50" step="50" />
+                <span class="calc-hint">Se não souber, 300 é o mínimo de um negócio local ativo</span>
+              </div>
+            </div>
+
+            <!-- Resultado em tempo real -->
+            <div class="calc-resultado" id="calc-resultado">
+              <div class="calc-resultado__header">
+                <span class="calc-resultado__label">Sua perda mensal estimada</span>
+              </div>
+              <div class="calc-resultado__valor">
+                <span class="calc-resultado__rs">R$</span>
+                <span id="c-numero">3.375</span>
+                <span class="calc-resultado__mes">/ mês</span>
+              </div>
+              <div class="calc-breakdown">
+                <div class="calc-bk-item">
+                  <span>Clientes que poderiam chegar</span>
+                  <strong id="c-potencial">9</strong>
+                </div>
+                <div class="calc-bk-item">
+                  <span>Clientes que seu site captura hoje</span>
+                  <strong id="c-atual">2</strong>
+                </div>
+                <div class="calc-bk-item calc-bk-item--loss">
+                  <span>Clientes perdidos todo mês</span>
+                  <strong id="c-perdidos">7</strong>
+                </div>
+              </div>
+              <p class="calc-nota">
+                Benchmark: sites antigos convertem 0,5% das visitas. Sites modernos convertem 3%.
+              </p>
+            </div>
+
+            <button class="btn btn--primary btn--large calc-prox" id="btn-prox" style="width: 100%; justify-content: center;">
+              Receber meu relatório gratuito →
+            </button>
+          </div>
+
+          <!-- Passo 2: Captura de email -->
+          <div class="calc-step" id="step-2" hidden>
+            <div class="step2-header">
+              <div class="step2-icon">📧</div>
+              <h2 class="calc-step__title">Para onde envio o relatório?</h2>
+              <p class="step2-desc">
+                O relatório completo vai para seu email em segundos — com o breakdown detalhado
+                e as ações prioritárias para recuperar esses clientes.
+              </p>
+            </div>
+
+            <div class="calc-fields">
+              <div class="calc-field">
+                <label class="calc-label" for="c-nome">Seu nome</label>
+                <input type="text" class="form-input" id="c-nome" placeholder="Como posso te chamar?" autocomplete="given-name" />
+              </div>
+              <div class="calc-field">
+                <label class="calc-label" for="c-email">Seu melhor email <span style="color: var(--error);">*</span></label>
+                <input type="email" class="form-input" id="c-email" placeholder="seu@email.com.br" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="step2-actions">
+              <button class="btn btn--primary btn--large" id="btn-enviar" style="flex: 1; justify-content: center;">
+                <span id="btn-enviar-texto">Enviar relatório gratuito →</span>
+                <span id="btn-enviar-loading" hidden>Enviando...</span>
+              </button>
+              <button class="btn btn--ghost" id="btn-voltar" style="font-size: 0.85rem;">
+                ← Voltar
+              </button>
+            </div>
+
+            <p id="calc-erro" class="calc-erro" hidden>
+              Não conseguimos enviar. Tente novamente ou fale no
+              <a href="https://wa.me/5589994711318" target="_blank" rel="noopener">WhatsApp</a>.
+            </p>
+
+            <p class="step2-privacy">
+              Sem spam. Seus dados ficam só entre a gente.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Prova social abaixo -->
+        <div class="calc-prova reveal">
+          <div class="calc-prova__item">
+            <span class="calc-prova__num">+12</span>
+            <span class="calc-prova__label">sites entregues</span>
+          </div>
+          <div class="calc-prova__sep"></div>
+          <div class="calc-prova__item">
+            <span class="calc-prova__num">98%</span>
+            <span class="calc-prova__label">de satisfação</span>
+          </div>
+          <div class="calc-prova__sep"></div>
+          <div class="calc-prova__item">
+            <span class="calc-prova__num">7 dias</span>
+            <span class="calc-prova__label">de garantia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <h2 class="reveal text-center" style="font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 2.5rem;">
+          O que vem no relatório gratuito
+        </h2>
+        <div class="relatorio-items">
+          <div class="relatorio-item reveal">
+            <span class="relatorio-icon">📊</span>
+            <div>
+              <h3 class="relatorio-title">Perda mensal detalhada</h3>
+              <p class="relatorio-desc">O cálculo completo de quanto dinheiro está saindo pela porta todo mês com o site atual.</p>
+            </div>
+          </div>
+          <div class="relatorio-item reveal reveal-delay-1">
+            <span class="relatorio-icon">🎯</span>
+            <div>
+              <h3 class="relatorio-title">Benchmarks do seu setor</h3>
+              <p class="relatorio-desc">Taxa de conversão média de sites bons e ruins para o seu setor específico.</p>
+            </div>
+          </div>
+          <div class="relatorio-item reveal reveal-delay-2">
+            <span class="relatorio-icon">🚀</span>
+            <div>
+              <h3 class="relatorio-title">Próximo passo concreto</h3>
+              <p class="relatorio-desc">O que fazer agora para começar a recuperar esses clientes — com ou sem nós.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255, 255, 255, 0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.calc-hero { padding-bottom: 2rem; }
+
+.calc-hero__h1 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.calc-hero__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-inline: auto;
+}
+
+/* Card principal */
+.calc-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.calc-step__title {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 1.75rem;
+}
+
+/* Campos */
+.calc-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.calc-fields > :first-child { grid-column: 1 / -1; }
+
+@media (max-width: 540px) { .calc-fields { grid-template-columns: 1fr; } }
+
+.calc-field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.calc-label {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.calc-hint {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* Resultado em tempo real */
+.calc-resultado {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.calc-resultado__header { margin-bottom: 0.5rem; }
+
+.calc-resultado__label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.calc-resultado__valor {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.calc-resultado__rs {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  color: var(--error);
+}
+
+#c-numero {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--error);
+  line-height: 1;
+  transition: all 0.3s var(--ease-out);
+}
+
+.calc-resultado__mes {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  align-self: flex-end;
+  padding-bottom: 0.4rem;
+}
+
+.calc-breakdown {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.calc-bk-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+}
+
+.calc-bk-item + .calc-bk-item { border-top: 1px solid var(--border); }
+
+.calc-bk-item strong {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.calc-bk-item--loss { background: rgba(229, 62, 62, 0.04); }
+.calc-bk-item--loss strong { color: var(--error); }
+
+.calc-nota {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.calc-prox { margin-top: 0.5rem; }
+
+/* Passo 2 */
+.step2-header { text-align: center; margin-bottom: 2rem; }
+
+.step2-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+.step2-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.step2-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.calc-erro {
+  font-size: 0.85rem;
+  color: var(--error);
+  margin-top: 0.75rem;
+}
+
+.calc-erro a { color: var(--luxota-accent); }
+
+.step2-privacy {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Prova social */
+.calc-prova {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.calc-prova__item { text-align: center; }
+
+.calc-prova__num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.calc-prova__label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.calc-prova__sep {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+/* O que vem no relatório */
+.relatorio-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.relatorio-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.relatorio-icon { font-size: 1.75rem; flex-shrink: 0; }
+
+.relatorio-title {
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.35rem;
+}
+
+.relatorio-desc {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+</style>
+
+<script>
+  // ── Calculadora em tempo real ──────────────────────
+  const setorEl   = document.getElementById('c-setor')   as HTMLSelectElement | null;
+  const ticketEl  = document.getElementById('c-ticket')  as HTMLInputElement | null;
+  const visitasEl = document.getElementById('c-visitas') as HTMLInputElement | null;
+  const numeroEl  = document.getElementById('c-numero')  as HTMLElement | null;
+  const potencialEl = document.getElementById('c-potencial') as HTMLElement | null;
+  const atualEl     = document.getElementById('c-atual')    as HTMLElement | null;
+  const perdidosEl  = document.getElementById('c-perdidos') as HTMLElement | null;
+
+  function fmt(n: number) { return Math.round(n).toLocaleString('pt-BR'); }
+
+  function calcular() {
+    const t = parseFloat(ticketEl?.value  || '1500');
+    const v = parseFloat(visitasEl?.value || '300');
+    const pot  = v * 0.03;
+    const atu  = v * 0.005;
+    const perd = pot - atu;
+    if (numeroEl)    numeroEl.textContent    = fmt(perd * t);
+    if (potencialEl) potencialEl.textContent = fmt(pot);
+    if (atualEl)     atualEl.textContent     = fmt(atu);
+    if (perdidosEl)  perdidosEl.textContent  = fmt(perd);
+  }
+
+  ticketEl?.addEventListener('input', calcular);
+  visitasEl?.addEventListener('input', calcular);
+  setorEl?.addEventListener('change', calcular);
+  calcular();
+
+  // ── Fluxo de passos ────────────────────────────────
+  const step1 = document.getElementById('step-1') as HTMLElement | null;
+  const step2 = document.getElementById('step-2') as HTMLElement | null;
+  const btnProx   = document.getElementById('btn-prox')   as HTMLButtonElement | null;
+  const btnVoltar = document.getElementById('btn-voltar') as HTMLButtonElement | null;
+  const btnEnviar = document.getElementById('btn-enviar') as HTMLButtonElement | null;
+  const btnTexto  = document.getElementById('btn-enviar-texto')   as HTMLElement | null;
+  const btnLoad   = document.getElementById('btn-enviar-loading') as HTMLElement | null;
+  const erroEl    = document.getElementById('calc-erro') as HTMLElement | null;
+
+  btnProx?.addEventListener('click', () => {
+    if (step1 && step2) {
+      step1.hidden = true;
+      step2.hidden = false;
+      step2.querySelector('input')?.focus();
+    }
+  });
+
+  btnVoltar?.addEventListener('click', () => {
+    if (step1 && step2) {
+      step2.hidden = true;
+      step1.hidden = false;
+    }
+  });
+
+  btnEnviar?.addEventListener('click', async () => {
+    const emailEl = document.getElementById('c-email') as HTMLInputElement | null;
+    const nomeEl  = document.getElementById('c-nome')  as HTMLInputElement | null;
+    const email   = emailEl?.value.trim() ?? '';
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailEl?.focus();
+      return;
+    }
+
+    // Loading state
+    if (btnTexto) btnTexto.hidden = true;
+    if (btnLoad)  btnLoad.hidden  = false;
+    if (btnEnviar) btnEnviar.disabled = true;
+    if (erroEl)  erroEl.hidden = true;
+
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tipo:    'calculadora',
+          email,
+          nome:    nomeEl?.value.trim() ?? '',
+          setor:   setorEl?.value  ?? '',
+          ticket:  ticketEl?.value  ?? '1500',
+          visitas: visitasEl?.value ?? '300',
+        }),
+      });
+
+      if (res.ok) {
+        window.location.href = '/obrigado?origem=calculadora';
+      } else {
+        throw new Error('API error');
+      }
+    } catch {
+      if (erroEl) erroEl.hidden = false;
+      if (btnTexto) btnTexto.hidden = false;
+      if (btnLoad)  btnLoad.hidden  = true;
+      if (btnEnviar) btnEnviar.disabled = false;
+    }
+  });
+</script>
