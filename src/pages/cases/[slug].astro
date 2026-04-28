@@ -2,14 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
-import { cases, getCaseBySlug } from '../../data/cases';
+import { getAllCases, getAllCaseSlugs, getCaseBySlug } from '../../lib/content';
 
-export function getStaticPaths() {
-  return cases.map((c) => ({ params: { slug: c.slug } }));
+export async function getStaticPaths() {
+  const slugs = await getAllCaseSlugs();
+  return slugs.map((slug) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
-const c = getCaseBySlug(slug);
+const [c, allCases] = await Promise.all([getCaseBySlug(slug), getAllCases()]);
 
 if (!c) return Astro.redirect('/cases');
 
@@ -162,7 +163,7 @@ const rotulo = c.servico === 'reforma' ? 'Reforma de Site' : 'Site Novo Premium'
           Outros cases
         </h2>
         <div class="outros-cases">
-          {cases.filter((x) => x.slug !== c.slug).map((x) => (
+          {allCases.filter((x) => x.slug !== c.slug).map((x) => (
             <a href={`/cases/${x.slug}`} class="outro-case reveal">
               <span class="outro-case__setor">{x.setor}</span>
               <span class="outro-case__nome">{x.nome}</span>
