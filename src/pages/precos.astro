@@ -3,11 +3,24 @@ export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+
+const precosSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    { '@type': 'Question', 'name': 'O preço pode variar?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Os valores indicados são os preços de entrada — projetos mais complexos (e-commerce, múltiplas páginas, integrações específicas) têm orçamento personalizado. O preço exato é definido após o diagnóstico gratuito. Sem surpresas após o início.' } },
+    { '@type': 'Question', 'name': 'Tem manutenção mensal obrigatória?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. O preço é por projeto — você não paga mensalidade para manter o site no ar. Os 90 dias de suporte são inclusos. Depois disso, oferecemos planos opcionais, mas sem obrigação.' } },
+    { '@type': 'Question', 'name': 'Como funciona o parcelamento?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Parcelamos em até 10x no cartão de crédito sem acréscimo. Também aceitamos PIX com 5% de desconto. Normalmente trabalhamos com 50% na aprovação e 50% na entrega.' } },
+    { '@type': 'Question', 'name': 'E o domínio e a hospedagem?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'O domínio e a hospedagem são custos separados — geralmente menos de R$ 100/ano no total. Cuidamos de toda a configuração técnica, você só paga o custo ao provedor.' } },
+    { '@type': 'Question', 'name': 'Reforma ou site novo — como decidir?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Regra geral: se seu site tem menos de 5 anos e os problemas são técnicos (lento, mobile ruim, sem Google) → Reforma. Se é muito antigo, mal estruturado, ou você nunca teve site → Site Novo. O diagnóstico gratuito define isso com precisão.' } },
+  ],
+};
 ---
 
 <Layout
   title="Preços — Reforma de Site e Site Novo | Sites Especiais"
   description="Reforma de site a partir de R$ 1.997. Site novo premium a partir de R$ 2.997. Garantia incondicional de 7 dias, 90 dias de suporte e parcelamento sem juros."
+  schema={precosSchema}
 >
   <Navbar />
 

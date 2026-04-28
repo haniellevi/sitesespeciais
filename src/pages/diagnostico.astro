@@ -3,11 +3,41 @@ export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+
+const diagSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://sitesespeciais.com.br/diagnostico/#service',
+    'name': 'Diagnóstico Gratuito de Site',
+    'description': 'Videochamada de 30 minutos para análise do seu site ao vivo, identificação de problemas e oportunidades, e plano de ação personalizado. Gratuito, sem compromisso.',
+    'url': 'https://sitesespeciais.com.br/diagnostico',
+    'provider': { '@id': 'https://sitesespeciais.com.br/#organization' },
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'BRL',
+      'availability': 'https://schema.org/InStock',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      { '@type': 'Question', 'name': 'O diagnóstico é realmente gratuito?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Sim. Sem pegadinha. O diagnóstico não tem custo. Se no fim da conversa você quiser uma proposta, aí sim conversamos sobre valores — mas não é obrigatório e não é o objetivo da ligação.' } },
+      { '@type': 'Question', 'name': 'Precisa ter site para agendar o diagnóstico?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. Se você está pensando em criar o primeiro site do seu negócio, o diagnóstico serve exatamente para isso: entender o que você precisa e o que faz sentido para o seu momento.' } },
+      { '@type': 'Question', 'name': 'Como é a videochamada do diagnóstico?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Você recebe o link por email após agendar. Funciona pelo Google Meet — sem precisar instalar nada. Basta clicar no link no horário combinado.' } },
+      { '@type': 'Question', 'name': 'O que acontece depois do diagnóstico?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Na mesma conversa, se fizer sentido, você recebe um orçamento exato. Sem "vou elaborar uma proposta e te mando em 3 dias úteis". Direto ao ponto.' } },
+      { '@type': 'Question', 'name': 'Quais tipos de empresa são atendidas?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Focamos em empresas locais e regionais brasileiras: clínicas, consultórios, escritórios de advocacia, imobiliárias, comércio especializado e prestadores de serviço.' } },
+    ],
+  },
+];
 ---
 
 <Layout
   title="Diagnóstico Gratuito — 30 Minutos Para Saber o Que Seu Site Precisa | Sites Especiais"
   description="30 minutos de conversa, sem compromisso. Você sai sabendo exatamente o que está travando seu site e o que custa resolver. Sem pressão de venda."
+  schema={diagSchema}
 >
   <Navbar />
 

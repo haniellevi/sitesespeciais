@@ -5,11 +5,44 @@ import Footer from '../components/Footer.astro';
 import SpotlightCard from '../components/SpotlightCard.astro';
 import Calculadora from '../components/Calculadora.astro';
 import AntesDepois from '../components/AntesDepois.astro';
+
+const homeSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://sitesespeciais.com.br/#website',
+    'url': 'https://sitesespeciais.com.br',
+    'name': 'Sites Especiais',
+    'description': 'Reforma e criação de sites premium para empresas locais brasileiras.',
+    'inLanguage': 'pt-BR',
+    'publisher': { '@id': 'https://sitesespeciais.com.br/#organization' },
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': { '@type': 'EntryPoint', 'urlTemplate': 'https://sitesespeciais.com.br/blog?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      { '@type': 'Question', 'name': 'Quanto tempo leva para ficar pronto?', 'acceptedAnswer': { '@type': 'Answer', 'text': '14 dias corridos da aprovação do projeto. Para reformas mais simples, pode ser menos. Você acompanha o progresso dia a dia — sem surpresas no meio do caminho.' } },
+      { '@type': 'Question', 'name': 'Preciso ter um site atual para fazer a reforma?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. Se você já tem um site, aproveitamos o que funciona e melhoramos o resto. Se não tem, criamos do zero. O resultado é o mesmo: um site que trabalha por você 24 horas.' } },
+      { '@type': 'Question', 'name': 'Vou conseguir atualizar o conteúdo sozinho?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Sim. Você atualiza textos, fotos e preços sem precisar chamar ninguém. Entregamos com um tutorial em vídeo gravado especificamente para o seu site.' } },
+      { '@type': 'Question', 'name': 'Vocês usam IA para criar o site?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Usamos as ferramentas mais avançadas que existem — incluindo as da era da IA. Mas não é a IA que faz o site. É gente especialista usando ferramentas certas, como pedreiro com britadeira: a obra fica boa nos dois casos, mas com a ferramenta certa fica pronta antes e com menos erro.' } },
+      { '@type': 'Question', 'name': 'Como funciona o parcelamento?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Parcelamos em até 10x no cartão de crédito. Reforma a partir de 10x de R$ 199,70. Site novo a partir de 10x de R$ 299,70. A taxa de parcelamento é do cartão — não cobramos nada extra.' } },
+      { '@type': 'Question', 'name': 'Vocês ficam com o domínio e a hospedagem?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. O domínio e a hospedagem ficam 100% no seu nome. Você tem controle total. Somos pagos pelo trabalho de criar — não por manter você preso a um contrato mensal de hospedagem inflada.' } },
+      { '@type': 'Question', 'name': 'O que inclui o suporte de 90 dias?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Ajustes de texto, imagem ou layout que não sejam funcionalidades novas. Se algo der errado tecnicamente, corrigimos em até 24h. Via WhatsApp — sem ticket de suporte, sem fila de atendimento.' } },
+      { '@type': 'Question', 'name': 'E se eu não gostar do resultado final?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Garantia incondicional de 7 dias. Um e-mail e devolvemos 100% do valor pago em até 24h. Sem questionamentos, sem burocracia, sem negociação.' } },
+    ],
+  },
+];
 ---
 
 <Layout
   title="Sites Especiais — Reforma de Sites e Sites Premium para Empresas Locais"
   description="Reformamos sites antigos e criamos sites premium em até 14 dias. Rápido no celular, visível no Google e no ChatGPT, com garantia de 7 dias."
+  schema={homeSchema}
 >
   <Navbar />
 

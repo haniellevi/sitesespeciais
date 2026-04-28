@@ -4,11 +4,33 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import SpotlightCard from '../components/SpotlightCard.astro';
+
+const reformaSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://sitesespeciais.com.br/reforma/#service',
+  'name': 'Reforma de Site',
+  'description': 'Redesign completo de sites desatualizados com foco em velocidade, conversão e SEO. Mesmo domínio, nova presença. Entrega em 14 dias corridos.',
+  'url': 'https://sitesespeciais.com.br/reforma',
+  'provider': { '@id': 'https://sitesespeciais.com.br/#organization' },
+  'areaServed': { '@type': 'Country', 'name': 'Brasil' },
+  'offers': {
+    '@type': 'Offer',
+    'price': '1997',
+    'priceCurrency': 'BRL',
+    'availability': 'https://schema.org/InStock',
+    'priceValidUntil': '2026-12-31',
+    'url': 'https://sitesespeciais.com.br/reforma',
+  },
+  'serviceType': 'Web Design',
+  'termsOfService': 'https://sitesespeciais.com.br/garantia',
+};
 ---
 
 <Layout
   title="Reforma de Site — Faça seu Site Atual Trabalhar por Você | Sites Especiais"
   description="Seu site atual pode estar afastando clientes sem você saber. Reformamos em até 14 dias: mobile perfeito, Google, WhatsApp integrado. A partir de R$ 1.997 com garantia de 7 dias."
+  schema={reformaSchema}
 >
   <Navbar />
 

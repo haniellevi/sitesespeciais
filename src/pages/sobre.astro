@@ -3,11 +3,27 @@ export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+
+const sobreSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://sitesespeciais.com.br/sobre/#person',
+  'name': 'Haniel Levi',
+  'jobTitle': 'Web Designer e Especialista em Sites para Empresas Locais',
+  'description': 'Especialista em reforma e criação de sites premium para empresas locais brasileiras. Mais de 12 anos de experiência entregando projetos com resultado mensurável.',
+  'url': 'https://sitesespeciais.com.br/sobre',
+  'email': 'pr.raniellevi@gmail.com',
+  'telephone': '+5589994711318',
+  'knowsAbout': ['Web Design', 'SEO Local', 'Conversão de Sites', 'GEO — Generative Engine Optimization', 'Copywriting para Empresas Locais'],
+  'worksFor': { '@id': 'https://sitesespeciais.com.br/#organization' },
+  'sameAs': ['https://github.com/haniellevi', 'https://cal.com/raniellevi'],
+};
 ---
 
 <Layout
   title="Sobre — Sites Especiais | Quem está por trás do trabalho"
   description="Há 12 anos criando sites para empresas brasileiras. Conheça quem está por trás dos projetos, a filosofia de trabalho e por que o resultado importa mais que o processo."
+  schema={sobreSchema}
 >
   <Navbar />
 

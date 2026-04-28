@@ -4,11 +4,33 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import SpotlightCard from '../components/SpotlightCard.astro';
+
+const siteNovoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://sitesespeciais.com.br/site-novo/#service',
+  'name': 'Site Novo Premium',
+  'description': 'Criação de site profissional do zero, com design exclusivo, copywriting persuasivo, SEO técnico e visibilidade para IAs. Entrega em 21 dias corridos.',
+  'url': 'https://sitesespeciais.com.br/site-novo',
+  'provider': { '@id': 'https://sitesespeciais.com.br/#organization' },
+  'areaServed': { '@type': 'Country', 'name': 'Brasil' },
+  'offers': {
+    '@type': 'Offer',
+    'price': '2997',
+    'priceCurrency': 'BRL',
+    'availability': 'https://schema.org/InStock',
+    'priceValidUntil': '2026-12-31',
+    'url': 'https://sitesespeciais.com.br/site-novo',
+  },
+  'serviceType': 'Web Design',
+  'termsOfService': 'https://sitesespeciais.com.br/garantia',
+};
 ---
 
 <Layout
   title="Site Novo Premium — Construído para Gerar Clientes desde o Primeiro Dia | Sites Especiais"
   description="Seu negócio merece uma presença digital à altura. Site novo profissional em 21 dias: design que passa confiança, aparece no Google e no ChatGPT, integrado ao WhatsApp. A partir de R$ 2.997 com garantia de 7 dias."
+  schema={siteNovoSchema}
 >
   <Navbar />
 
