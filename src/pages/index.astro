@@ -2,17 +2,55 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import SpotlightCard from '../components/SpotlightCard.astro';
+import Calculadora from '../components/Calculadora.astro';
+import AntesDepois from '../components/AntesDepois.astro';
+
+const homeSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://sitesespeciais.com.br/#website',
+    'url': 'https://sitesespeciais.com.br',
+    'name': 'Sites Especiais',
+    'description': 'Reforma e criação de sites premium para empresas locais brasileiras.',
+    'inLanguage': 'pt-BR',
+    'publisher': { '@id': 'https://sitesespeciais.com.br/#organization' },
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': { '@type': 'EntryPoint', 'urlTemplate': 'https://sitesespeciais.com.br/blog?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      { '@type': 'Question', 'name': 'Quanto tempo leva para ficar pronto?', 'acceptedAnswer': { '@type': 'Answer', 'text': '14 dias corridos da aprovação do projeto. Para reformas mais simples, pode ser menos. Você acompanha o progresso dia a dia — sem surpresas no meio do caminho.' } },
+      { '@type': 'Question', 'name': 'Preciso ter um site atual para fazer a reforma?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. Se você já tem um site, aproveitamos o que funciona e melhoramos o resto. Se não tem, criamos do zero. O resultado é o mesmo: um site que trabalha por você 24 horas.' } },
+      { '@type': 'Question', 'name': 'Vou conseguir atualizar o conteúdo sozinho?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Sim. Você atualiza textos, fotos e preços sem precisar chamar ninguém. Entregamos com um tutorial em vídeo gravado especificamente para o seu site.' } },
+      { '@type': 'Question', 'name': 'Vocês usam IA para criar o site?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Usamos as ferramentas mais avançadas que existem — incluindo as da era da IA. Mas não é a IA que faz o site. É gente especialista usando ferramentas certas, como pedreiro com britadeira: a obra fica boa nos dois casos, mas com a ferramenta certa fica pronta antes e com menos erro.' } },
+      { '@type': 'Question', 'name': 'Como funciona o parcelamento?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Parcelamos em até 10x no cartão de crédito. Reforma a partir de 10x de R$ 199,70. Site novo a partir de 10x de R$ 299,70. A taxa de parcelamento é do cartão — não cobramos nada extra.' } },
+      { '@type': 'Question', 'name': 'Vocês ficam com o domínio e a hospedagem?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. O domínio e a hospedagem ficam 100% no seu nome. Você tem controle total. Somos pagos pelo trabalho de criar — não por manter você preso a um contrato mensal de hospedagem inflada.' } },
+      { '@type': 'Question', 'name': 'O que inclui o suporte de 90 dias?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Ajustes de texto, imagem ou layout que não sejam funcionalidades novas. Se algo der errado tecnicamente, corrigimos em até 24h. Via WhatsApp — sem ticket de suporte, sem fila de atendimento.' } },
+      { '@type': 'Question', 'name': 'E se eu não gostar do resultado final?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Garantia incondicional de 7 dias. Um e-mail e devolvemos 100% do valor pago em até 24h. Sem questionamentos, sem burocracia, sem negociação.' } },
+    ],
+  },
+];
 ---
 
 <Layout
   title="Sites Especiais — Reforma de Sites e Sites Premium para Empresas Locais"
   description="Reformamos sites antigos e criamos sites premium em até 14 dias. Rápido no celular, visível no Google e no ChatGPT, com garantia de 7 dias."
+  schema={homeSchema}
 >
   <Navbar />
 
   <main style="position: relative; z-index: 1;">
 
-    <!-- HERO -->
+    <!-- ══════════════════════════════════════════════
+         S1 — HERO
+         ══════════════════════════════════════════════ -->
     <section class="hero section" id="hero">
       <div class="perspective-grid" aria-hidden="true"></div>
       <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
@@ -55,11 +93,432 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
 
-    <!-- SEÇÕES EM CONSTRUÇÃO (placeholders para os próximos Sprints) -->
-    <section class="section" style="text-align: center; opacity: 0.3;" id="reforma">
+    <!-- ══════════════════════════════════════════════
+         S2 — CALCULADORA
+         ══════════════════════════════════════════════ -->
+    <Calculadora />
+
+    <!-- ══════════════════════════════════════════════
+         S3 — SINTOMAS DE SITE DOENTE
+         ══════════════════════════════════════════════ -->
+    <section class="section" id="sintomas">
       <div class="container">
-        <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">
-          Sprint 2 — Seções completas da Home em construção
+        <div class="text-center reveal" style="margin-bottom: 3.5rem;">
+          <p class="eyebrow">Diagnóstico</p>
+          <h2 class="section__h2">Seu site tem esses sintomas?</h2>
+          <p class="section__sub">Cada sintoma abaixo é dinheiro saindo pela porta dos fundos todo mês.</p>
+        </div>
+
+        <div class="sintomas-grid">
+          <SpotlightCard class="sintoma-card reveal">
+            <div class="sintoma-icon">🐌</div>
+            <h3 class="sintoma-title">Carrega devagar</h3>
+            <p class="sintoma-desc">53% dos visitantes abandonam um site que demora mais de 3 segundos. Cada segundo a mais é dinheiro que vai embora antes de você saber que o cliente existia.</p>
+            <div class="sintoma-custo">Custo estimado: R$ 2.000–8.000/mês perdidos</div>
+          </SpotlightCard>
+
+          <SpotlightCard class="sintoma-card reveal reveal-delay-1">
+            <div class="sintoma-icon">📅</div>
+            <h3 class="sintoma-title">Mais de 2 anos sem reforma</h3>
+            <p class="sintoma-desc">O cliente acha que você sumiu do mercado — ou que está com dificuldades. Quem paga mais caro é exatamente quem exige mais qualidade e vai embora primeiro.</p>
+            <div class="sintoma-custo">Custo: clientes premium indo para o concorrente</div>
+          </SpotlightCard>
+
+          <SpotlightCard class="sintoma-card reveal reveal-delay-2">
+            <div class="sintoma-icon">🔍</div>
+            <h3 class="sintoma-title">Não aparece no Google</h3>
+            <p class="sintoma-desc">Se você não está na primeira página, para o cliente você não existe. O Google recompensa sites rápidos, atualizados e que o visitante não abandona em segundos.</p>
+            <div class="sintoma-custo">Custo: visibilidade zero pra quem está comprando agora</div>
+          </SpotlightCard>
+
+          <SpotlightCard class="sintoma-card reveal">
+            <div class="sintoma-icon">📱</div>
+            <h3 class="sintoma-title">Quebrado no celular</h3>
+            <p class="sintoma-desc">7 em cada 10 clientes pesquisam pelo celular. Se seu site não funciona no smartphone, você está invisível para a maioria das pessoas que poderiam te contratar hoje.</p>
+            <div class="sintoma-custo">Custo: 70% das visitas indo embora de imediato</div>
+          </SpotlightCard>
+
+          <SpotlightCard class="sintoma-card reveal reveal-delay-1">
+            <div class="sintoma-icon">💬</div>
+            <h3 class="sintoma-title">Contato difícil de achar</h3>
+            <p class="sintoma-desc">Se o botão de WhatsApp exige mais de um clique, o cliente desiste. Cada clique extra perde em média 20% dos interessados. Você está pedindo esforço de quem deveria ser acolhido.</p>
+            <div class="sintoma-custo">Custo: 40%+ dos leads que nunca chegam até você</div>
+          </SpotlightCard>
+
+          <SpotlightCard class="sintoma-card reveal reveal-delay-2">
+            <div class="sintoma-icon">🤖</div>
+            <h3 class="sintoma-title">Invisível no ChatGPT e Gemini</h3>
+            <p class="sintoma-desc">Em 2026, clientes pesquisam no Google E nas IAs. Sites antigos não são citados pelas IAs. Você precisa existir nos dois mundos — ou vai sumir do mapa para uma geração inteira.</p>
+            <div class="sintoma-custo">Custo: invisível para uma nova internet que cresce 40% ao ano</div>
+          </SpotlightCard>
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem;">
+          <a href="/diagnostico" class="btn btn--primary btn--large reveal">
+            Ver o diagnóstico do meu site →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S4 — ANTES / DEPOIS
+         ══════════════════════════════════════════════ -->
+    <AntesDepois />
+
+    <!-- ══════════════════════════════════════════════
+         S5 — COMO FAZEMOS
+         ══════════════════════════════════════════════ -->
+    <section class="section" id="processo">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 3.5rem;">
+          <p class="eyebrow">O processo</p>
+          <h2 class="section__h2">Do diagnóstico ao ar em 14 dias</h2>
+          <p class="section__sub">Sem reuniões intermináveis. Sem jargão técnico. Sem surpresas no bolso.</p>
+        </div>
+
+        <div class="processo-steps">
+          <div class="step reveal">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3 class="step-title">Diagnóstico gratuito</h3>
+              <p class="step-desc">Analisamos seu site atual e identificamos o que está custando clientes. Em 24h você recebe um relatório claro com prioridades e estimativa — sem compromisso.</p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="step reveal reveal-delay-1">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3 class="step-title">Aprovação do design</h3>
+              <p class="step-desc">Você vê como vai ficar antes de começarmos. Mostramos o visual completo para aprovação. Não gostou de algum detalhe? Ajustamos até você aprovar.</p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="step reveal reveal-delay-2">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3 class="step-title">Execução dedicada</h3>
+              <p class="step-desc">Nossa equipe constrói seu site com atenção a cada detalhe: velocidade, mobile perfeito, aparecendo no Google desde o primeiro dia no ar.</p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="step reveal reveal-delay-3">
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <h3 class="step-title">No ar em 14 dias</h3>
+              <p class="step-desc">Site publicado, domínio configurado, e-mail profissional funcionando. Você recebe tudo pronto com um tutorial em vídeo — e 90 dias de suporte via WhatsApp.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S6 — POR QUE NOSSOS SITES VENDEM MAIS
+         ══════════════════════════════════════════════ -->
+    <section class="section section--alt" id="diferenciais">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 3.5rem;">
+          <p class="eyebrow">Diferenciais</p>
+          <h2 class="section__h2">Por que nossos sites vendem mais</h2>
+          <p class="section__sub">A diferença entre um site que enfeita e um site que trabalha por você 24 horas por dia.</p>
+        </div>
+
+        <div class="diferenciais-grid">
+          <SpotlightCard class="diferencial-card reveal">
+            <div class="diferencial-icon">⚡</div>
+            <h3 class="diferencial-title">Abre antes do cliente perder a paciência</h3>
+            <p class="diferencial-desc">Nossos sites carregam em menos de 1 segundo no 4G ruim — o mesmo que o app do seu banco. Isso não é tecnologia: é respeito pelo tempo do cliente e dinheiro no seu bolso.</p>
+          </SpotlightCard>
+
+          <SpotlightCard class="diferencial-card reveal reveal-delay-1">
+            <div class="diferencial-icon">🌐</div>
+            <h3 class="diferencial-title">Aparece no Google E no ChatGPT</h3>
+            <p class="diferencial-desc">O Google entende seu site na primeira visita. E as IAs te citam quando alguém pergunta sobre o seu setor. Você existe nos dois mundos — enquanto o concorrente existe em nenhum.</p>
+          </SpotlightCard>
+
+          <SpotlightCard class="diferencial-card reveal reveal-delay-2">
+            <div class="diferencial-icon">💎</div>
+            <h3 class="diferencial-title">Design que convence antes de falar uma palavra</h3>
+            <p class="diferencial-desc">Clientes julgam sua empresa em 0,05 segundos. Aquela sensação de estar no site da Apple — mas é o seu site, com a sua marca, gerando confiança para o seu cliente.</p>
+          </SpotlightCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S7 — ÂNCORA DE PREÇO
+         ══════════════════════════════════════════════ -->
+    <section class="section" id="precos">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 3.5rem;">
+          <p class="eyebrow">Investimento</p>
+          <h2 class="section__h2">Quanto custa parar de perder clientes?</h2>
+          <p class="section__sub">Menos do que você perde em um mês com o site que tem hoje.</p>
+        </div>
+
+        <div class="precos-grid">
+          <div class="preco-card reveal">
+            <div class="preco-badge">Mais popular</div>
+            <h3 class="preco-tipo">Reforma de Site</h3>
+            <p class="preco-desc">Seu site atual fica irreconhecível — melhor em tudo. Mesmo domínio, nova identidade, velocidade e conversão.</p>
+            <div class="preco-valor">
+              <span class="preco-from">a partir de</span>
+              <span class="preco-num">R$ 1.997</span>
+            </div>
+            <ul class="preco-items">
+              <li>✓ Design novo e exclusivo</li>
+              <li>✓ Perfeito em qualquer celular</li>
+              <li>✓ Carrega em menos de 1 segundo</li>
+              <li>✓ Aparece no Google</li>
+              <li>✓ WhatsApp integrado</li>
+              <li>✓ 90 dias de suporte</li>
+            </ul>
+            <p class="preco-parcelas">Ou 10x de R$ 199,70 no cartão</p>
+            <a href="/diagnostico" class="btn btn--primary" style="width: 100%; justify-content: center;">
+              Quero reformar meu site →
+            </a>
+          </div>
+
+          <div class="preco-card preco-card--premium reveal reveal-delay-1">
+            <div class="preco-badge preco-badge--gold">Premium</div>
+            <h3 class="preco-tipo">Site Novo do Zero</h3>
+            <p class="preco-desc">Construído do zero para converter visitantes em clientes. Identidade completa, animações premium, performance máxima.</p>
+            <div class="preco-valor">
+              <span class="preco-from">a partir de</span>
+              <span class="preco-num">R$ 2.997</span>
+            </div>
+            <ul class="preco-items">
+              <li>✓ Tudo da Reforma, mais:</li>
+              <li>✓ Identidade visual nova</li>
+              <li>✓ Animações premium</li>
+              <li>✓ Blog integrado</li>
+              <li>✓ Formulários inteligentes</li>
+              <li>✓ Aparece no ChatGPT e Gemini</li>
+            </ul>
+            <p class="preco-parcelas">Ou 10x de R$ 299,70 no cartão</p>
+            <a href="/diagnostico" class="btn btn--primary" style="width: 100%; justify-content: center;">
+              Quero um site novo premium →
+            </a>
+          </div>
+        </div>
+
+        <div class="text-center reveal" style="margin-top: 1.5rem;">
+          <p style="color: var(--text-muted); font-size: 0.84rem;">
+            Garantia incondicional de 7 dias. Se não ficar do jeito que você imaginou, devolvemos 100% do valor — sem burocracia.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S8 — DEPOIMENTOS
+         ══════════════════════════════════════════════ -->
+    <section class="section section--alt" id="depoimentos">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 3.5rem;">
+          <p class="eyebrow">Depoimentos</p>
+          <h2 class="section__h2">Quem já reformou não quer saber do site antigo</h2>
+        </div>
+
+        <div class="depoimentos-grid">
+          <SpotlightCard class="depoimento-card reveal">
+            <div class="depoimento-stars">★★★★★</div>
+            <p class="depoimento-texto">"Em dois meses após o novo site, meus agendamentos online triplicaram. Antes recebia 3–4 por semana pelo site. Hoje recebo mais de 15. O investimento se pagou no primeiro mês."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar">CP</div>
+              <div>
+                <strong>Dr. Carlos Pinheiro</strong>
+                <span>Clínica Pinheiro — Teresina, PI</span>
+              </div>
+            </div>
+          </SpotlightCard>
+
+          <SpotlightCard class="depoimento-card reveal reveal-delay-1">
+            <div class="depoimento-stars">★★★★★</div>
+            <p class="depoimento-texto">"Nossa distribuidora vendia só pelo telefone há 20 anos. Com o site novo, em 45 dias chegaram os primeiros pedidos pelo formulário. Isso nunca tinha acontecido antes."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar">FA</div>
+              <div>
+                <strong>Fiel Alimentos</strong>
+                <span>Distribuidora — Piauí</span>
+              </div>
+            </div>
+          </SpotlightCard>
+
+          <SpotlightCard class="depoimento-card reveal reveal-delay-2">
+            <div class="depoimento-stars">★★★★★</div>
+            <p class="depoimento-texto">"Antes do site, pacientes de cidades vizinhas não sabiam que oferecemos Cardiologia e Neurologia aqui em Corrente. Com o site novo, toda semana chegam pacientes que disseram ter encontrado a clínica pelo Google."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar">EC</div>
+              <div>
+                <strong>EmCORR Centro Clínico</strong>
+                <span>Saúde — Corrente, PI</span>
+              </div>
+            </div>
+          </SpotlightCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S9 — GARANTIA
+         ══════════════════════════════════════════════ -->
+    <section class="section" id="garantia">
+      <div class="container container--narrow">
+        <div class="garantia-card reveal">
+          <div class="garantia-icon" aria-hidden="true">🛡️</div>
+          <h2 class="garantia-title">Garantia Incondicional de 7 Dias</h2>
+          <p class="garantia-desc">
+            Você aprova o visual antes de começarmos. E mesmo assim: se nos primeiros 7 dias
+            após a entrega você não ficar 100% satisfeito — por qualquer motivo —
+            <strong>devolvemos tudo que pagou.</strong>
+          </p>
+          <p class="garantia-desc" style="margin-top: 0.75rem;">
+            Um e-mail resolve. Sem burocracia. Sem "mas". Sem questionamento.
+          </p>
+          <div class="garantia-itens">
+            <span class="garantia-item">✓ Sem contrato de fidelidade</span>
+            <span class="garantia-item">✓ Sem taxa de cancelamento</span>
+            <span class="garantia-item">✓ Devolução em 24h</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S10 — FAQ
+         ══════════════════════════════════════════════ -->
+    <section class="section section--alt" id="faq">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3.5rem;">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="section__h2">Perguntas frequentes</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              Quanto tempo leva para ficar pronto?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>14 dias corridos da aprovação do projeto. Para reformas mais simples, pode ser menos. Você acompanha o progresso dia a dia — sem surpresas no meio do caminho.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-question" aria-expanded="false">
+              Preciso ter um site atual para fazer a reforma?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>Não. Se você já tem um site, aproveitamos o que funciona e melhoramos o resto. Se não tem, criamos do zero. O resultado é o mesmo: um site que trabalha por você 24 horas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-question" aria-expanded="false">
+              Vou conseguir atualizar o conteúdo sozinho?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>Sim. Você atualiza textos, fotos e preços sem precisar chamar ninguém. Entregamos com um tutorial em vídeo gravado especificamente para o seu site — não um tutorial genérico do YouTube.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              Vocês usam IA para criar o site?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>Usamos as ferramentas mais avançadas que existem — incluindo as da era da IA. Mas não é a IA que faz o site. É gente especialista usando ferramentas certas, como pedreiro com britadeira: a obra fica boa nos dois casos, mas com a ferramenta certa fica pronta antes e com menos erro.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-question" aria-expanded="false">
+              Como funciona o parcelamento?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>Parcelamos em até 10x no cartão de crédito. Reforma a partir de 10x de R$ 199,70. Site novo a partir de 10x de R$ 299,70. A taxa de parcelamento é do cartão — não cobramos nada extra.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-question" aria-expanded="false">
+              Vocês ficam com o domínio e a hospedagem?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>Não. O domínio e a hospedagem ficam 100% no seu nome. Você tem controle total. Somos pagos pelo trabalho de criar — não por manter você preso a um contrato mensal de hospedagem inflada.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              O que inclui o suporte de 90 dias?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>Ajustes de texto, imagem ou layout que não sejam funcionalidades novas. Se algo der errado tecnicamente, corrigimos em até 24h. Via WhatsApp — sem ticket de suporte, sem fila de atendimento.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-question" aria-expanded="false">
+              E se eu não gostar do resultado final?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>Garantia incondicional de 7 dias. Um e-mail para contato@sitesespeciais.com.br e devolvemos 100% do valor pago em até 24h. Sem questionamentos, sem burocracia, sem negociação.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S11 — CTA FINAL
+         ══════════════════════════════════════════════ -->
+    <section class="section cta-final" id="cta-final">
+      <div class="perspective-grid" aria-hidden="true" style="opacity: 0.4;"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal" style="display: inline-flex; margin-bottom: 2rem;">
+          <span class="badge__dot"></span>
+          Restam 2 vagas para maio — não deixe para o mês que vem
+        </div>
+
+        <h2 class="cta-final__h2 reveal reveal-delay-1">
+          Seu concorrente não vai<br>
+          esperar você se decidir.
+        </h2>
+
+        <p class="cta-final__sub reveal reveal-delay-2">
+          O diagnóstico é gratuito e sem compromisso. Mas as vagas são limitadas.<br>
+          O melhor investimento que sua empresa faz em 2026 pode estar a um clique de distância.
+        </p>
+
+        <div class="cta-final__actions reveal reveal-delay-3">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Diagnóstico Gratuito do meu site →
+          </a>
+          <a href="https://cal.com/raniellevi/30min" target="_blank" rel="noopener" class="btn btn--outline btn--large">
+            Ou agendar uma conversa de 30min
+          </a>
+        </div>
+
+        <p class="cta-final__guarantee reveal reveal-delay-4">
+          Garantia de 7 dias · Sem pressão de venda · Resultado em 14 dias
         </p>
       </div>
     </section>
@@ -67,10 +526,66 @@ import Footer from '../components/Footer.astro';
   </main>
 
   <Footer />
+
+  <!-- Schema FAQPage -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto tempo leva para o site ficar pronto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "14 dias corridos da aprovação do projeto. Para reformas mais simples, pode ser menos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Precisar ter um site atual para fazer a reforma?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. Se você já tem um site, aproveitamos o que funciona e melhoramos o resto. Se não tem, criamos do zero."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês usam IA para criar o site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usamos as ferramentas mais avançadas que existem, incluindo as da era da IA. Mas não é a IA que faz o site. É gente especialista usando ferramentas certas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como funciona o parcelamento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Parcelamos em até 10x no cartão. Reforma a partir de 10x de R$ 199,70. Site novo a partir de 10x de R$ 299,70."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês ficam com o domínio e a hospedagem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. O domínio e a hospedagem ficam 100% no seu nome. Você tem controle total."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "E se eu não gostar do resultado final?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Garantia incondicional de 7 dias. Um e-mail e devolvemos 100% do valor pago em até 24h, sem questionamentos."
+        }
+      }
+    ]
+  })} />
 </Layout>
 
 <style>
-/* ── Hero ─────────────────────────────────────── */
+/* ── Hero ─────────────────────────────────────────── */
 .hero {
   min-height: 100svh;
   display: flex;
@@ -114,10 +629,480 @@ import Footer from '../components/Footer.astro';
   color: var(--text-muted);
 }
 
-.hero__stars {
-  color: var(--primary);
-  letter-spacing: 0.05em;
+.hero__stars { color: var(--primary); letter-spacing: 0.05em; }
+.hero__sep   { color: var(--border); }
+
+/* ── Seção genérica ────────────────────────────────── */
+.section--alt { background: rgba(255, 255, 255, 0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
 }
 
-.hero__sep { color: var(--border); }
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.section__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin-inline: auto;
+  line-height: 1.7;
+}
+
+/* ── S3 Sintomas ───────────────────────────────────── */
+.sintomas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) { .sintomas-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .sintomas-grid { grid-template-columns: 1fr; } }
+
+.sintoma-card { padding: 1.75rem; }
+
+.sintoma-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.sintoma-title {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--foreground);
+}
+
+.sintoma-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.sintoma-custo {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--error);
+  padding: 0.4rem 0.75rem;
+  background: rgba(229, 62, 62, 0.06);
+  border: 1px solid rgba(229, 62, 62, 0.15);
+  border-radius: var(--radius-sm);
+  line-height: 1.4;
+}
+
+/* ── S5 Processo ───────────────────────────────────── */
+.processo-steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .processo-steps { flex-direction: column; }
+  .step-connector { display: none; }
+}
+
+.step {
+  flex: 1;
+  min-width: 180px;
+  padding: 2rem 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.step-connector {
+  width: 2rem;
+  height: 2px;
+  background: linear-gradient(to right, var(--border), var(--primary), var(--border));
+  margin-top: 3.5rem;
+  flex-shrink: 0;
+}
+
+.step-number {
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.5;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.step-title {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.step-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ── S6 Diferenciais ───────────────────────────────── */
+.diferenciais-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 860px) { .diferenciais-grid { grid-template-columns: 1fr; max-width: 540px; margin-inline: auto; } }
+
+.diferencial-card { padding: 2rem; }
+
+.diferencial-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.diferencial-title {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.diferencial-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ── S7 Preços ─────────────────────────────────────── */
+.precos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) { .precos-grid { grid-template-columns: 1fr; } }
+
+.preco-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.preco-card--premium {
+  border-color: rgba(232, 197, 71, 0.3);
+  background: linear-gradient(160deg, rgba(232,197,71,0.04) 0%, var(--card) 60%);
+  box-shadow: 0 0 40px rgba(232, 197, 71, 0.06);
+}
+
+.preco-badge {
+  position: absolute;
+  top: -0.75rem;
+  left: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  background: var(--luxota-accent);
+  color: var(--luxota-bg);
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+.preco-badge--gold {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.preco-tipo {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-top: 0.5rem;
+}
+
+.preco-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.preco-valor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.preco-from {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.preco-num {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.preco-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.preco-items li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+}
+
+.preco-parcelas {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ── S8 Depoimentos ────────────────────────────────── */
+.depoimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) { .depoimentos-grid { grid-template-columns: 1fr; max-width: 500px; margin-inline: auto; } }
+
+.depoimento-card { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+
+.depoimento-stars { color: var(--primary); letter-spacing: 0.06em; font-size: 0.9rem; }
+
+.depoimento-texto {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+  flex: 1;
+}
+
+.depoimento-autor {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.depoimento-avatar {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--luxota-accent), var(--primary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--luxota-bg);
+  flex-shrink: 0;
+}
+
+.depoimento-autor strong {
+  display: block;
+  font-size: 0.86rem;
+  color: var(--foreground);
+}
+
+.depoimento-autor span {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* ── S9 Garantia ───────────────────────────────────── */
+.garantia-card {
+  background: linear-gradient(135deg, rgba(232,197,71,0.06) 0%, var(--card) 60%);
+  border: 1px solid rgba(232, 197, 71, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(232, 197, 71, 0.06);
+}
+
+.garantia-icon { font-size: 3rem; margin-bottom: 1.25rem; display: block; }
+
+.garantia-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+}
+
+.garantia-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.garantia-desc strong { color: var(--foreground); }
+
+.garantia-itens {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(232, 197, 71, 0.15);
+}
+
+.garantia-item {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+/* ── S10 FAQ ───────────────────────────────────────── */
+.faq-list { display: flex; flex-direction: column; }
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.25rem 0;
+  background: none;
+  border: none;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  gap: 1rem;
+  transition: color 0.3s;
+}
+
+.faq-question:hover { color: var(--primary); }
+
+.faq-icon {
+  font-size: 1.2rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-out);
+  font-family: var(--font-mono);
+  font-weight: 300;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+
+.faq-answer {
+  padding-bottom: 1.25rem;
+}
+
+.faq-answer p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ── S11 CTA Final ─────────────────────────────────── */
+.cta-final {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, rgba(232,197,71,0.04) 0%, transparent 70%);
+}
+
+.cta-final__h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 1.25rem;
+  line-height: 1.1;
+}
+
+.cta-final__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+.cta-final__actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.cta-final__guarantee {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── Text center utility ───────────────────────────── */
+.text-center { text-align: center; }
 </style>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll<HTMLButtonElement>('.faq-question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.nextElementSibling as HTMLElement | null;
+
+      // Fecha todos
+      document.querySelectorAll<HTMLButtonElement>('.faq-question').forEach((b) => {
+        b.setAttribute('aria-expanded', 'false');
+        const a = b.nextElementSibling as HTMLElement | null;
+        if (a) a.hidden = true;
+      });
+
+      // Abre o clicado (se estava fechado)
+      if (!isOpen && answer) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
+      }
+    });
+  });
+</script>

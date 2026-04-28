@@ -1,0 +1,439 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const diagSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://sitesespeciais.com.br/diagnostico/#service',
+    'name': 'Diagnóstico Gratuito de Site',
+    'description': 'Videochamada de 30 minutos para análise do seu site ao vivo, identificação de problemas e oportunidades, e plano de ação personalizado. Gratuito, sem compromisso.',
+    'url': 'https://sitesespeciais.com.br/diagnostico',
+    'provider': { '@id': 'https://sitesespeciais.com.br/#organization' },
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'BRL',
+      'availability': 'https://schema.org/InStock',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      { '@type': 'Question', 'name': 'O diagnóstico é realmente gratuito?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Sim. Sem pegadinha. O diagnóstico não tem custo. Se no fim da conversa você quiser uma proposta, aí sim conversamos sobre valores — mas não é obrigatório e não é o objetivo da ligação.' } },
+      { '@type': 'Question', 'name': 'Precisa ter site para agendar o diagnóstico?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. Se você está pensando em criar o primeiro site do seu negócio, o diagnóstico serve exatamente para isso: entender o que você precisa e o que faz sentido para o seu momento.' } },
+      { '@type': 'Question', 'name': 'Como é a videochamada do diagnóstico?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Você recebe o link por email após agendar. Funciona pelo Google Meet — sem precisar instalar nada. Basta clicar no link no horário combinado.' } },
+      { '@type': 'Question', 'name': 'O que acontece depois do diagnóstico?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Na mesma conversa, se fizer sentido, você recebe um orçamento exato. Sem "vou elaborar uma proposta e te mando em 3 dias úteis". Direto ao ponto.' } },
+      { '@type': 'Question', 'name': 'Quais tipos de empresa são atendidas?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Focamos em empresas locais e regionais brasileiras: clínicas, consultórios, escritórios de advocacia, imobiliárias, comércio especializado e prestadores de serviço.' } },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Diagnóstico Gratuito — 30 Minutos Para Saber o Que Seu Site Precisa | Sites Especiais"
+  description="30 minutos de conversa, sem compromisso. Você sai sabendo exatamente o que está travando seu site e o que custa resolver. Sem pressão de venda."
+  schema={diagSchema}
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="section diag-hero">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          Gratuito · Sem compromisso · 30 minutos
+        </div>
+
+        <h1 class="diag__h1 reveal reveal-delay-1">
+          30 minutos para saber<br>
+          <span class="text-gradient">exatamente o que mudar.</span>
+        </h1>
+
+        <p class="diag__sub reveal reveal-delay-2">
+          Você sai do diagnóstico com uma visão clara do que está impedindo o seu site
+          de trazer clientes novos — e o que custa resolver.
+          Sem pressão de venda. Sem "deixa que eu te mando uma proposta".
+        </p>
+      </div>
+    </section>
+
+    <!-- O QUE ACONTECE NO DIAGNÓSTICO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">O que acontece nos 30 minutos</p>
+          <h2 class="section__h2">Conversa direta. Sem enrolação.</h2>
+        </div>
+
+        <div class="diag-steps">
+          <div class="diag-step reveal">
+            <div class="diag-step__num">1</div>
+            <div>
+              <h3>Você me conta o negócio</h3>
+              <p>Quem são seus clientes, o que você vende, qual o ticket médio, como os clientes te encontram hoje. Sem formulário de 20 campos — uma conversa normal.</p>
+            </div>
+          </div>
+          <div class="diag-step reveal reveal-delay-1">
+            <div class="diag-step__num">2</div>
+            <div>
+              <h3>Analiso o seu site ao vivo</h3>
+              <p>Abro o seu site durante a conversa e aponto o que está funcionando, o que está afastando clientes e o que está invisível para o Google. Você vê em tempo real.</p>
+            </div>
+          </div>
+          <div class="diag-step reveal reveal-delay-2">
+            <div class="diag-step__num">3</div>
+            <div>
+              <h3>Você sai com clareza total</h3>
+              <p>O que precisa mudar, qual a ordem de prioridade e quanto custa resolver. Se fizer sentido trabalharmos juntos, aí sim converso sobre proposta. Sem pressão.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDAMENTO -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Agendar</p>
+          <h2 class="section__h2">Escolha o melhor horário para você.</h2>
+          <p class="diag-cal-sub">
+            Videochamada de 30 minutos. Você recebe o link de confirmação no email.
+          </p>
+        </div>
+
+        <div class="cal-wrapper reveal">
+          <div id="diag-cal-inline"></div>
+        </div>
+
+        <div class="diag-alternative reveal" style="margin-top: 2rem;">
+          <p>Prefere pelo WhatsApp?</p>
+          <a href="https://wa.me/5589994711318?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20gratuito%20do%20meu%20site."
+             target="_blank" rel="noopener"
+             class="btn btn--outline">
+            Falar no WhatsApp →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERGUNTAS FREQUENTES -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Perguntas frequentes</p>
+          <h2 class="section__h2">O que você precisa saber antes de agendar.</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary class="faq-item__q">É realmente gratuito?</summary>
+            <div class="faq-item__a">
+              <p>Sim. Sem pegadinha. O diagnóstico não tem custo. Se no fim da conversa você quiser uma proposta, aí sim conversamos sobre valores — mas não é obrigatório e não é o objetivo da ligação.</p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal reveal-delay-1">
+            <summary class="faq-item__q">Precisa ter site para agendar?</summary>
+            <div class="faq-item__a">
+              <p>Não. Se você está pensando em criar o primeiro site do seu negócio, o diagnóstico serve exatamente para isso: entender o que você precisa e o que faz sentido para o seu momento.</p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal reveal-delay-2">
+            <summary class="faq-item__q">Como é a videochamada?</summary>
+            <div class="faq-item__a">
+              <p>Você recebe o link por email após agendar. Funciona pelo Google Meet — sem precisar instalar nada. Basta clicar no link no horário combinado.</p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary class="faq-item__q">E se eu quiser seguir em frente depois?</summary>
+            <div class="faq-item__a">
+              <p>Na mesma conversa, se fizer sentido, te passo um orçamento exato. Sem "vou elaborar uma proposta e te mando em 3 dias úteis". Direto ao ponto.</p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal reveal-delay-1">
+            <summary class="faq-item__q">Vocês atendem qualquer tipo de empresa?</summary>
+            <div class="faq-item__a">
+              <p>Focamos em empresas locais e regionais brasileiras: clínicas, consultórios, escritórios de advocacia, imobiliárias, comércio especializado e prestadores de serviço. Se o seu negócio precisa de autoridade online para atrair clientes — é para você.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROVA SOCIAL -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <figure class="depo-diag reveal">
+          <blockquote>
+            <p>
+              "Entrei achando que ia ser uma reunião de venda. Saí com um roteiro do que estava errado no meu site
+              — e a certeza de que era com ele que eu queria trabalhar."
+            </p>
+          </blockquote>
+          <figcaption>
+            <strong>Equipe EmCORR</strong>
+            <span>· Centro Clínico — Corrente, PI</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", "30min", { origin: "https://cal.com" });
+
+  Cal.ns["30min"]("inline", {
+    elementOrSelector: "#diag-cal-inline",
+    calLink: "raniellevi/30min",
+    layout: "month_view"
+  });
+
+  Cal.ns["30min"]("ui", {
+    theme: "dark",
+    hideEventTypeDetails: false,
+    layout: "month_view"
+  });
+</script>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255,255,255,0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+/* Hero */
+.diag-hero {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.diag__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.diag__sub {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-inline: auto;
+}
+
+/* Steps */
+.diag-steps { display: flex; flex-direction: column; gap: 1rem; }
+
+.diag-step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.diag-step__num {
+  width: 36px;
+  height: 36px;
+  background: rgba(232, 197, 71, 0.1);
+  border: 1px solid rgba(232, 197, 71, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.diag-step h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.3rem;
+}
+
+.diag-step p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Cal wrapper */
+.diag-cal-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.cal-wrapper {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  min-height: 600px;
+}
+
+#diag-cal-inline {
+  width: 100%;
+  min-height: 600px;
+}
+
+.diag-alternative {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.diag-alternative p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.faq-item[open] { border-color: rgba(232, 197, 71, 0.25); }
+
+.faq-item__q {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--foreground);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  user-select: none;
+}
+
+.faq-item__q::-webkit-details-marker { display: none; }
+
+.faq-item__q::after {
+  content: '+';
+  font-size: 1.1rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.faq-item[open] .faq-item__q::after {
+  transform: rotate(45deg);
+}
+
+.faq-item__a {
+  padding: 0 1.5rem 1.25rem;
+}
+
+.faq-item__a p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Depoimento */
+.depo-diag {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin: 0;
+}
+
+.depo-diag blockquote p {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--foreground);
+  margin: 0 0 1.5rem;
+  font-style: italic;
+}
+
+.depo-diag blockquote p::before { content: '\201C'; }
+.depo-diag blockquote p::after  { content: '\201D'; }
+
+.depo-diag figcaption {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.depo-diag figcaption strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+</style>

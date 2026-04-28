@@ -1,0 +1,274 @@
+---
+---
+
+<section class="section calc-section" id="calculadora">
+  <div class="container container--narrow">
+    <div class="text-center reveal" style="margin-bottom: 3rem;">
+      <p class="eyebrow">Calculadora Gratuita</p>
+      <h2 class="section__h2">Quanto seu site está te custando?</h2>
+      <p class="section__sub">
+        Cada visita que não vira cliente é dinheiro que foi embora.<br>
+        Descubra o valor exato em 30 segundos.
+      </p>
+    </div>
+
+    <div class="calc-wrapper reveal reveal-delay-1">
+      <div class="calc-inputs-panel">
+        <p class="calc-panel-title">Sobre seu negócio</p>
+
+        <div class="calc-field">
+          <label class="calc-label" for="calc-setor">Qual seu setor?</label>
+          <select class="form-input" id="calc-setor">
+            <option value="clinica">Clínica / Saúde</option>
+            <option value="advocacia">Advocacia</option>
+            <option value="imobiliaria">Imobiliária</option>
+            <option value="academia">Academia / Estética</option>
+            <option value="restaurante">Restaurante / Alimentação</option>
+            <option value="servicos">Serviços em geral</option>
+          </select>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label" for="calc-ticket">
+            Valor médio que um cliente gasta com você (R$)
+          </label>
+          <input
+            type="number"
+            class="form-input"
+            id="calc-ticket"
+            value="1500"
+            min="100"
+            step="100"
+          />
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label" for="calc-visitas">
+            Quantas pessoas visitam seu site por mês?
+          </label>
+          <input
+            type="number"
+            class="form-input"
+            id="calc-visitas"
+            value="300"
+            min="50"
+            step="50"
+          />
+          <span class="calc-hint">Se não souber, 300 é o mínimo de um negócio local ativo</span>
+        </div>
+      </div>
+
+      <div class="calc-output-panel">
+        <span class="calc-result-label">Seu site está te custando:</span>
+
+        <div class="calc-result-value">
+          <span class="calc-currency">R$</span>
+          <span id="calc-numero">3.375</span>
+          <span class="calc-period">por mês</span>
+        </div>
+
+        <div class="calc-breakdown">
+          <div class="calc-breakdown-item">
+            <span class="calc-breakdown-label">Clientes que poderiam chegar</span>
+            <span class="calc-breakdown-val" id="calc-potencial">9</span>
+          </div>
+          <div class="calc-breakdown-item">
+            <span class="calc-breakdown-label">Clientes que seu site captura hoje</span>
+            <span class="calc-breakdown-val" id="calc-atual">2</span>
+          </div>
+          <div class="calc-breakdown-item calc-breakdown-item--loss">
+            <span class="calc-breakdown-label">Clientes perdidos todo mês</span>
+            <span class="calc-breakdown-val" id="calc-perdidos">7</span>
+          </div>
+        </div>
+
+        <p class="calc-footnote">
+          Benchmark do setor: sites antigos convertem 0,5% das visitas. Sites modernos convertem 3%.
+        </p>
+
+        <div class="calc-cta">
+          <p class="calc-cta-hook">Quer o diagnóstico completo do seu site — de graça?</p>
+          <a href="/diagnostico" class="btn btn--primary" style="width: 100%; justify-content: center; font-size: 1rem; padding: 1rem;">
+            Receber diagnóstico gratuito →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.calc-section {
+  background: linear-gradient(180deg, transparent, rgba(79, 209, 197, 0.02) 50%, transparent);
+}
+
+.calc-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--border);
+}
+
+@media (max-width: 768px) {
+  .calc-wrapper { grid-template-columns: 1fr; }
+}
+
+.calc-inputs-panel,
+.calc-output-panel {
+  padding: 2.5rem;
+}
+
+.calc-inputs-panel { background: var(--card); }
+
+.calc-output-panel {
+  background: var(--bg-raised);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calc-panel-title {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+.calc-field { margin-bottom: 1.5rem; }
+
+.calc-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.calc-hint {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+.calc-result-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.calc-result-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  line-height: 1;
+}
+
+.calc-currency {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  color: var(--error);
+}
+
+#calc-numero {
+  font-family: var(--font-mono);
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: var(--error);
+  transition: all 0.3s var(--ease-out);
+}
+
+.calc-period {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  align-self: flex-end;
+  padding-bottom: 0.5rem;
+}
+
+.calc-breakdown {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.calc-breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  font-size: 0.84rem;
+}
+
+.calc-breakdown-item + .calc-breakdown-item { border-top: 1px solid var(--border); }
+
+.calc-breakdown-label { color: var(--text-secondary); }
+
+.calc-breakdown-val {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.calc-breakdown-item--loss { background: rgba(229, 62, 62, 0.04); }
+.calc-breakdown-item--loss .calc-breakdown-label { color: var(--foreground); font-weight: 500; }
+.calc-breakdown-item--loss .calc-breakdown-val { color: var(--error); }
+
+.calc-footnote {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.calc-cta-hook {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+</style>
+
+<script>
+  const ticketEl  = document.getElementById('calc-ticket')  as HTMLInputElement | null;
+  const visitasEl = document.getElementById('calc-visitas') as HTMLInputElement | null;
+  const numeroEl  = document.getElementById('calc-numero')  as HTMLElement | null;
+  const potencialEl = document.getElementById('calc-potencial') as HTMLElement | null;
+  const atualEl     = document.getElementById('calc-atual')    as HTMLElement | null;
+  const perdidosEl  = document.getElementById('calc-perdidos') as HTMLElement | null;
+
+  function fmt(n: number) {
+    return Math.round(n).toLocaleString('pt-BR');
+  }
+
+  function calcular() {
+    const t = parseFloat(ticketEl?.value  || '1500');
+    const v = parseFloat(visitasEl?.value || '300');
+
+    const taxaRuim = 0.005;
+    const taxaBom  = 0.03;
+
+    const potencial = v * taxaBom;
+    const atual     = v * taxaRuim;
+    const perdidos  = potencial - atual;
+    const perda     = perdidos * t;
+
+    if (numeroEl)   numeroEl.textContent   = fmt(perda);
+    if (potencialEl) potencialEl.textContent = fmt(potencial);
+    if (atualEl)    atualEl.textContent    = fmt(atual);
+    if (perdidosEl) perdidosEl.textContent = fmt(perdidos);
+  }
+
+  ticketEl?.addEventListener('input', calcular);
+  visitasEl?.addEventListener('input', calcular);
+  document.getElementById('calc-setor')?.addEventListener('change', calcular);
+
+  calcular();
+</script>

@@ -1,0 +1,448 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SpotlightCard from '../components/SpotlightCard.astro';
+
+const reformaSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://sitesespeciais.com.br/reforma/#service',
+  'name': 'Reforma de Site',
+  'description': 'Redesign completo de sites desatualizados com foco em velocidade, conversão e SEO. Mesmo domínio, nova presença. Entrega em 14 dias corridos.',
+  'url': 'https://sitesespeciais.com.br/reforma',
+  'provider': { '@id': 'https://sitesespeciais.com.br/#organization' },
+  'areaServed': { '@type': 'Country', 'name': 'Brasil' },
+  'offers': {
+    '@type': 'Offer',
+    'price': '1997',
+    'priceCurrency': 'BRL',
+    'availability': 'https://schema.org/InStock',
+    'priceValidUntil': '2026-12-31',
+    'url': 'https://sitesespeciais.com.br/reforma',
+  },
+  'serviceType': 'Web Design',
+  'termsOfService': 'https://sitesespeciais.com.br/garantia',
+};
+---
+
+<Layout
+  title="Reforma de Site — Faça seu Site Atual Trabalhar por Você | Sites Especiais"
+  description="Seu site atual pode estar afastando clientes sem você saber. Reformamos em até 14 dias: mobile perfeito, Google, WhatsApp integrado. A partir de R$ 1.997 com garantia de 7 dias."
+  schema={reformaSchema}
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="hero-reforma section">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          A partir de R$ 1.997 · Garantia de 7 dias · Pronto em 14 dias
+        </div>
+
+        <h1 class="hero__h1 reveal reveal-delay-1">
+          Seu site existe.<br>
+          Mas ele está<br>
+          <span class="text-gradient">trabalhando contra você.</span>
+        </h1>
+
+        <p class="hero__sub reveal reveal-delay-2">
+          Um site antigo não é neutro — ele filtra os clientes que você mais quer.
+          Quem paga caro exige qualidade e vai embora primeiro.
+          Em 14 dias, seu site atual se torna uma máquina de gerar confiança.
+        </p>
+
+        <div class="hero__ctas reveal reveal-delay-3">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Diagnóstico Gratuito do meu site →
+          </a>
+          <a href="/cases" class="btn btn--outline btn--large">
+            Ver resultados reais
+          </a>
+        </div>
+
+        <div class="hero__proof reveal reveal-delay-4">
+          <div class="hero__stars">★★★★★</div>
+          <span>Reforma a partir de R$ 1.997</span>
+          <span class="hero__sep">·</span>
+          <span>Ou 10x de R$ 199,70</span>
+          <span class="hero__sep">·</span>
+          <span>Garantia 7 dias</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE É A REFORMA -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 3.5rem;">
+          <p class="eyebrow">O que é a Reforma</p>
+          <h2 class="section__h2">Mesmo site. Resultados completamente diferentes.</h2>
+          <p class="section__sub">
+            Seu domínio continua o mesmo. Seus clientes antigos continuam te encontrando.
+            Mas a primeira impressão muda completamente — e as conversões também.
+          </p>
+        </div>
+
+        <div class="reforma-grid">
+          <div class="reforma-col reveal">
+            <p class="reforma-col__label reforma-col__label--antes">ANTES da Reforma</p>
+            <div class="reforma-mockup reforma-mockup--antes">
+              <div class="mock-nav mock-nav--dull"></div>
+              <div class="mock-hero mock-hero--dull">
+                <div class="mock-line-dull" style="width: 80%; height: 16px; margin-bottom: 8px;"></div>
+                <div class="mock-line-dull" style="width: 60%; height: 10px; margin-bottom: 16px;"></div>
+                <div class="mock-btn-dull"></div>
+              </div>
+            </div>
+            <ul class="reforma-lista reforma-lista--antes">
+              <li><span>✗</span> Abre em 8+ segundos no celular</li>
+              <li><span>✗</span> Visual dos anos 2010</li>
+              <li><span>✗</span> Não aparece no Google</li>
+              <li><span>✗</span> Formulário quebrado no mobile</li>
+              <li><span>✗</span> Zero leads gerados por mês</li>
+              <li><span>✗</span> Envergonha na proposta comercial</li>
+            </ul>
+          </div>
+
+          <div class="reforma-arrow" aria-hidden="true">→</div>
+
+          <div class="reforma-col reveal reveal-delay-1">
+            <p class="reforma-col__label reforma-col__label--depois">DEPOIS da Reforma</p>
+            <div class="reforma-mockup reforma-mockup--depois">
+              <div class="mock-nav mock-nav--bright"></div>
+              <div class="mock-hero mock-hero--bright">
+                <div class="mock-line-bright" style="width: 80%; height: 16px; margin-bottom: 8px;"></div>
+                <div class="mock-line-mint" style="width: 60%; height: 10px; margin-bottom: 16px;"></div>
+                <div class="mock-btn-bright"></div>
+              </div>
+            </div>
+            <ul class="reforma-lista reforma-lista--depois">
+              <li><span>✓</span> Menos de 1 segundo no 4G ruim</li>
+              <li><span>✓</span> Design que passa confiança de imediato</li>
+              <li><span>✓</span> 1ª página do Google em até 45 dias</li>
+              <li><span>✓</span> Perfeito em qualquer celular</li>
+              <li><span>✓</span> Leads chegando pelo WhatsApp e email</li>
+              <li><span>✓</span> Você envia o link com orgulho</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARA QUEM É -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">Para quem é</p>
+          <h2 class="section__h2">A Reforma é pra você se…</h2>
+        </div>
+
+        <div class="paraquem-grid">
+          <SpotlightCard class="paraquem-card reveal">
+            <span class="paraquem-icon">🏥</span>
+            <h3>Você tem clínica, escritório ou consultório</h3>
+            <p>e sabe que clientes julgam sua competência pelo site antes de ligar.</p>
+          </SpotlightCard>
+          <SpotlightCard class="paraquem-card reveal reveal-delay-1">
+            <span class="paraquem-icon">📅</span>
+            <h3>Seu site tem mais de 2 anos sem atualização</h3>
+            <p>e você já ouviu alguém dizer "seu site parece antigo" — ou pior, ninguém fala nada.</p>
+          </SpotlightCard>
+          <SpotlightCard class="paraquem-card reveal reveal-delay-2">
+            <span class="paraquem-icon">📱</span>
+            <h3>Você sabe que o site não funciona bem no celular</h3>
+            <p>mas nunca priorizou porque "não dá tempo" ou "é muito caro".</p>
+          </SpotlightCard>
+          <SpotlightCard class="paraquem-card reveal">
+            <span class="paraquem-icon">💸</span>
+            <h3>Você paga por anúncios mas não vê resultado</h3>
+            <p>Anúncio traz visita. Site ruim manda o visitante embora. Consertar o site vem primeiro.</p>
+          </SpotlightCard>
+          <SpotlightCard class="paraquem-card reveal reveal-delay-1">
+            <span class="paraquem-icon">🤝</span>
+            <h3>Você fecha contratos maiores por indicação</h3>
+            <p>e quer que o site confirme a qualidade que a indicação prometeu — não a contradiga.</p>
+          </SpotlightCard>
+          <SpotlightCard class="paraquem-card reveal reveal-delay-2">
+            <span class="paraquem-icon">🚀</span>
+            <h3>Você quer resultado sem começar do zero</h3>
+            <p>Mantemos seu domínio, seu histórico no Google e o que já funciona. Melhoramos o resto.</p>
+          </SpotlightCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE ESTÁ INCLUÍDO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">O que está incluído</p>
+          <h2 class="section__h2">Tudo que seu site precisa para converter</h2>
+        </div>
+
+        <div class="incluso-lista">
+          {[
+            { icon: '⚡', titulo: 'Velocidade que não perde cliente', desc: 'Seu site vai carregar em menos de 1 segundo no 4G — o mesmo que o app do banco. 53% dos visitantes saem após 3 segundos de espera.' },
+            { icon: '📱', titulo: 'Mobile perfeito em qualquer aparelho', desc: 'Testamos em mais de 20 resoluções de celular. Cada botão, cada texto, cada imagem — perfeitamente adaptado.' },
+            { icon: '🔍', titulo: 'O Google entende seu negócio', desc: 'Configuramos tudo que o Google precisa ver para saber quem você é e o que você oferece — e começar a te mostrar para quem procura.' },
+            { icon: '💬', titulo: 'WhatsApp em destaque em toda página', desc: 'O botão de WhatsApp aparece sempre visível, sem o cliente precisar rolar. Um clique e ele está falando com você.' },
+            { icon: '🤖', titulo: 'Visível no ChatGPT e no Gemini', desc: 'Estruturamos o site para que as IAs o citem quando alguém perguntar sobre seu setor na sua cidade.' },
+            { icon: '📝', titulo: 'Você atualiza sozinho', desc: 'Entregamos com tutorial em vídeo gravado para o seu site específico. Nenhuma dependência de programador para mudanças simples.' },
+            { icon: '🛡️', titulo: '90 dias de suporte via WhatsApp', desc: 'Qualquer ajuste de texto, imagem ou layout nos primeiros 90 dias — resolvemos em até 24h, sem ticket de suporte.' },
+            { icon: '📊', titulo: 'Google Analytics configurado', desc: 'Você vai saber quantas pessoas visitam, de onde vêm e o que fazem no seu site — sem precisar entender de dados.' },
+          ].map((item, i) => (
+            <div class={`incluso-item reveal${i % 2 !== 0 ? ' reveal-delay-1' : ''}`}>
+              <span class="incluso-icon">{item.icon}</span>
+              <div>
+                <h3 class="incluso-titulo">{item.titulo}</h3>
+                <p class="incluso-desc">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PREÇO -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="preco-destaque reveal">
+          <p class="eyebrow" style="text-align: center; margin-bottom: 1.5rem;">Investimento</p>
+          <div class="preco-destaque__valor">
+            <span class="preco-destaque__from">a partir de</span>
+            <span class="preco-destaque__num">R$ 1.997</span>
+          </div>
+          <p class="preco-destaque__parcel">Ou 10x de R$ 199,70 no cartão — sem acréscimo nosso</p>
+          <p class="preco-destaque__desc">
+            O valor exato depende do tamanho do site atual e das melhorias necessárias.
+            O diagnóstico gratuito define isso — sem compromisso.
+          </p>
+          <div class="preco-destaque__garantia">
+            🛡️ Garantia incondicional de 7 dias — se não ficar do jeito que imaginou, devolvemos 100%
+          </div>
+          <a href="/diagnostico" class="btn btn--primary btn--large" style="width: 100%; justify-content: center; margin-top: 1.5rem;">
+            Começar com o Diagnóstico Gratuito →
+          </a>
+          <a href="/precos" style="display: block; text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); text-decoration: none;">
+            Ver tabela completa de preços →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTO DESTAQUE -->
+    <section class="section">
+      <div class="container container--narrow">
+        <blockquote class="depo-destaque reveal">
+          <div class="depo-destaque__stars">★★★★★</div>
+          <p class="depo-destaque__texto">
+            "Em dois meses após o novo site, meus agendamentos online triplicaram.
+            Antes eu recebia 3–4 por semana pelo site. Hoje recebo mais de 15.
+            O investimento se pagou no primeiro mês."
+          </p>
+          <footer class="depo-destaque__autor">
+            <div class="depo-destaque__avatar">CP</div>
+            <div>
+              <strong>Dr. Carlos Pinheiro</strong>
+              <span>Clínica Pinheiro — Teresina, PI · Reforma de Site</span>
+            </div>
+          </footer>
+        </blockquote>
+        <div class="text-center" style="margin-top: 1.5rem;">
+          <a href="/cases" class="btn btn--ghost">Ver todos os cases →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section cta-final-reforma">
+      <div class="container container--narrow text-center">
+        <div class="badge reveal" style="display: inline-flex; margin-bottom: 2rem;">
+          <span class="badge__dot"></span>
+          2 vagas disponíveis em maio
+        </div>
+        <h2 class="cta-final__h2 reveal reveal-delay-1">
+          Cada semana com o site antigo<br>é dinheiro que não volta.
+        </h2>
+        <p class="cta-final__sub reveal reveal-delay-2">
+          O diagnóstico é gratuito, sem compromisso e leva menos de 24h.
+          Você descobre exatamente o que está impedindo seu site de gerar clientes.
+        </p>
+        <a href="/diagnostico" class="btn btn--primary btn--large reveal reveal-delay-3">
+          Diagnóstico Gratuito do meu site →
+        </a>
+        <p class="cta-final__guarantee reveal reveal-delay-4">
+          Garantia de 7 dias · Sem pressão de venda · Resultado em 14 dias
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255, 255, 255, 0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 1rem; line-height: 1.15; }
+.section__sub { font-size: 1rem; color: var(--text-secondary); max-width: 560px; margin-inline: auto; line-height: 1.7; }
+
+/* Hero */
+.hero-reforma {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero__h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin: 1.5rem 0; line-height: 1.1; }
+.hero__sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--text-secondary); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.hero__ctas { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero__proof { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-muted); }
+.hero__stars { color: var(--primary); }
+.hero__sep { color: var(--border); }
+
+/* Reforma antes/depois */
+.reforma-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 900px;
+  margin-inline: auto;
+}
+@media (max-width: 700px) { .reforma-grid { grid-template-columns: 1fr; } .reforma-arrow { text-align: center; font-size: 1.5rem; } }
+
+.reforma-col__label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+.reforma-col__label--antes { color: var(--error); }
+.reforma-col__label--depois { color: var(--success); }
+
+.reforma-arrow { font-size: 1.5rem; color: var(--primary); text-align: center; }
+
+.reforma-mockup {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 180px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.reforma-mockup--antes { background: #111; border: 1px solid var(--border); }
+.reforma-mockup--depois { background: var(--luxota-bg); border: 1px solid var(--luxota-border); }
+
+.mock-nav { height: 32px; }
+.mock-nav--dull { background: #1a1a1a; }
+.mock-nav--bright { background: rgba(79,209,197,0.08); border-bottom: 1px solid var(--luxota-border); }
+
+.mock-hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 1.25rem; }
+.mock-hero--dull { background: #111; }
+.mock-hero--bright { background: linear-gradient(135deg, var(--luxota-bg), #0d1a28); }
+
+.mock-line-dull { background: rgba(255,255,255,0.06); border-radius: 4px; }
+.mock-line-bright { background: rgba(245,245,240,0.15); border-radius: 4px; }
+.mock-line-mint { background: rgba(79,209,197,0.2); border-radius: 4px; }
+.mock-btn-dull { width: 80px; height: 24px; background: rgba(255,255,255,0.04); border: 1px solid #222; border-radius: 4px; }
+.mock-btn-bright { width: 100px; height: 28px; background: var(--primary); border-radius: 6px; }
+
+.reforma-lista { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.reforma-lista li { display: flex; gap: 0.5rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; }
+.reforma-lista--antes span { color: var(--error); flex-shrink: 0; }
+.reforma-lista--depois span { color: var(--success); flex-shrink: 0; }
+
+/* Para quem é */
+.paraquem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+@media (max-width: 900px) { .paraquem-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .paraquem-grid { grid-template-columns: 1fr; } }
+
+.paraquem-card { padding: 1.75rem; }
+.paraquem-icon { font-size: 1.75rem; display: block; margin-bottom: 0.75rem; }
+.paraquem-card h3 { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.4rem; line-height: 1.4; }
+.paraquem-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* O que inclui */
+.incluso-lista { display: flex; flex-direction: column; gap: 0; }
+.incluso-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.incluso-item:last-child { border-bottom: none; }
+.incluso-icon { font-size: 1.5rem; flex-shrink: 0; padding-top: 0.1rem; }
+.incluso-titulo { font-family: var(--font-sans); font-size: 0.97rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.3rem; }
+.incluso-desc { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65; }
+
+/* Preço destaque */
+.preco-destaque {
+  background: var(--card);
+  border: 1px solid rgba(232,197,71,0.25);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  text-align: center;
+}
+.preco-destaque__valor { margin-bottom: 0.5rem; }
+.preco-destaque__from { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+.preco-destaque__num { font-family: var(--font-mono); font-size: 3rem; font-weight: 700; color: var(--primary); line-height: 1; }
+.preco-destaque__parcel { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
+.preco-destaque__desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; max-width: 460px; margin-inline: auto; margin-bottom: 1.25rem; }
+.preco-destaque__garantia {
+  font-size: 0.84rem;
+  color: var(--primary);
+  background: rgba(232,197,71,0.06);
+  border: 1px solid rgba(232,197,71,0.15);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  display: inline-block;
+}
+
+/* Depoimento */
+.depo-destaque {
+  background: linear-gradient(135deg, rgba(232,197,71,0.05) 0%, var(--card) 60%);
+  border: 1px solid rgba(232,197,71,0.2);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  margin: 0;
+}
+.depo-destaque__stars { color: var(--primary); margin-bottom: 1rem; }
+.depo-destaque__texto { font-size: 1.05rem; color: var(--foreground); line-height: 1.75; font-style: italic; margin-bottom: 1.5rem; }
+.depo-destaque__autor { display: flex; align-items: center; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(232,197,71,0.15); }
+.depo-destaque__avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--luxota-accent)); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--luxota-bg); flex-shrink: 0; }
+.depo-destaque__autor strong { display: block; font-size: 0.9rem; color: var(--foreground); }
+.depo-destaque__autor span { display: block; font-size: 0.78rem; color: var(--text-muted); }
+
+/* CTA final */
+.cta-final-reforma { background: radial-gradient(ellipse at center, rgba(232,197,71,0.04) 0%, transparent 70%); }
+.cta-final__h2 { font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; margin-bottom: 1.25rem; }
+.cta-final__sub { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; max-width: 520px; margin-inline: auto; margin-bottom: 2rem; }
+.cta-final__guarantee { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); margin-top: 1rem; }
+</style>

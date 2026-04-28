@@ -1,0 +1,362 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const itens = [
+  { num: '01', titulo: 'Carrega em menos de 3 segundos no celular', desc: 'Use Google PageSpeed para testar. Abaixo de 50 pontos = clientes saindo antes de ver seu conteúdo.' },
+  { num: '02', titulo: 'Funciona perfeitamente no smartphone', desc: 'Abra no seu celular agora. Se texto está cortado ou botões pequenos demais, você está perdendo 70% das visitas.' },
+  { num: '03', titulo: 'Tem botão de WhatsApp visível em todas as páginas', desc: 'O WhatsApp deve aparecer sem precisar rolar a página. Cada clique extra perde 20% dos interessados.' },
+  { num: '04', titulo: 'Aparece no Google para buscas do seu setor + cidade', desc: 'Pesquise "[seu serviço] em [sua cidade]". Se não aparecer na primeira página, você é invisível.' },
+  { num: '05', titulo: 'Tem formulário de contato funcional', desc: 'Teste você mesmo: envie uma mensagem pelo formulário. O formulário é a porta de entrada de leads.' },
+  { num: '06', titulo: 'Mostra endereço e telefone na página inicial', desc: 'Clientes locais precisam confirmar que você é real. Endereço visível aumenta a confiança imediatamente.' },
+  { num: '07', titulo: 'Tem pelo menos 3 depoimentos reais de clientes', desc: 'Avaliações reais com nome e empresa valem mais que qualquer texto de marketing.' },
+  { num: '08', titulo: 'A última atualização tem menos de 6 meses', desc: 'Site sem novidades parece empresa fechada. O Google também penaliza sites parados.' },
+  { num: '09', titulo: 'Tem fotos reais da equipe ou do espaço', desc: 'Stock photos genéricas tiram credibilidade. Uma foto real vale 10x mais para o cliente.' },
+  { num: '10', titulo: 'Aparece quando pesquisado no ChatGPT ou Gemini', desc: 'Pergunte "melhor [seu serviço] em [sua cidade]" no ChatGPT. Se não aparecer, você é invisível para a nova internet.' },
+];
+---
+
+<Layout
+  title="Checklist Gratuito — 10 Sinais que Seu Site Está Perdendo Clientes | Sites Especiais"
+  description="Baixe grátis o checklist com os 10 sinais que indicam que seu site está afastando clientes. Receba no seu email agora."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- Hero -->
+    <section class="section cl-hero">
+      <div class="container">
+        <div class="cl-hero__grid">
+
+          <!-- Esquerda: copy -->
+          <div class="cl-hero__copy">
+            <p class="eyebrow reveal">Lead Magnet Gratuito</p>
+            <h1 class="cl-hero__h1 reveal reveal-delay-1">
+              10 Sinais que Seu Site<br>
+              <span class="text-gradient-gold">Está Perdendo Clientes</span>
+            </h1>
+            <p class="cl-hero__desc reveal reveal-delay-2">
+              Checklist prático para donos de negócios locais identificarem
+              em menos de 5 minutos o que está afastando clientes do seu site —
+              e o que fazer para corrigir.
+            </p>
+            <ul class="cl-hero__bullets reveal reveal-delay-3">
+              <li>✓ 10 pontos críticos de diagnóstico</li>
+              <li>✓ O que cada problema está custando</li>
+              <li>✓ Ação imediata para cada item</li>
+              <li>✓ Grátis — sem cartão de crédito</li>
+            </ul>
+          </div>
+
+          <!-- Direita: formulário -->
+          <div class="cl-hero__form-wrap reveal reveal-delay-2">
+            <div class="cl-form-card">
+              <p class="cl-form-card__tag">100% gratuito</p>
+              <h2 class="cl-form-card__title">Receber o checklist agora</h2>
+              <p class="cl-form-card__sub">Enviamos direto no seu email em segundos.</p>
+
+              <div class="cl-form" id="cl-form">
+                <div class="calc-field">
+                  <label class="calc-label" for="cl-nome">Seu nome</label>
+                  <input type="text" class="form-input" id="cl-nome" placeholder="Como posso te chamar?" autocomplete="given-name" />
+                </div>
+                <div class="calc-field" style="margin-top: 1rem;">
+                  <label class="calc-label" for="cl-email">
+                    Seu email <span style="color: var(--error);">*</span>
+                  </label>
+                  <input type="email" class="form-input" id="cl-email" placeholder="seu@email.com.br" autocomplete="email" required />
+                </div>
+
+                <button class="btn btn--primary btn--large cl-submit" id="cl-submit" style="width: 100%; justify-content: center; margin-top: 1.25rem;">
+                  <span id="cl-btn-texto">Quero o checklist gratuito →</span>
+                  <span id="cl-btn-loading" hidden>Enviando...</span>
+                </button>
+
+                <p id="cl-erro" class="calc-erro" hidden>
+                  Não conseguimos enviar. Tente novamente ou fale no
+                  <a href="https://wa.me/5589994711318" target="_blank" rel="noopener">WhatsApp</a>.
+                </p>
+
+                <p class="cl-privacy">Sem spam. Seus dados ficam só entre a gente.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Preview do checklist -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">Preview</p>
+          <h2 class="section__h2">O que está no checklist</h2>
+          <p class="section__sub">Cada item representa dinheiro que sai ou entra todo mês.</p>
+        </div>
+
+        <div class="checklist-preview">
+          {itens.map((item, i) => (
+            <div class={`cl-item reveal${i % 3 !== 0 ? ` reveal-delay-${i % 3}` : ''}`}>
+              <div class="cl-item__num">{item.num}</div>
+              <div class="cl-item__body">
+                <h3 class="cl-item__title">{item.titulo}</h3>
+                <p class="cl-item__desc">{item.desc}</p>
+              </div>
+              <div class="cl-item__check" aria-hidden="true"></div>
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem;">
+          <a href="#topo" class="btn btn--primary btn--large reveal" id="btn-topo">
+            Receber o checklist completo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255, 255, 255, 0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+.section__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Hero */
+.cl-hero { padding-bottom: 3rem; }
+
+.cl-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .cl-hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+.cl-hero__h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.cl-hero__desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.cl-hero__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cl-hero__bullets li {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+/* Formulário */
+.cl-form-card {
+  background: var(--card);
+  border: 1px solid rgba(232, 197, 71, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: 0 0 60px rgba(232, 197, 71, 0.05);
+}
+
+.cl-form-card__tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(232, 197, 71, 0.08);
+  border: 1px solid rgba(232, 197, 71, 0.2);
+  border-radius: 100px;
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.cl-form-card__title {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+}
+
+.cl-form-card__sub {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.calc-field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.calc-label {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.calc-erro {
+  font-size: 0.84rem;
+  color: var(--error);
+  margin-top: 0.75rem;
+}
+
+.calc-erro a { color: var(--luxota-accent); }
+
+.cl-privacy {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* Checklist preview */
+.checklist-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.3s;
+}
+
+.cl-item:hover { border-color: rgba(79, 209, 197, 0.2); }
+
+.cl-item__num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.6;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+  min-width: 1.5rem;
+}
+
+.cl-item__body { flex: 1; }
+
+.cl-item__title {
+  font-family: var(--font-sans);
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
+}
+
+.cl-item__desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.cl-item__check {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+</style>
+
+<script>
+  const nomeEl   = document.getElementById('cl-nome')   as HTMLInputElement | null;
+  const emailEl  = document.getElementById('cl-email')  as HTMLInputElement | null;
+  const btnEl    = document.getElementById('cl-submit') as HTMLButtonElement | null;
+  const textoEl  = document.getElementById('cl-btn-texto')   as HTMLElement | null;
+  const loadEl   = document.getElementById('cl-btn-loading') as HTMLElement | null;
+  const erroEl   = document.getElementById('cl-erro')   as HTMLElement | null;
+
+  // Botão "topo" desce o scroll até o form
+  document.getElementById('btn-topo')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    emailEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    emailEl?.focus();
+  });
+
+  btnEl?.addEventListener('click', async () => {
+    const email = emailEl?.value.trim() ?? '';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailEl?.focus();
+      return;
+    }
+
+    if (textoEl) textoEl.hidden = true;
+    if (loadEl)  loadEl.hidden  = false;
+    if (btnEl)   btnEl.disabled = true;
+    if (erroEl)  erroEl.hidden  = true;
+
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tipo:  'checklist',
+          email,
+          nome:  nomeEl?.value.trim() ?? '',
+        }),
+      });
+
+      if (res.ok) {
+        window.location.href = '/obrigado?origem=checklist';
+      } else {
+        throw new Error('API error');
+      }
+    } catch {
+      if (erroEl)  erroEl.hidden  = false;
+      if (textoEl) textoEl.hidden = false;
+      if (loadEl)  loadEl.hidden  = true;
+      if (btnEl)   btnEl.disabled = false;
+    }
+  });
+</script>

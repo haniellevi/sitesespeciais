@@ -1,0 +1,355 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Contato — Sites Especiais | Fale diretamente com quem faz"
+  description="WhatsApp, email ou agendamento direto. Sem formulário de triagem, sem chatbot. Você fala com quem vai fazer o seu site."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="section contato-hero">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <p class="eyebrow reveal">Contato</p>
+
+        <h1 class="contato__h1 reveal reveal-delay-1">
+          Fale diretamente<br>
+          <span class="text-gradient">com quem faz.</span>
+        </h1>
+
+        <p class="contato__sub reveal reveal-delay-2">
+          Sem chatbot, sem formulário que cai num SAC genérico.
+          Você fala direto comigo — a mesma pessoa que vai criar ou reformar o seu site.
+        </p>
+      </div>
+    </section>
+
+    <!-- CANAIS DE CONTATO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="canais-grid">
+
+          <!-- WhatsApp - principal -->
+          <a
+            href="https://wa.me/5589994711318?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20o%20meu%20site."
+            target="_blank"
+            rel="noopener"
+            class="canal-card canal-card--destaque reveal"
+          >
+            <div class="canal-card__icon">💬</div>
+            <div class="canal-card__content">
+              <div class="canal-card__label">WhatsApp</div>
+              <div class="canal-card__titulo">Respondo em até 2h</div>
+              <p class="canal-card__desc">
+                Melhor canal para dúvidas rápidas, orçamentos e conversa inicial.
+                Segunda a sexta, das 8h às 18h.
+              </p>
+            </div>
+            <div class="canal-card__arrow">→</div>
+          </a>
+
+          <!-- Diagnóstico agendado -->
+          <a
+            href="/diagnostico"
+            class="canal-card reveal reveal-delay-1"
+          >
+            <div class="canal-card__icon">📅</div>
+            <div class="canal-card__content">
+              <div class="canal-card__label">Diagnóstico gratuito</div>
+              <div class="canal-card__titulo">30 min de conversa focada</div>
+              <p class="canal-card__desc">
+                Videochamada agendada. Analiso seu site ao vivo e você sai com um plano de ação.
+                Sem compromisso.
+              </p>
+            </div>
+            <div class="canal-card__arrow">→</div>
+          </a>
+
+          <!-- Email -->
+          <a
+            href="mailto:pr.raniellevi@gmail.com"
+            class="canal-card reveal reveal-delay-2"
+          >
+            <div class="canal-card__icon">✉️</div>
+            <div class="canal-card__content">
+              <div class="canal-card__label">Email</div>
+              <div class="canal-card__titulo">pr.raniellevi@gmail.com</div>
+              <p class="canal-card__desc">
+                Para enviar materiais, briefing inicial ou assuntos que precisam de detalhamento.
+                Resposta em até 24h úteis.
+              </p>
+            </div>
+            <div class="canal-card__arrow">→</div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HORÁRIO E LOCALIZAÇÃO -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="info-grid">
+          <div class="info-item reveal">
+            <div class="info-item__icon">🕐</div>
+            <div>
+              <h3>Horário de atendimento</h3>
+              <p>Segunda a sexta: 8h às 18h (BRT)<br>Sábados: 9h às 12h para urgências</p>
+            </div>
+          </div>
+          <div class="info-item reveal reveal-delay-1">
+            <div class="info-item__icon">📍</div>
+            <div>
+              <h3>Onde estamos</h3>
+              <p>Piauí, Brasil — atendemos todo o território nacional remotamente.</p>
+            </div>
+          </div>
+          <div class="info-item reveal reveal-delay-2">
+            <div class="info-item__icon">⚡</div>
+            <div>
+              <h3>Tempo de resposta</h3>
+              <p>WhatsApp: até 2h<br>Email: até 24h úteis<br>Diagnóstico: você escolhe o horário</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ RÁPIDO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2rem;">
+          <p class="eyebrow">Antes de entrar em contato</p>
+          <h2 class="section__h2">Respostas rápidas.</h2>
+        </div>
+
+        <div class="faq-rapido">
+          <div class="faq-r-item reveal">
+            <strong>Qual o prazo de entrega?</strong>
+            <p>Reforma: 14 dias corridos. Site novo: 21 dias corridos. Ambos em contrato.</p>
+          </div>
+          <div class="faq-r-item reveal reveal-delay-1">
+            <strong>Qual o preço?</strong>
+            <p>Reforma a partir de R$ 1.997. Site novo a partir de R$ 2.997. Parcelamento em 10x no cartão. <a href="/precos">Ver tabela de preços →</a></p>
+          </div>
+          <div class="faq-r-item reveal reveal-delay-2">
+            <strong>Tem garantia?</strong>
+            <p>Sim. 7 dias incondicional. Se não gostar por qualquer razão, devolvemos 100%. <a href="/garantia">Como funciona →</a></p>
+          </div>
+          <div class="faq-r-item reveal">
+            <strong>Atende empresas de fora do Piauí?</strong>
+            <p>Sim. Todo o trabalho é remoto. Atendemos qualquer empresa brasileira.</p>
+          </div>
+          <div class="faq-r-item reveal reveal-delay-1">
+            <strong>Preciso ter um site para contratar?</strong>
+            <p>Não. Tanto a Reforma (site existente) quanto o Site Novo (do zero) estão disponíveis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255,255,255,0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+/* Hero */
+.contato-hero {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contato__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.contato__sub {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* Canais */
+.canais-grid { display: flex; flex-direction: column; gap: 1rem; }
+
+.canal-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.canal-card:hover {
+  border-color: rgba(232, 197, 71, 0.3);
+  background: rgba(232, 197, 71, 0.02);
+  transform: translateY(-1px);
+}
+
+.canal-card--destaque {
+  border-color: rgba(232, 197, 71, 0.25);
+  background: rgba(232, 197, 71, 0.02);
+  box-shadow: 0 0 40px rgba(232, 197, 71, 0.05);
+}
+
+.canal-card--destaque:hover {
+  border-color: rgba(232, 197, 71, 0.5);
+}
+
+.canal-card__icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.canal-card__content { flex: 1; }
+
+.canal-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.25rem;
+}
+
+.canal-card--destaque .canal-card__label { color: var(--primary); }
+
+.canal-card__titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.canal-card__desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.canal-card__arrow {
+  font-size: 0.9rem;
+  color: var(--primary);
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
+  align-self: center;
+}
+
+.canal-card:hover .canal-card__arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-item { display: flex; gap: 1rem; align-items: flex-start; }
+
+.info-item__icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+.info-item h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.info-item p {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* FAQ rápido */
+.faq-rapido {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.faq-r-item {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-r-item:last-child { border-bottom: none; }
+
+.faq-r-item strong {
+  display: block;
+  font-size: 0.93rem;
+  color: var(--foreground);
+  margin-bottom: 0.2rem;
+}
+
+.faq-r-item p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.faq-r-item a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.82rem;
+}
+
+.faq-r-item a:hover { text-decoration: underline; }
+</style>

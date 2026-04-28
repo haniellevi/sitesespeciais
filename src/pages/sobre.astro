@@ -1,0 +1,572 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const sobreSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://sitesespeciais.com.br/sobre/#person',
+  'name': 'Haniel Levi',
+  'jobTitle': 'Web Designer e Especialista em Sites para Empresas Locais',
+  'description': 'Especialista em reforma e criação de sites premium para empresas locais brasileiras. Mais de 12 anos de experiência entregando projetos com resultado mensurável.',
+  'url': 'https://sitesespeciais.com.br/sobre',
+  'email': 'pr.raniellevi@gmail.com',
+  'telephone': '+5589994711318',
+  'knowsAbout': ['Web Design', 'SEO Local', 'Conversão de Sites', 'GEO — Generative Engine Optimization', 'Copywriting para Empresas Locais'],
+  'worksFor': { '@id': 'https://sitesespeciais.com.br/#organization' },
+  'sameAs': ['https://github.com/haniellevi', 'https://cal.com/raniellevi'],
+};
+---
+
+<Layout
+  title="Sobre — Sites Especiais | Quem está por trás do trabalho"
+  description="Há 12 anos criando sites para empresas brasileiras. Conheça quem está por trás dos projetos, a filosofia de trabalho e por que o resultado importa mais que o processo."
+  schema={sobreSchema}
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="section sobre-hero">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow" style="position: relative; z-index: 1;">
+
+        <p class="eyebrow reveal">Sobre</p>
+
+        <h1 class="sobre__h1 reveal reveal-delay-1">
+          Não somos agência.<br>
+          <span class="text-gradient">Somos especialistas.</span>
+        </h1>
+
+        <p class="sobre__sub reveal reveal-delay-2">
+          Agência tem reunião de kickoff, gerente de conta, deck de apresentação
+          e prazo que estica porque tem cinco projetos ao mesmo tempo.
+          Aqui é diferente: você fala com quem faz. E quem faz tem 12 anos de experiência.
+        </p>
+      </div>
+    </section>
+
+    <!-- NÚMEROS -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="numeros-grid reveal">
+          <div class="numero-item">
+            <div class="numero-item__num">12+</div>
+            <div class="numero-item__label">anos entregando projetos</div>
+          </div>
+          <div class="numero-item">
+            <div class="numero-item__num">0</div>
+            <div class="numero-item__label">garantias de devolução acionadas</div>
+          </div>
+          <div class="numero-item">
+            <div class="numero-item__num">14</div>
+            <div class="numero-item__label">dias para reforma. Não "em torno de".</div>
+          </div>
+          <div class="numero-item">
+            <div class="numero-item__num">100%</div>
+            <div class="numero-item__label">do dinheiro de volta se não gostar</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTÓRIA -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="historia-block">
+          <div class="historia-block__linha reveal"></div>
+          <div class="historia-content">
+
+            <div class="historia-item reveal">
+              <div class="historia-item__ano">2012</div>
+              <div>
+                <h3>O começo foi num quarto</h3>
+                <p>
+                  Comecei criando sites para negócios locais da cidade — clínicas, advogados,
+                  pequenas empresas que precisavam de presença online mas não tinham orçamento
+                  para grandes agências. Aprendi que resultado importa mais que processo.
+                </p>
+              </div>
+            </div>
+
+            <div class="historia-item reveal reveal-delay-1">
+              <div class="historia-item__ano">2018</div>
+              <div>
+                <h3>A virada: sites que vendem</h3>
+                <p>
+                  Depois de centenas de projetos, ficou claro o que diferenciava um site
+                  que trazia cliente de um site que só existia. SEO real, velocidade real,
+                  copy que converte. Passei a trabalhar só com empresas que queriam resultado —
+                  não só presença.
+                </p>
+              </div>
+            </div>
+
+            <div class="historia-item reveal reveal-delay-2">
+              <div class="historia-item__ano">2024</div>
+              <div>
+                <h3>A internet mudou de novo — e a maioria ficou para trás</h3>
+                <p>
+                  Google continuou sendo importante. Mas o ChatGPT, Gemini e Perplexity
+                  começaram a ser usados para encontrar empresas. Sites mal estruturados
+                  são invisíveis para as IAs. Passei a incluir isso em todo projeto —
+                  enquanto quase ninguém ainda fazia.
+                </p>
+              </div>
+            </div>
+
+            <div class="historia-item reveal">
+              <div class="historia-item__ano">Hoje</div>
+              <div>
+                <h3>Sites Especiais — feitos para gerar autoridade</h3>
+                <p>
+                  Reforma e criação de sites premium para empresas locais e regionais brasileiras.
+                  Prazo definido. Garantia real. Resultado mensurável.
+                  E você fala direto comigo — não com um estagiário de atendimento.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILOSOFIA -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">Como eu trabalho</p>
+          <h2 class="section__h2">Três coisas que nunca negocio.</h2>
+        </div>
+
+        <div class="filosofia-grid">
+          <div class="filosofia-item reveal">
+            <div class="filosofia-item__icon">⏱️</div>
+            <h3>Prazo é prazo</h3>
+            <p>
+              Reforma em 14 dias. Site novo em 21 dias. Não "mais ou menos".
+              Não "depende do cliente". Prazo está no contrato e eu cumpro.
+              Se não cumprir, você tem direito à garantia — sem precisar pedir.
+            </p>
+          </div>
+          <div class="filosofia-item reveal reveal-delay-1">
+            <div class="filosofia-item__icon">📐</div>
+            <h3>Alinhamento antes, surpresa zero</h3>
+            <p>
+              Briefing detalhado, proposta visual aprovada por você, etapas com feedback.
+              Quando o site é entregue, não é surpresa — é exatamente o que foi combinado.
+              Se ficou diferente do combinado, a garantia existe para isso.
+            </p>
+          </div>
+          <div class="filosofia-item reveal reveal-delay-2">
+            <div class="filosofia-item__icon">🎯</div>
+            <h3>Resultado acima de elogio</h3>
+            <p>
+              Prefiro que você me diga daqui a 6 meses que o site trouxe clientes
+              do que que ficou bonito na entrega.
+              Bonito é o mínimo. Converter é o objetivo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE NÃO FAÇO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Transparência</p>
+          <h2 class="section__h2">O que você não encontra aqui.</h2>
+        </div>
+
+        <div class="nao-list">
+          <div class="nao-item reveal">
+            <span class="nao-item__x">✗</span>
+            <div>
+              <strong>Contrato mensal obrigatório</strong>
+              <p>Você paga pelo projeto. Se quiser manutenção depois, conversamos — mas não é imposto.</p>
+            </div>
+          </div>
+          <div class="nao-item reveal reveal-delay-1">
+            <span class="nao-item__x">✗</span>
+            <div>
+              <strong>Site de template com "personalização"</strong>
+              <p>Cada projeto começa do zero para o seu negócio. Não pego um tema pronto e troco as cores.</p>
+            </div>
+          </div>
+          <div class="nao-item reveal reveal-delay-2">
+            <span class="nao-item__x">✗</span>
+            <div>
+              <strong>Prazo que vai esticando</strong>
+              <p>Não aceito mais projetos do que consigo entregar. Quando as vagas do mês enchem, fecho para novos.</p>
+            </div>
+          </div>
+          <div class="nao-item reveal">
+            <span class="nao-item__x">✗</span>
+            <div>
+              <strong>Site que você não consegue atualizar</strong>
+              <p>Você precisa ser capaz de mudar texto, trocar foto, adicionar um produto. Se não consegue, não foi bem feito.</p>
+            </div>
+          </div>
+          <div class="nao-item reveal reveal-delay-1">
+            <span class="nao-item__x">✗</span>
+            <div>
+              <strong>Sumir após a entrega</strong>
+              <p>90 dias de suporte incluídos. Qualquer dúvida, ajuste ou problema — você fala comigo diretamente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASES RÁPIDOS -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Alguns projetos</p>
+          <h2 class="section__h2">Trabalhos que falam por si.</h2>
+        </div>
+
+        <div class="cases-mini-grid">
+          <a href="/cases/fiel-alimentos" class="case-mini reveal">
+            <div class="case-mini__nome">Fiel Alimentos</div>
+            <div class="case-mini__tipo">Site novo · E-commerce regional</div>
+            <div class="case-mini__arrow">→</div>
+          </a>
+          <a href="/cases/emcorr" class="case-mini reveal reveal-delay-1">
+            <div class="case-mini__nome">EmCORR Centro Clínico</div>
+            <div class="case-mini__tipo">Site novo · Saúde</div>
+            <div class="case-mini__arrow">→</div>
+          </a>
+          <a href="/cases/clinica-pinheiro" class="case-mini reveal reveal-delay-2">
+            <div class="case-mini__nome">Clínica Pinheiro</div>
+            <div class="case-mini__tipo">Reforma · Saúde</div>
+            <div class="case-mini__arrow">→</div>
+          </a>
+        </div>
+
+        <div class="text-center" style="margin-top: 1.5rem;">
+          <a href="/cases" class="btn btn--outline">Ver todos os cases →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section cta-final">
+      <div class="perspective-grid" aria-hidden="true" style="opacity: 0.2;"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <h2 class="cta-final__h2 reveal">
+          Pronto para trabalhar juntos?<br>
+          <span class="text-gradient-gold">Começa por uma conversa.</span>
+        </h2>
+
+        <p class="cta-final__sub reveal reveal-delay-1">
+          30 minutos de diagnóstico gratuito. Vejo o que está travando o seu site
+          e o que precisa mudar. Sem compromisso, sem pressão de venda.
+        </p>
+
+        <div class="hero__ctas reveal reveal-delay-2">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Agendar Diagnóstico →
+          </a>
+          <a href="https://wa.me/5589994711318" target="_blank" rel="noopener" class="btn btn--outline btn--large">
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255,255,255,0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+/* Hero */
+.sobre-hero {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sobre__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.sobre__sub {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+/* Números */
+.numeros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  background: var(--card);
+  border: 1px solid rgba(232, 197, 71, 0.2);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.numero-item {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.numero-item:last-child { border-right: none; }
+
+@media (max-width: 600px) {
+  .numero-item { border-right: none; }
+  .numero-item:nth-child(odd) { border-right: 1px solid var(--border); }
+}
+
+.numero-item__num {
+  font-family: 'Space Grotesk', monospace;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.numero-item__label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* História */
+.historia-block { position: relative; }
+
+.historia-block__linha {
+  position: absolute;
+  left: 3.5rem;
+  top: 1.5rem;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(232, 197, 71, 0.3), transparent);
+}
+
+.historia-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.historia-item {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.historia-item__ano {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  background: rgba(232, 197, 71, 0.08);
+  border: 1px solid rgba(232, 197, 71, 0.2);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  position: relative;
+  z-index: 1;
+}
+
+.historia-item h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.historia-item p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Filosofia */
+.filosofia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.filosofia-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+.filosofia-item__icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+
+.filosofia-item h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.filosofia-item p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* O que não faço */
+.nao-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.nao-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.nao-item__x {
+  width: 22px;
+  height: 22px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  color: #ef4444;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.nao-item strong {
+  display: block;
+  font-size: 0.93rem;
+  color: var(--foreground);
+  margin-bottom: 0.2rem;
+}
+
+.nao-item p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Cases mini */
+.cases-mini-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.case-mini {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.case-mini:hover {
+  border-color: rgba(232, 197, 71, 0.3);
+  background: rgba(232, 197, 71, 0.02);
+}
+
+.case-mini__nome {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground);
+  flex: 1;
+}
+
+.case-mini__tipo {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.case-mini__arrow {
+  font-size: 0.9rem;
+  color: var(--primary);
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.case-mini:hover .case-mini__arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* CTA final */
+.cta-final { position: relative; overflow: hidden; }
+
+.cta-final__h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.cta-final__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+</style>

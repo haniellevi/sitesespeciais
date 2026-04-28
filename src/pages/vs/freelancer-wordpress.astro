@@ -1,0 +1,528 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Sites Especiais vs Freelancer WordPress — Por que o barato sai caro | Sites Especiais"
+  description="Freelancer WordPress parece econômico até o prazo esticar, a manutenção travar e o suporte sumir. Compare antes de decidir."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="section vs-hero">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          Comparativo honesto
+        </div>
+
+        <h1 class="vs-hero__h1 reveal reveal-delay-1">
+          Freelancer é a opção mais barata.<br>
+          <span class="text-gradient">Até virar a mais cara.</span>
+        </h1>
+
+        <p class="vs-hero__sub reveal reveal-delay-2">
+          Todo mundo conhece alguém que contratou um freelancer WordPress,
+          viu o prazo esticar por meses, recebeu um site que não aparece no Google
+          e hoje não consegue mais contato.
+          Não é azar. É o padrão — e tem uma razão para isso.
+        </p>
+      </div>
+    </section>
+
+    <!-- TABELA DE COMPARAÇÃO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">A comparação direta</p>
+          <h2 class="section__h2">O que muda na prática.</h2>
+        </div>
+
+        <div class="vs-table reveal">
+          <div class="vs-table__header">
+            <div class="vs-table__col vs-table__col--feature"></div>
+            <div class="vs-table__col vs-table__col--us">Sites Especiais</div>
+            <div class="vs-table__col vs-table__col--them">Freelancer WP</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row__feature">Prazo de entrega garantido</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">14 ou 21 dias em contrato</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">"uns 2 meses" → 6 meses</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Você consegue atualizar sozinho</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">painel simples, você mesmo mexe</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">depende do freelancer para tudo</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Site abre rápido no celular</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">WordPress + plugins = pesado</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Design exclusivo (não é template)</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">tema comprado + ajustes</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Visível para o Google desde o início</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="neutral">~</span> <span class="vs-note">depende se o freelancer sabe SEO</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Visível para ChatGPT e Gemini</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">raramente considerado</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Suporte garantido após entrega</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">90 dias incluído</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">some ou cobra por hora</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Garantia de devolução</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">7 dias, 100%</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">dificilmente existe</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Segurança e atualizações do site</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">automático, sem plugins vulneráveis</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">WordPress + plugins = alvo fácil de hack</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTÓRIAS COMUNS -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">O que acontece na vida real</p>
+          <h2 class="section__h2">Histórias que você provavelmente já ouviu.</h2>
+        </div>
+
+        <div class="historias-grid">
+          <div class="historia-card reveal">
+            <div class="historia-card__icon">⏰</div>
+            <h3>"Vai ficar pronto em 2 meses"</h3>
+            <p>
+              Vira 3 meses. Depois 4. O freelancer tinha outros clientes,
+              sumiu por uma semana, a vida aconteceu. Você fica reféns do prazo dele.
+              <strong>Resultado: 6 meses sem site novo, perdendo clientes.</strong>
+            </p>
+          </div>
+          <div class="historia-card reveal reveal-delay-1">
+            <div class="historia-card__icon">🔧</div>
+            <h3>"Precisa mudar o texto do botão"</h3>
+            <p>
+              Você tenta editar e trava tudo. Chama o freelancer — ele cobra R$ 150 por hora
+              para mudar 3 palavras. Ou simplesmente não responde mais.
+              <strong>Resultado: site desatualizado por meses.</strong>
+            </p>
+          </div>
+          <div class="historia-card reveal reveal-delay-2">
+            <div class="historia-card__icon">🦠</div>
+            <h3>"O site foi hackeado"</h3>
+            <p>
+              WordPress com 15 plugins desatualizados é alvo fácil. Quando acontece,
+              o freelancer original sumiu. Você contrata outro, paga de novo, espera de novo.
+              <strong>Resultado: site fora do ar por dias, reputação prejudicada.</strong>
+            </p>
+          </div>
+          <div class="historia-card reveal">
+            <div class="historia-card__icon">📉</div>
+            <h3>"Não aparece no Google"</h3>
+            <p>
+              O freelancer entregou o site mas não configurou SEO. Ou configurou errado.
+              3 meses depois você descobre que ninguém te encontra na busca.
+              <strong>Resultado: site bonito que ninguém vê.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POR QUE ACONTECE -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">A raiz do problema</p>
+          <h2 class="section__h2">Freelancer não é vilão. O modelo é que não funciona.</h2>
+        </div>
+
+        <div class="razoes-list">
+          <div class="razao-item reveal">
+            <div class="razao-item__num">01</div>
+            <div>
+              <h3>Freelancer juggla vários clientes ao mesmo tempo</h3>
+              <p>
+                Um freelancer independente precisa de vários projetos simultâneos para pagar as contas.
+                Isso significa que o seu projeto compete com outros pela atenção dele.
+                Quando surgem problemas em outro cliente, o seu fica para depois.
+              </p>
+            </div>
+          </div>
+          <div class="razao-item reveal reveal-delay-1">
+            <div class="razao-item__num">02</div>
+            <div>
+              <h3>WordPress foi feito para blog, não para conversão</h3>
+              <p>
+                WordPress é ótimo para gerenciar conteúdo. Mas cada plugin que resolve um problema
+                cria outro: o site fica mais pesado, mais lento, mais vulnerável.
+                No fim, o freelancer entregou — mas o resultado não converte.
+              </p>
+            </div>
+          </div>
+          <div class="razao-item reveal reveal-delay-2">
+            <div class="razao-item__num">03</div>
+            <div>
+              <h3>Sem garantia real, sem pressão para entregar certo</h3>
+              <p>
+                Se não existe garantia contratual de prazo, resultado e devolução,
+                o freelancer não tem incentivo para entregar exatamente o que você precisa.
+                Você assume todo o risco — e o capital investido.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUANDO FREELANCER FAZ SENTIDO -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="honesto-card reveal">
+          <div class="honesto-card__icon">💡</div>
+          <div>
+            <h3>Quando contratar freelancer faz sentido</h3>
+            <p>
+              Freelancer experiente com portfólio comprovado, contrato claro e prazo definido
+              pode ser uma boa escolha para projetos específicos e bem definidos.
+            </p>
+            <p>
+              O problema é quando a escolha é baseada apenas no preço — sem verificar prazo,
+              histórico, processo e garantia. É aí que o barato se torna caro.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-final">
+      <div class="perspective-grid" aria-hidden="true" style="opacity: 0.2;"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <h2 class="cta-final__h2 reveal">
+          Prazo cumprido. Resultado garantido.<br>
+          <span class="text-gradient-gold">Ou seu dinheiro de volta.</span>
+        </h2>
+
+        <p class="cta-final__sub reveal reveal-delay-1">
+          14 dias para reforma ou 21 dias para site novo — em contrato.
+          Se não ficar do jeito que você imaginou, 100% de volta. Sem discussão.
+        </p>
+
+        <div class="hero__ctas reveal reveal-delay-2">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Diagnóstico Gratuito →
+          </a>
+          <a href="/garantia" class="btn btn--outline btn--large">
+            Como funciona a garantia
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255,255,255,0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+/* Hero */
+.vs-hero {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-hero__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.vs-hero__sub {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* Tabela */
+.vs-table {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.vs-table__header {
+  display: grid;
+  grid-template-columns: 1fr 200px 220px;
+  background: rgba(232, 197, 71, 0.04);
+  border-bottom: 1px solid rgba(232, 197, 71, 0.12);
+  padding: 0.75rem 1.5rem;
+  gap: 1rem;
+}
+
+.vs-table__col {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vs-table__col--us { color: var(--primary); }
+.vs-table__col--them { color: var(--text-muted); }
+
+.vs-row {
+  display: grid;
+  grid-template-columns: 1fr 200px 220px;
+  padding: 0.85rem 1.5rem;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.vs-row:last-child { border-bottom: none; }
+.vs-row--alt { background: rgba(255,255,255,0.015); }
+
+.vs-row__feature {
+  font-size: 0.88rem;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.vs-row__us,
+.vs-row__them {
+  font-size: 0.82rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background: rgba(79, 209, 197, 0.12);
+  border: 1px solid rgba(79, 209, 197, 0.3);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  color: var(--luxota-accent);
+  font-weight: 700;
+}
+
+.cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.neutral {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.vs-note { font-size: 0.78rem; color: var(--text-muted); line-height: 1.3; }
+.vs-note-us { font-size: 0.78rem; color: var(--luxota-accent); line-height: 1.3; }
+
+@media (max-width: 700px) {
+  .vs-table__header { grid-template-columns: 1fr 130px; }
+  .vs-table__col--feature,
+  .vs-row__feature { display: none; }
+  .vs-row { grid-template-columns: 1fr 130px; }
+  .vs-table__header,
+  .vs-row { padding: 0.75rem 1rem; }
+}
+
+/* Histórias */
+.historias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.historia-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.historia-card__icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+
+.historia-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.historia-card p {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.historia-card strong {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--foreground);
+  font-size: 0.82rem;
+}
+
+/* Razões */
+.razoes-list { display: flex; flex-direction: column; gap: 2rem; }
+.razao-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+
+.razao-item__num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.5;
+  padding-top: 0.2rem;
+  flex-shrink: 0;
+  min-width: 1.5rem;
+}
+
+.razao-item h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.razao-item p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Card honesto */
+.honesto-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--luxota-accent);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.honesto-card__icon { font-size: 1.5rem; flex-shrink: 0; }
+
+.honesto-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.honesto-card p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 0.5rem;
+}
+
+.honesto-card p:last-child { margin-bottom: 0; }
+
+/* CTA final */
+.cta-final { position: relative; overflow: hidden; }
+
+.cta-final__h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.cta-final__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+</style>

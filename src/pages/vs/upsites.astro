@@ -1,0 +1,470 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Sites Especiais vs Upsites — O que muda quando você escolhe especialista | Sites Especiais"
+  description="Upsites entrega site. Sites Especiais entrega resultado. Veja o que diferencia um site bonito de um site que traz clientes."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="section vs-hero">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          Comparativo honesto
+        </div>
+
+        <h1 class="vs-hero__h1 reveal reveal-delay-1">
+          Dois sites entregues.<br>
+          <span class="text-gradient">Resultados completamente diferentes.</span>
+        </h1>
+
+        <p class="vs-hero__sub reveal reveal-delay-2">
+          Upsites e Sites Especiais parecem fazer a mesma coisa: criar sites para empresas.
+          A diferença está no que acontece depois — quem aparece no Google,
+          quem aparece nas IAs, quem tem suporte real e quem tem garantia de resultado.
+        </p>
+      </div>
+    </section>
+
+    <!-- TABELA DE COMPARAÇÃO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">A comparação direta</p>
+          <h2 class="section__h2">O que você recebe com cada um.</h2>
+        </div>
+
+        <div class="vs-table reveal">
+          <div class="vs-table__header">
+            <div class="vs-table__col vs-table__col--feature"></div>
+            <div class="vs-table__col vs-table__col--us">Sites Especiais</div>
+            <div class="vs-table__col vs-table__col--them">Upsites</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row__feature">Design 100% exclusivo</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">sem template</span></div>
+            <div class="vs-row__them"><span class="neutral">~</span> <span class="vs-note">baseado em modelos pré-definidos</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Abre em menos de 1s no celular</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">abaixo de 1s garantido</span></div>
+            <div class="vs-row__them"><span class="neutral">~</span> <span class="vs-note">varia por plano e conteúdo</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Visível para ChatGPT, Gemini e Perplexity</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">estrutura otimizada para IAs</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">não é foco do produto</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Suporte pós-entrega humano</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">90 dias incluído, direto com quem fez</span></div>
+            <div class="vs-row__them"><span class="neutral">~</span> <span class="vs-note">suporte geral da plataforma</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Garantia incondicional de devolução</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">7 dias, 100% sem perguntas</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">sem garantia de resultado</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Prazo fixo em contrato</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">14 ou 21 dias</span></div>
+            <div class="vs-row__them"><span class="neutral">~</span> <span class="vs-note">varia por plano e demanda</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Copy e texto otimizado para converter</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">incluído no projeto</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">geralmente você fornece o conteúdo</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Sem mensalidade obrigatória</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">você paga uma vez</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">plano mensal para manter o site</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAL PRINCIPAL -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">A diferença que importa</p>
+          <h2 class="section__h2">Site bonito é o mínimo. Resultado é o que conta.</h2>
+        </div>
+
+        <div class="diferenciais">
+          <div class="diferencial-item reveal">
+            <div class="diferencial-item__icon">🎯</div>
+            <div>
+              <h3>Foco no negócio, não no site</h3>
+              <p>
+                Não entregamos páginas. Entregamos clientes novos, ligações que convertem
+                e uma presença que passa confiança antes do primeiro contato.
+                Cada decisão do projeto — cor, texto, estrutura — tem uma razão de ser.
+              </p>
+            </div>
+          </div>
+          <div class="diferencial-item reveal reveal-delay-1">
+            <div class="diferencial-item__icon">🤖</div>
+            <div>
+              <h3>A internet de 2026 inclui as IAs</h3>
+              <p>
+                Seu cliente pesquisa no Google. E também pergunta pro ChatGPT, Gemini e Perplexity.
+                Cada vez mais. Sites Especiais é o único produto que entrega visibilidade
+                nas duas frentes — mecanismos de busca e IAs generativas.
+              </p>
+            </div>
+          </div>
+          <div class="diferencial-item reveal reveal-delay-2">
+            <div class="diferencial-item__icon">🛡️</div>
+            <div>
+              <h3>Garantia que ninguém mais dá</h3>
+              <p>
+                7 dias. 100% do valor. Sem perguntas, sem formulário, sem discussão.
+                Se não ficar do jeito que você imaginou — por qualquer razão — devolvemos tudo.
+                Nenhum concorrente oferece isso porque não confiam no próprio trabalho.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARA QUEM FAZ SENTIDO CADA UM -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Honestidade acima de tudo</p>
+          <h2 class="section__h2">Qual é certo para o seu momento?</h2>
+        </div>
+
+        <div class="momento-grid">
+          <div class="momento-card reveal">
+            <div class="momento-card__label">Upsites pode ser suficiente se...</div>
+            <ul class="momento-list">
+              <li>Você precisa de algo simples e rápido sem customização profunda</li>
+              <li>Aceita pagar mensalidade pelo serviço de hospedagem integrado</li>
+              <li>Não tem urgência com resultado em SEO ou visibilidade para IAs</li>
+            </ul>
+          </div>
+          <div class="momento-card momento-card--dest reveal reveal-delay-1">
+            <div class="momento-card__label momento-card__label--dest">Sites Especiais é a escolha certa se...</div>
+            <ul class="momento-list momento-list--dest">
+              <li>Você quer um site que realmente traz clientes novos</li>
+              <li>Precisa aparecer no Google E nas IAs que seus clientes já usam</li>
+              <li>Quer design exclusivo que diferencia do concorrente</li>
+              <li>Precisa de garantia real — não só promessa verbal</li>
+              <li>Quer pagar uma vez, sem assinatura mensal obrigatória</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-final">
+      <div class="perspective-grid" aria-hidden="true" style="opacity: 0.2;"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <h2 class="cta-final__h2 reveal">
+          Resultado garantido.<br>
+          <span class="text-gradient-gold">Ou 100% do dinheiro de volta.</span>
+        </h2>
+
+        <p class="cta-final__sub reveal reveal-delay-1">
+          Comece pelo diagnóstico gratuito. 30 minutos, sem compromisso.
+          Você sai sabendo exatamente o que seu site precisa — e quanto vai custar.
+        </p>
+
+        <div class="hero__ctas reveal reveal-delay-2">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Diagnóstico Gratuito →
+          </a>
+          <a href="/precos" class="btn btn--outline btn--large">
+            Ver preços
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255,255,255,0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+/* Hero */
+.vs-hero {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-hero__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.vs-hero__sub {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* Tabela */
+.vs-table {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.vs-table__header {
+  display: grid;
+  grid-template-columns: 1fr 200px 200px;
+  background: rgba(232, 197, 71, 0.04);
+  border-bottom: 1px solid rgba(232, 197, 71, 0.12);
+  padding: 0.75rem 1.5rem;
+  gap: 1rem;
+}
+
+.vs-table__col {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vs-table__col--us { color: var(--primary); }
+.vs-table__col--them { color: var(--text-muted); }
+
+.vs-row {
+  display: grid;
+  grid-template-columns: 1fr 200px 200px;
+  padding: 0.85rem 1.5rem;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.vs-row:last-child { border-bottom: none; }
+.vs-row--alt { background: rgba(255,255,255,0.015); }
+
+.vs-row__feature {
+  font-size: 0.88rem;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.vs-row__us,
+.vs-row__them {
+  font-size: 0.82rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background: rgba(79, 209, 197, 0.12);
+  border: 1px solid rgba(79, 209, 197, 0.3);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  color: var(--luxota-accent);
+  font-weight: 700;
+}
+
+.cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.neutral {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.vs-note { font-size: 0.78rem; color: var(--text-muted); line-height: 1.3; }
+.vs-note-us { font-size: 0.78rem; color: var(--luxota-accent); line-height: 1.3; }
+
+@media (max-width: 700px) {
+  .vs-table__header { grid-template-columns: 1fr 130px; }
+  .vs-table__col--feature,
+  .vs-row__feature { display: none; }
+  .vs-row { grid-template-columns: 1fr 130px; }
+  .vs-table__header,
+  .vs-row { padding: 0.75rem 1rem; }
+}
+
+/* Diferenciais */
+.diferenciais { display: flex; flex-direction: column; gap: 2rem; }
+
+.diferencial-item { display: flex; gap: 1.25rem; align-items: flex-start; }
+
+.diferencial-item__icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+.diferencial-item h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.diferencial-item p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Momento */
+.momento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .momento-grid { grid-template-columns: 1fr; }
+}
+
+.momento-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+}
+
+.momento-card--dest {
+  border-color: rgba(232, 197, 71, 0.3);
+  background: rgba(232, 197, 71, 0.02);
+}
+
+.momento-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.momento-card__label--dest { color: var(--primary); }
+
+.momento-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.momento-list li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.momento-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--border);
+}
+
+.momento-list--dest li { color: var(--foreground); }
+
+.momento-list--dest li::before { color: var(--primary); }
+
+/* CTA final */
+.cta-final { position: relative; overflow: hidden; }
+
+.cta-final__h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.cta-final__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+</style>

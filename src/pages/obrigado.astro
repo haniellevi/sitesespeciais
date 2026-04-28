@@ -1,0 +1,213 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Enviado! Verifique seu email — Sites Especiais"
+  description="Seu material foi enviado. Verifique sua caixa de entrada."
+  noindex={true}
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+    <section class="section obrigado-section">
+      <div class="perspective-grid" aria-hidden="true" style="opacity: 0.3;"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="obrigado-icon reveal">✅</div>
+
+        <h1 class="obrigado-h1 reveal reveal-delay-1">
+          Enviado!<br>
+          <span class="text-gradient-gold" id="titulo-dinamico">Verifique seu email.</span>
+        </h1>
+
+        <p class="obrigado-sub reveal reveal-delay-2" id="sub-dinamico">
+          Seu material está a caminho. Confira sua caixa de entrada —
+          e a pasta de spam, só por garantia.
+        </p>
+
+        <!-- Card de próximos passos -->
+        <div class="obrigado-card reveal reveal-delay-3">
+          <p class="obrigado-card__title">Enquanto o email não chega</p>
+
+          <div class="obrigado-steps">
+            <div class="obrigado-step">
+              <span class="obrigado-step__num">1</span>
+              <div>
+                <strong>Faça o diagnóstico gratuito</strong>
+                <p>Análise do seu site atual — identifica o que está custando clientes agora.</p>
+              </div>
+            </div>
+            <div class="obrigado-step">
+              <span class="obrigado-step__num">2</span>
+              <div>
+                <strong>Ou fale direto no WhatsApp</strong>
+                <p>Respondo em minutos. Sem roteiro de vendas, sem enrolação.</p>
+              </div>
+            </div>
+            <div class="obrigado-step">
+              <span class="obrigado-step__num">3</span>
+              <div>
+                <strong>Agende uma conversa de 30min</strong>
+                <p>Para entender seu negócio e mostrar o que podemos fazer juntos.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="obrigado-ctas">
+            <a href="/diagnostico" class="btn btn--primary btn--large">
+              Diagnóstico Gratuito →
+            </a>
+            <a href="https://wa.me/5589994711318" target="_blank" rel="noopener" class="btn btn--outline btn--large">
+              WhatsApp
+            </a>
+            <a href="https://cal.com/raniellevi/30min" target="_blank" rel="noopener" class="btn btn--ghost btn--large">
+              Agendar 30min
+            </a>
+          </div>
+        </div>
+
+        <!-- Garantia -->
+        <p class="obrigado-garantia reveal reveal-delay-4">
+          Todos os projetos têm garantia incondicional de 7 dias.
+          Se não ficar do jeito que imaginou, devolvemos 100% — sem burocracia.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.obrigado-section {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.obrigado-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.obrigado-h1 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.obrigado-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+/* Card */
+.obrigado-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.obrigado-card__title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.obrigado-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.obrigado-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.obrigado-step__num {
+  width: 28px;
+  height: 28px;
+  background: rgba(232, 197, 71, 0.1);
+  border: 1px solid rgba(232, 197, 71, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.obrigado-step strong {
+  display: block;
+  font-size: 0.93rem;
+  color: var(--foreground);
+  margin-bottom: 0.2rem;
+}
+
+.obrigado-step p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.obrigado-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.obrigado-garantia {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 440px;
+  margin-inline: auto;
+}
+</style>
+
+<script>
+  // Personaliza o título e subtítulo com base na origem (?origem=checklist|calculadora)
+  const params = new URLSearchParams(window.location.search);
+  const origem = params.get('origem');
+
+  const titulo = document.getElementById('titulo-dinamico');
+  const sub    = document.getElementById('sub-dinamico');
+
+  if (origem === 'checklist' && titulo && sub) {
+    titulo.textContent = 'Seu checklist está chegando.';
+    sub.textContent = 'Enviamos o checklist completo para o seu email. Confira sua caixa de entrada — e a pasta de spam, só por garantia.';
+  } else if (origem === 'calculadora' && titulo && sub) {
+    titulo.textContent = 'Seu relatório está chegando.';
+    sub.textContent = 'Enviamos o relatório completo da calculadora para o seu email. Confira sua caixa de entrada — e a pasta de spam, só por garantia.';
+  }
+</script>

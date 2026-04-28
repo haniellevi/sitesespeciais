@@ -1,0 +1,281 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getAllCases } from '../../lib/content';
+
+const cases = await getAllCases();
+---
+
+<Layout
+  title="Cases — Sites Especiais"
+  description="Veja os resultados reais de empresas locais que reformaram seus sites e passaram a receber mais clientes pelo digital."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+    <section class="section cases-hero">
+      <div class="container container--narrow text-center">
+        <p class="eyebrow reveal">Portfólio</p>
+        <h1 class="cases-hero__h1 reveal reveal-delay-1">
+          Resultados reais.<br>
+          <span class="text-gradient-gold">Empresas reais.</span>
+        </h1>
+        <p class="cases-hero__sub reveal reveal-delay-2">
+          Três negócios do Piauí que pararam de perder clientes para o concorrente
+          e passaram a receber leads pelo site pela primeira vez.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cases-list">
+          {cases.map((c, i) => (
+            <article class={`case-item reveal${i > 0 ? ' reveal-delay-1' : ''}`}>
+              <div class="case-item__visual" style={`--case-cor: ${c.cor}`}>
+                <div class="case-item__mockup">
+                  <div class="mock-line mock-line--title" style={`background: ${c.cor}40`}></div>
+                  <div class="mock-line" style="width: 70%"></div>
+                  <div class="mock-line" style="width: 85%"></div>
+                  <div class="mock-line" style="width: 55%"></div>
+                  <div class="mock-btn" style={`background: ${c.cor}30; border-color: ${c.cor}50`}></div>
+                </div>
+                <div class="case-item__badge">
+                  {c.servico === 'reforma' ? 'Reforma de Site' : 'Site Novo Premium'}
+                </div>
+              </div>
+
+              <div class="case-item__content">
+                <div class="case-item__header">
+                  <div>
+                    <span class="case-item__setor">{c.setor}</span>
+                    <h2 class="case-item__nome">{c.nome}</h2>
+                    <span class="case-item__cidade">{c.cidade}</span>
+                  </div>
+                </div>
+
+                <p class="case-item__resumo">{c.resumo}</p>
+
+                <div class="case-item__metricas">
+                  {c.metricas.slice(0, 3).map((m) => (
+                    <div class="case-item__metrica">
+                      <span class="case-item__metrica-val" style={`color: ${c.cor}`}>{m.valor}</span>
+                      <span class="case-item__metrica-label">{m.label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <a href={`/cases/${c.slug}`} class="btn btn--outline" style={`border-color: ${c.cor}40; color: ${c.cor}`}>
+                  Ver case completo →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--alt">
+      <div class="container container--narrow text-center">
+        <h2 class="reveal" style="font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 1rem;">
+          Seu negócio pode ser o próximo case.
+        </h2>
+        <p class="reveal reveal-delay-1" style="color: var(--text-secondary); margin-bottom: 2rem;">
+          Diagnóstico gratuito para entender o que está impedindo seu site de gerar clientes.
+        </p>
+        <a href="/diagnostico" class="btn btn--primary btn--large reveal reveal-delay-2">
+          Quero o diagnóstico gratuito →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255, 255, 255, 0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.cases-hero { padding-bottom: 3rem; }
+
+.cases-hero__h1 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.cases-hero__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-inline: auto;
+}
+
+/* Lista de cases */
+.cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.case-item {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.case-item:hover {
+  border-color: rgba(79, 209, 197, 0.2);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .case-item { grid-template-columns: 1fr; }
+}
+
+/* Visual placeholder */
+.case-item__visual {
+  background: var(--luxota-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-right: 1px solid var(--border);
+  min-height: 220px;
+}
+
+@media (max-width: 768px) {
+  .case-item__visual {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    min-height: 160px;
+  }
+}
+
+.case-item__mockup {
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mock-line {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  width: 100%;
+}
+
+.mock-line--title { height: 14px; margin-bottom: 0.25rem; }
+
+.mock-btn {
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid;
+  margin-top: 0.5rem;
+  width: 60%;
+}
+
+.case-item__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Conteúdo */
+.case-item__content {
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.case-item__header { display: flex; align-items: flex-start; justify-content: space-between; }
+
+.case-item__setor {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.case-item__nome {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.case-item__cidade {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.case-item__resumo {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.case-item__metricas {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.case-item__metrica {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.case-item__metrica-val {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.case-item__metrica-label {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+</style>

@@ -15,6 +15,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  schema?: object | object[];
 }
 
 const {
@@ -22,9 +23,102 @@ const {
   description = 'Reformamos sites antigos e criamos sites premium para empresas locais que querem dominar o Google e parar de perder clientes para concorrentes piores.',
   ogImage = '/og-default.jpg',
   noindex = false,
+  schema,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const SITE_URL = 'https://sitesespeciais.com.br';
+
+// BreadcrumbList automático para páginas internas
+const breadcrumbLabels: Record<string, string> = {
+  sobre: 'Sobre',
+  contato: 'Contato',
+  diagnostico: 'Diagnóstico Gratuito',
+  reforma: 'Reforma de Site',
+  'site-novo': 'Site Novo Premium',
+  precos: 'Preços',
+  garantia: 'Garantia',
+  processo: 'Como Funciona',
+  cases: 'Cases',
+  blog: 'Blog',
+  calculadora: 'Calculadora',
+  checklist: 'Checklist',
+  obrigado: 'Obrigado',
+  verticais: 'Segmentos',
+  clinicas: 'Clínicas e Consultórios',
+  advocacia: 'Advocacia',
+  imobiliarias: 'Imobiliárias',
+  vs: 'Comparativos',
+  wix: 'vs Wix',
+  upsites: 'vs Upsites',
+  'freelancer-wordpress': 'vs Freelancer WordPress',
+};
+
+const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbSchema = pathParts.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': 'Início', 'item': SITE_URL },
+    ...pathParts.map((part, i) => ({
+      '@type': 'ListItem',
+      'position': i + 2,
+      'name': breadcrumbLabels[part] ?? part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+      'item': `${SITE_URL}/${pathParts.slice(0, i + 1).join('/')}`,
+    })),
+  ],
+} : null;
+
+// LocalBusiness schema — enhanced
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}/#organization`,
+  'name': 'Sites Especiais',
+  'alternateName': 'Sites Especiais — Feito para Gerar Autoridade',
+  'description': 'Reforma e criação de sites premium para empresas locais e regionais brasileiras. Sites rápidos, exclusivos, otimizados para Google e IAs. A partir de R$ 1.997 com garantia de 7 dias.',
+  'url': SITE_URL,
+  'logo': `${SITE_URL}/favicon.svg`,
+  'email': 'pr.raniellevi@gmail.com',
+  'telephone': '+5589994711318',
+  'contactPoint': {
+    '@type': 'ContactPoint',
+    'telephone': '+5589994711318',
+    'contactType': 'customer service',
+    'availableLanguage': 'Portuguese',
+  },
+  'address': {
+    '@type': 'PostalAddress',
+    'addressRegion': 'PI',
+    'addressCountry': 'BR',
+  },
+  'areaServed': { '@type': 'Country', 'name': 'Brasil' },
+  'slogan': 'Feito para Gerar Autoridade',
+  'priceRange': 'R$1.997–R$9.997',
+  'currenciesAccepted': 'BRL',
+  'paymentAccepted': 'Cartão de Crédito, PIX',
+  'openingHoursSpecification': [
+    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens': '08:00', 'closes': '18:00' },
+    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Saturday'], 'opens': '09:00', 'closes': '12:00' },
+  ],
+  'hasOfferCatalog': {
+    '@type': 'OfferCatalog',
+    'name': 'Serviços de Sites',
+    'itemListElement': [
+      {
+        '@type': 'Offer',
+        'itemOffered': { '@type': 'Service', 'name': 'Reforma de Site', 'url': `${SITE_URL}/reforma` },
+        'price': '1997', 'priceCurrency': 'BRL', 'availability': 'https://schema.org/InStock',
+      },
+      {
+        '@type': 'Offer',
+        'itemOffered': { '@type': 'Service', 'name': 'Site Novo Premium', 'url': `${SITE_URL}/site-novo` },
+        'price': '2997', 'priceCurrency': 'BRL', 'availability': 'https://schema.org/InStock',
+      },
+    ],
+  },
+  'sameAs': ['https://wa.me/5589994711318', 'https://cal.com/raniellevi', 'https://github.com/haniellevi/sitesespeciais'],
+};
 ---
 
 <!doctype html>
@@ -60,22 +154,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Schema.org LocalBusiness -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Sites Especiais",
-        "description": "Agência de criação e reforma de sites premium para empresas locais. Sites rápidos, exclusivos, que aparecem no Google e convertem visitantes em clientes.",
-        "url": "https://sitesespeciais.com.br",
-        "email": "contato@sitesespeciais.com.br",
-        "telephone": "+5589994711318",
-        "areaServed": "BR",
-        "serviceType": ["Criação de Sites", "Reforma de Sites", "Sites Premium", "SEO Local"],
-        "priceRange": "R$1.997 - R$9.997",
-        "slogan": "Feito para Gerar Autoridade"
-      }
-    </script>
+    <!-- Schema.org LocalBusiness (enhanced) -->
+    <Fragment set:html={`<script type="application/ld+json">${JSON.stringify(localBusinessSchema)}</script>`} />
+    <!-- BreadcrumbList para páginas internas -->
+    {breadcrumbSchema && (
+      <Fragment set:html={`<script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>`} />
+    )}
+    <!-- Schema específico da página -->
+    {schema && (
+      <Fragment set:html={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
+    )}
   </head>
 
   <body>

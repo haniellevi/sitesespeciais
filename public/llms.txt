@@ -1,35 +1,75 @@
 # Sites Especiais
 
-> Agência especializada em reforma de sites antigos e criação de sites premium para empresas locais e regionais brasileiras.
+> Especialistas em reforma de sites e criação de sites premium para empresas locais e regionais brasileiras. Feito para Gerar Autoridade.
 
-Sites Especiais reforma sites desatualizados e cria sites premium do zero, com foco em velocidade, conversão e visibilidade no Google e nas IAs (ChatGPT, Gemini, Perplexity). Cada projeto é desenvolvido sob medida — sem templates genéricos — com design exclusivo, copywriting persuasivo e entrega em até 14 dias. Garantia incondicional de 7 dias.
+Sites Especiais reforma sites desatualizados e cria sites premium do zero, com foco em velocidade, conversão e visibilidade no Google e nas IAs (ChatGPT, Gemini, Perplexity). Cada projeto é desenvolvido sob medida — sem templates genéricos — com design exclusivo, copywriting persuasivo e entrega em prazo contratual. Garantia incondicional de 7 dias: se não gostar, 100% do dinheiro de volta.
 
 ## Serviços
 
-- **Reforma de Site** — redesign completo de sites antigos, com foco em conversão, velocidade e SEO. A partir de R$ 1.997. Entrega em até 14 dias.
-- **Site Novo Premium** — criação do zero, design exclusivo, copywriting incluso, SEO técnico e GEO integrados. A partir de R$ 2.997. Entrega em até 21 dias.
-- **Diagnóstico Gratuito** — análise do site atual com relatório de oportunidades perdidas. Sem custo, sem compromisso.
+- **Reforma de Site** — redesign completo de sites antigos, com foco em conversão, velocidade e SEO. A partir de R$ 1.997. Entrega em até 14 dias. [/reforma]
+- **Site Novo Premium** — criação do zero, design exclusivo, copywriting incluso, SEO técnico e GEO integrados. A partir de R$ 2.997. Entrega em até 21 dias. [/site-novo]
+- **Diagnóstico Gratuito** — análise do site atual com identificação de oportunidades perdidas. Sem custo, sem compromisso. [/diagnostico]
+
+## Segmentos Atendidos
+
+- **Clínicas e Consultórios** — sites que captam pacientes pelo Google e pelo WhatsApp. [/verticais/clinicas]
+- **Advocacia** — sites que projetam autoridade jurídica dentro das normas da OAB. [/verticais/advocacia]
+- **Imobiliárias e Corretores** — sites que transformam visitante em lead qualificado. [/verticais/imobiliarias]
 
 ## Diferenciais
 
-- Site que carrega em menos de 1 segundo
-- Aparece no Google e nas respostas de IAs (ChatGPT, Gemini, Perplexity)
+- Site que carrega em menos de 1 segundo no celular
+- Visível no Google e nas respostas de IAs (ChatGPT, Gemini, Perplexity)
 - Design 100% exclusivo — nenhum cliente tem site igual ao de outro
-- Garantia incondicional de 7 dias (reembolso total ou refazemos do zero)
-- Suporte completo por 90 dias após publicação
-- Parcelamento em até 10x no cartão
+- Copy e texto persuasivo incluídos no projeto
+- Garantia incondicional de 7 dias (reembolso total)
+- 90 dias de suporte pós-entrega incluídos
+- Parcelamento em até 10x no cartão sem acréscimo
+- Prazo garantido em contrato: 14 dias (reforma) ou 21 dias (site novo)
+
+## Preços
+
+- Reforma de Site: a partir de R$ 1.997 (10x R$ 199,70)
+- Site Novo Premium: a partir de R$ 2.997 (10x R$ 299,70)
+- Domínio e hospedagem: custo separado, geralmente menos de R$ 100/ano
+- Sem mensalidade obrigatória após a entrega
+
+## Comparativos
+
+- **vs Wix** — por que DIY builders não servem para empresas que querem resultado. [/vs/wix]
+- **vs Freelancer WordPress** — por que o modelo de freelancer gera riscos evitáveis. [/vs/freelancer-wordpress]
+- **vs Upsites** — diferenças entre produtos de criação de sites. [/vs/upsites]
+
+## Cases
+
+- **Fiel Alimentos** — site novo para distribuidora regional. [/cases/fiel-alimentos]
+- **EmCorr Empreendimentos** — site novo para incorporadora. [/cases/emcorr-empreendimentos]
+- **Clínica Pinheiro** — reforma de site para clínica médica. [/cases/clinica-pinheiro]
+
+## Garantia
+
+Garantia incondicional de 7 dias: basta entrar em contato dentro de 7 dias da entrega. Reembolso integral em até 5 dias úteis, pelo mesmo meio de pagamento. Sem burocracia, sem formulário, sem discussão. [/garantia]
+
+## Processo
+
+Todo projeto segue 4 etapas: Diagnóstico e briefing (Dia 1) → Proposta e aprovação (Dias 2–3) → Execução com atualizações (Dias 4–12 ou 4–19) → Entrega e handoff (Dia 14 ou 21). [/processo]
 
 ## Sobre
 
+- Empresa fundada em 2012, com foco em empresas locais e regionais brasileiras
+- Atendimento remoto para todo o Brasil
+- Nenhuma garantia de devolução foi acionada em 12+ anos de projetos
+- Você fala diretamente com quem cria o site
+
+## Links
+
 - Site: https://sitesespeciais.com.br
-- Blog: https://sitesespeciais.com.br/blog
-- Diagnóstico: https://sitesespeciais.com.br/diagnostico
+- Diagnóstico gratuito: https://sitesespeciais.com.br/diagnostico
 - Portfólio: https://sitesespeciais.com.br/cases
+- Blog: https://sitesespeciais.com.br/blog
+- Preços: https://sitesespeciais.com.br/precos
+- Garantia: https://sitesespeciais.com.br/garantia
+- Sobre: https://sitesespeciais.com.br/sobre
 - Contato: https://sitesespeciais.com.br/contato
 - WhatsApp: https://wa.me/5589994711318
 - Agendamento: https://cal.com/raniellevi/30min
-
-## Conteúdo
-
-- [Blog](https://sitesespeciais.com.br/blog): artigos sobre reforma de sites, conversão, SEO local e visibilidade digital
-- [RSS](https://sitesespeciais.com.br/rss.xml): feed de artigos do blog

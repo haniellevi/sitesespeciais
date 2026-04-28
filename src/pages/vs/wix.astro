@@ -1,0 +1,465 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Sites Especiais vs Wix — Por que montar sozinho sai mais caro | Sites Especiais"
+  description="Wix parece barato até você ver o que ele não entrega: sem aparecer no Google, sem suporte, sem resultado. Compare e veja a diferença."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="section vs-hero">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          Comparativo honesto
+        </div>
+
+        <h1 class="vs-hero__h1 reveal reveal-delay-1">
+          Wix é barato.<br>
+          <span class="text-gradient">Resultado caro — ou nenhum.</span>
+        </h1>
+
+        <p class="vs-hero__sub reveal reveal-delay-2">
+          Não existe problema em usar Wix para um blog pessoal ou portfólio de hobby.
+          O problema é usar Wix para uma empresa que precisa aparecer no Google,
+          passar confiança e converter visitante em cliente.
+          Nesse caso, barato sai caro.
+        </p>
+      </div>
+    </section>
+
+    <!-- TABELA DE COMPARAÇÃO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">A comparação direta</p>
+          <h2 class="section__h2">O que você realmente consegue com cada um.</h2>
+        </div>
+
+        <div class="vs-table reveal">
+          <div class="vs-table__header">
+            <div class="vs-table__col vs-table__col--feature"></div>
+            <div class="vs-table__col vs-table__col--us">Sites Especiais</div>
+            <div class="vs-table__col vs-table__col--them">Wix</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row__feature">Design exclusivo (não é template)</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">template entre milhares iguais</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Abre em menos de 1 segundo no celular</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">Wix carrega scripts pesados</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Google indexa direito desde o início</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">SEO limitado e ruim</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Você é dono do site (domínio + código)</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">só enquanto pagar a assinatura</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Visível para ChatGPT e Gemini</div>
+            <div class="vs-row__us"><span class="check">✓</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">estrutura que as IAs ignoram</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Suporte humano durante e após a entrega</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">90 dias incluído</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">ticket de suporte genérico</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Garantia de devolução</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">7 dias, 100%</span></div>
+            <div class="vs-row__them"><span class="cross">✗</span> <span class="vs-note">sem garantia de resultado</span></div>
+          </div>
+          <div class="vs-row vs-row--alt">
+            <div class="vs-row__feature">Prazo de entrega definido</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">14 ou 21 dias</span></div>
+            <div class="vs-row__them"><span class="neutral">~</span> <span class="vs-note">depende do tempo que você tem</span></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-row__feature">Custo total no primeiro ano</div>
+            <div class="vs-row__us"><span class="check">✓</span> <span class="vs-note-us">R$ 1.997 (pago uma vez)</span></div>
+            <div class="vs-row__them"><span class="neutral">~</span> <span class="vs-note">R$ 600–1.800/ano em planos + apps</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POR QUE WIX NÃO FUNCIONA PARA EMPRESA -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">O que ninguém conta</p>
+          <h2 class="section__h2">Por que o Wix funciona para blog — e não para empresa.</h2>
+        </div>
+
+        <div class="problemas-list">
+          <div class="problema-item reveal">
+            <div class="problema-item__num">01</div>
+            <div>
+              <h3>Você não é dono de nada</h3>
+              <p>
+                Com Wix, você paga a assinatura enquanto existir. Cancela o plano —
+                o site some. Sobe o preço — você paga ou perde tudo.
+                Não tem exportação real do site. É aluguel com contrato eterno.
+              </p>
+            </div>
+          </div>
+          <div class="problema-item reveal reveal-delay-1">
+            <div class="problema-item__num">02</div>
+            <div>
+              <h3>O Google não gosta — e não é à toa</h3>
+              <p>
+                Sites Wix carregam JavaScript pesado, têm estrutura que confunde o Google
+                e pontuam mal nos critérios que determinam se você aparece ou não na busca.
+                Um concorrente com site simples e bem feito te passa no ranking.
+              </p>
+            </div>
+          </div>
+          <div class="problema-item reveal reveal-delay-2">
+            <div class="problema-item__num">03</div>
+            <div>
+              <h3>"Parece Wix" — e o cliente percebe</h3>
+              <p>
+                Quem usa internet todo dia reconhece template de longe.
+                Quando o cliente vê um site Wix genérico, a primeira impressão é
+                "essa empresa não investiu no próprio negócio". Não é o que você quer projetar.
+              </p>
+            </div>
+          </div>
+          <div class="problema-item reveal">
+            <div class="problema-item__num">04</div>
+            <div>
+              <h3>O "plano barato" nunca basta</h3>
+              <p>
+                Plano básico tem propaganda do Wix no seu site. Para tirar: paga mais.
+                Quer formulário? App pago. Loja? App pago. Analytics avançado? App pago.
+                O custo real no fim do ano costuma ser maior do que um site feito direito.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUANDO WIX FAZ SENTIDO (honestidade) -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="honesto-card reveal">
+          <div class="honesto-card__icon">💡</div>
+          <div>
+            <h3>Quando o Wix faz sentido — honestidade acima de tudo</h3>
+            <p>
+              Se você precisa de um site pessoal, portfólio de hobby ou página temporária
+              para um evento, Wix resolve bem e rápido. Faz sentido.
+            </p>
+            <p>
+              Mas se você tem um negócio real, cobra por resultado e quer que o site
+              traga clientes — Wix vai te custar mais do que economiza.
+              Não em mensalidade. Em oportunidade.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-final">
+      <div class="perspective-grid" aria-hidden="true" style="opacity: 0.2;"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <h2 class="cta-final__h2 reveal">
+          Chega de site que não é seu.<br>
+          <span class="text-gradient-gold">Invista uma vez. Colha para sempre.</span>
+        </h2>
+
+        <p class="cta-final__sub reveal reveal-delay-1">
+          Site feito do zero, exclusivo para o seu negócio. A partir de R$ 2.997 —
+          pago uma vez, seu para sempre, com garantia de 7 dias.
+        </p>
+
+        <div class="hero__ctas reveal reveal-delay-2">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Diagnóstico Gratuito →
+          </a>
+          <a href="/precos" class="btn btn--outline btn--large">
+            Ver preços
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255,255,255,0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+/* Hero */
+.vs-hero {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-hero__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.vs-hero__sub {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* Tabela comparativa */
+.vs-table {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.vs-table__header {
+  display: grid;
+  grid-template-columns: 1fr 160px 220px;
+  background: rgba(232, 197, 71, 0.04);
+  border-bottom: 1px solid rgba(232, 197, 71, 0.12);
+  padding: 0.75rem 1.5rem;
+  gap: 1rem;
+}
+
+.vs-table__col {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vs-table__col--us { color: var(--primary); }
+.vs-table__col--them { color: var(--text-muted); }
+
+.vs-row {
+  display: grid;
+  grid-template-columns: 1fr 160px 220px;
+  padding: 0.85rem 1.5rem;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.vs-row:last-child { border-bottom: none; }
+.vs-row--alt { background: rgba(255,255,255,0.015); }
+
+.vs-row__feature {
+  font-size: 0.88rem;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.vs-row__us,
+.vs-row__them {
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(79, 209, 197, 0.12);
+  border: 1px solid rgba(79, 209, 197, 0.3);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  color: var(--luxota-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  color: #ef4444;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.neutral {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.vs-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.vs-note-us {
+  font-size: 0.78rem;
+  color: var(--luxota-accent);
+  line-height: 1.3;
+}
+
+@media (max-width: 640px) {
+  .vs-table__header { grid-template-columns: 1fr 100px; }
+  .vs-table__col--feature { display: none; }
+  .vs-row { grid-template-columns: 1fr 100px; }
+  .vs-row__feature { display: none; }
+  .vs-table__header,
+  .vs-row { padding: 0.75rem 1rem; }
+}
+
+/* Problemas */
+.problemas-list { display: flex; flex-direction: column; gap: 2rem; }
+
+.problema-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+
+.problema-item__num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.5;
+  padding-top: 0.2rem;
+  flex-shrink: 0;
+  min-width: 1.5rem;
+}
+
+.problema-item h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.problema-item p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 0.5rem;
+}
+
+.problema-item p:last-child { margin-bottom: 0; }
+
+/* Card honesto */
+.honesto-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--luxota-accent);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.honesto-card__icon { font-size: 1.5rem; flex-shrink: 0; }
+
+.honesto-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.honesto-card p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 0.5rem;
+}
+
+.honesto-card p:last-child { margin-bottom: 0; }
+
+/* CTA final */
+.cta-final { position: relative; overflow: hidden; }
+
+.cta-final__h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.cta-final__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+</style>
