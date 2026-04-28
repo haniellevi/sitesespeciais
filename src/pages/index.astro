@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Sites Especiais — Reforma de Sites e Sites Premium para Empresas Locais"
+  description="Reformamos sites antigos e criamos sites premium em até 14 dias. Rápido no celular, visível no Google e no ChatGPT, com garantia de 7 dias."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="hero section" id="hero">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          Aceitamos 4 projetos por mês — restam 2 vagas em maio
+        </div>
+
+        <h1 class="hero__h1 reveal reveal-delay-1">
+          Seu concorrente aparece<br>
+          quando o cliente pesquisa.<br>
+          <span class="text-gradient">E o seu site?</span>
+        </h1>
+
+        <p class="hero__sub reveal reveal-delay-2">
+          Em até 14 dias, seu site novo está no ar — rápido como app de banco,
+          bonito no celular, e finalmente aparecendo pra quem importa:
+          o cliente que já está procurando você.
+        </p>
+
+        <div class="hero__ctas reveal reveal-delay-3">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Diagnóstico Gratuito do meu site →
+          </a>
+          <a href="#cases" class="btn btn--outline btn--large">
+            Ver antes e depois
+          </a>
+        </div>
+
+        <div class="hero__proof reveal reveal-delay-4">
+          <div class="hero__stars">★★★★★</div>
+          <span>+12 sites entregues</span>
+          <span class="hero__sep">·</span>
+          <span>98% de satisfação</span>
+          <span class="hero__sep">·</span>
+          <span>Garantia de 7 dias</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÕES EM CONSTRUÇÃO (placeholders para os próximos Sprints) -->
+    <section class="section" style="text-align: center; opacity: 0.3;" id="reforma">
+      <div class="container">
+        <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">
+          Sprint 2 — Seções completas da Home em construção
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+/* ── Hero ─────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero__h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  margin: 1.5rem 0 1.5rem;
+  line-height: 1.1;
+}
+
+.hero__sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.hero__ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.hero__proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.hero__stars {
+  color: var(--primary);
+  letter-spacing: 0.05em;
+}
+
+.hero__sep { color: var(--border); }
+</style>

@@ -1,0 +1,28 @@
+---
+interface Props {
+  class?: string;
+  tag?: string;
+}
+const { class: className = '', tag = 'div' } = Astro.props;
+const Tag = tag as any;
+---
+
+<Tag class={`spotlight-card ${className}`} data-spotlight>
+  <slot />
+</Tag>
+
+<script>
+  // Re-bind novos cards adicionados dinamicamente
+  function bindSpotlight(root: Document | Element = document) {
+    root.querySelectorAll<HTMLElement>('[data-spotlight]').forEach((card) => {
+      if (card.dataset.spotlightBound) return;
+      card.dataset.spotlightBound = '1';
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${(e as MouseEvent).clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${(e as MouseEvent).clientY - rect.top}px`);
+      });
+    });
+  }
+  bindSpotlight();
+</script>

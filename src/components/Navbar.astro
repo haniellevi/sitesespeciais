@@ -1,0 +1,182 @@
+---
+interface Props {
+  internal?: boolean;
+}
+const { internal = false } = Astro.props;
+const base = internal ? '' : '/';
+---
+
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="/" class="navbar__logo" aria-label="Sites Especiais — Início">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="navbar__logo-icon">
+        <path d="M12 2L20.66 7v10L12 22 3.34 17V7z" fill="none" stroke="#e8c547" stroke-width="1.5"/>
+        <path d="M12 6L17.2 9v6L12 18 6.8 15V9z" fill="#e8c547" opacity="0.15"/>
+      </svg>
+      <span>Sites<strong>Especiais</strong></span>
+    </a>
+
+    <nav class="navbar__links" id="nav-links" aria-label="Navegação principal">
+      <a href={`${base}#reforma`}>Reforma de Sites</a>
+      <a href={`${base}#como-funciona`}>Como Funciona</a>
+      <a href={`${base}#cases`}>Antes e Depois</a>
+      <a href={`${base}#precos`}>Preços</a>
+      <a href="/blog">Blog</a>
+      <a href="/sobre">Sobre</a>
+    </nav>
+
+    <a href="/diagnostico" class="btn btn--primary navbar__cta">
+      Diagnóstico Grátis →
+    </a>
+
+    <button
+      class="navbar__toggle"
+      id="nav-toggle"
+      aria-label="Abrir menu de navegação"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.2rem 0;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(8, 8, 8, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+
+.navbar__logo strong { font-weight: 700; }
+
+.navbar__logo-icon { flex-shrink: 0; }
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.navbar__links a {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.navbar__links a:hover { color: var(--text-primary); }
+
+.navbar__cta {
+  padding: 0.55rem 1.3rem;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.navbar__toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.25s var(--ease-out);
+  display: block;
+}
+
+.navbar__toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar__toggle.active span:nth-child(2) { opacity: 0; }
+.navbar__toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 960px) {
+  .navbar__links { display: none; }
+  .navbar__cta   { display: none; }
+  .navbar__toggle { display: flex; }
+
+  .navbar__links.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(8, 8, 8, 0.97);
+    backdrop-filter: blur(20px);
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .navbar__links.active a {
+    font-size: 1rem;
+  }
+}
+</style>
+
+<script>
+  const navbar   = document.getElementById('navbar');
+  const toggle   = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  window.addEventListener('scroll', () => {
+    navbar?.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  toggle?.addEventListener('click', () => {
+    const isActive = navLinks?.classList.toggle('active');
+    toggle.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', String(isActive));
+  });
+
+  // Fechar menu ao clicar em link interno
+  navLinks?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      toggle?.classList.remove('active');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
