@@ -1,0 +1,361 @@
+---
+const cases = [
+  {
+    id: 'fiel',
+    nome: 'Fiel Alimentos',
+    setor: 'Distribuidora — Piauí',
+    antes: {
+      titulo: 'Site de 2018',
+      problemas: ['Não abria no celular', 'Sem formulário de contato', 'Não aparecia no Google'],
+    },
+    depois: {
+      titulo: 'Site reformado',
+      melhorias: ['Mobile perfeito', 'WhatsApp + formulário integrado', '1ª página do Google em 45 dias'],
+    },
+    metricas: [
+      { valor: '+340%', label: 'mais visitas em 60 dias' },
+      { valor: '12', label: 'novos pedidos/mês pelo site' },
+      { valor: '45 dias', label: 'para aparecer no Google' },
+    ],
+  },
+  {
+    id: 'emcorr',
+    nome: 'EmCorr Empreendimentos',
+    setor: 'Imobiliária — Piauí',
+    antes: {
+      titulo: 'Site genérico',
+      problemas: ['Visual desatualizado', 'Zero leads pelo site', 'Carregava em 8 segundos'],
+    },
+    depois: {
+      titulo: 'Site premium',
+      melhorias: ['Design exclusivo e moderno', '2 contratos fechados em 30 dias', 'Carrega em menos de 1 segundo'],
+    },
+    metricas: [
+      { valor: '2', label: 'contratos fechados no 1º mês' },
+      { valor: '10x', label: 'mais rápido que o site anterior' },
+      { valor: '+180%', label: 'mais tempo de permanência' },
+    ],
+  },
+  {
+    id: 'clinica',
+    nome: 'Clínica Pinheiro',
+    setor: 'Clínica Médica — Teresina, PI',
+    antes: {
+      titulo: 'Site sem conversão',
+      problemas: ['3–4 agendamentos/semana pelo site', 'Invisível no Google', 'Layout dos anos 2010'],
+    },
+    depois: {
+      titulo: 'Máquina de agendamentos',
+      melhorias: ['15+ agendamentos/semana', '1ª página para 8 palavras-chave', 'Design que transmite confiança'],
+    },
+    metricas: [
+      { valor: '3x', label: 'mais agendamentos online' },
+      { valor: '8', label: 'palavras-chave na 1ª página' },
+      { valor: '1 mês', label: 'para pagar o investimento' },
+    ],
+  },
+];
+---
+
+<section class="section" id="cases">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom: 3.5rem;">
+      <p class="eyebrow">Antes & Depois</p>
+      <h2 class="section__h2">Resultados reais de empresas reais</h2>
+      <p class="section__sub">Três empresas do Piauí que pararam de perder clientes para o concorrente.</p>
+    </div>
+
+    <div class="cases-tabs reveal">
+      {cases.map((c, i) => (
+        <button
+          class={`case-tab${i === 0 ? ' is-active' : ''}`}
+          data-case={c.id}
+          aria-selected={i === 0 ? 'true' : 'false'}
+        >
+          <span>{c.nome}</span>
+          <span class="case-tab-setor">{c.setor}</span>
+        </button>
+      ))}
+    </div>
+
+    {cases.map((c, i) => (
+      <div
+        class={`case-panel${i === 0 ? ' is-active' : ''}`}
+        id={`case-${c.id}`}
+        data-panel={c.id}
+        role="tabpanel"
+      >
+        <div class="case-grid">
+          <div class="case-side">
+            <div class="case-img case-img--antes" aria-label={`Antes da reforma — ${c.nome}`}>
+              <span class="case-stamp">ANTES</span>
+              <div class="case-mockup case-mockup--antes">
+                <div class="mock-bar mock-bar--dull"></div>
+                <div class="mock-bar mock-bar--dull" style="width: 60%"></div>
+                <div class="mock-bar mock-bar--dull" style="width: 80%"></div>
+                <div class="mock-bar mock-bar--dull" style="width: 50%; margin-top: 0.5rem;"></div>
+              </div>
+            </div>
+            <p class="case-side-label">ANTES</p>
+            <ul class="case-list">
+              {c.antes.problemas.map(p => (
+                <li><span class="case-x">✗</span>{p}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="case-arrow" aria-hidden="true">→</div>
+
+          <div class="case-side">
+            <div class="case-img case-img--depois" aria-label={`Depois da reforma — ${c.nome}`}>
+              <span class="case-stamp case-stamp--depois">DEPOIS</span>
+              <div class="case-mockup case-mockup--depois">
+                <div class="mock-bar mock-bar--gold"></div>
+                <div class="mock-bar mock-bar--mint" style="width: 70%"></div>
+                <div class="mock-bar mock-bar--light" style="width: 85%"></div>
+                <div class="mock-bar mock-bar--mint" style="width: 55%; margin-top: 0.5rem;"></div>
+              </div>
+            </div>
+            <p class="case-side-label case-side-label--depois">DEPOIS</p>
+            <ul class="case-list">
+              {c.depois.melhorias.map(m => (
+                <li><span class="case-check">✓</span>{m}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-metricas">
+          {c.metricas.map(m => (
+            <div class="case-metrica">
+              <span class="case-metrica-valor">{m.valor}</span>
+              <span class="case-metrica-label">{m.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <div class="text-center" style="margin-top: 3rem;">
+      <a href="/diagnostico" class="btn btn--primary btn--large reveal">
+        Quero resultados assim →
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.cases-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.case-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.75rem 1.25rem 0.85rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  margin-bottom: -1px;
+  text-align: left;
+}
+
+.case-tab-setor {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+.case-tab.is-active,
+.case-tab:hover {
+  color: var(--foreground);
+  border-bottom-color: var(--primary);
+}
+
+.case-tab.is-active .case-tab-setor { color: var(--text-secondary); }
+
+.case-panel { display: none; }
+.case-panel.is-active { display: block; }
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 640px) {
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+  .case-arrow { text-align: center; font-size: 1.5rem; }
+}
+
+.case-img {
+  height: 190px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-img--antes {
+  background: linear-gradient(135deg, #111 0%, #1c1c1c 100%);
+  border: 1px solid var(--border);
+}
+
+.case-img--depois {
+  background: linear-gradient(135deg, var(--luxota-bg) 0%, #0d1a28 100%);
+  border: 1px solid var(--luxota-border);
+  box-shadow: 0 0 40px rgba(79, 209, 197, 0.06);
+}
+
+.case-stamp {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  z-index: 2;
+}
+
+.case-stamp--depois {
+  color: var(--luxota-accent);
+  border-color: var(--luxota-border);
+  background: rgba(79, 209, 197, 0.08);
+}
+
+.case-mockup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 70%;
+  padding: 1rem;
+}
+
+.mock-bar {
+  height: 8px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.mock-bar--dull  { background: rgba(255,255,255,0.06); }
+.mock-bar--gold  { background: rgba(232,197,71,0.4); }
+.mock-bar--mint  { background: rgba(79,209,197,0.25); }
+.mock-bar--light { background: rgba(255,255,255,0.12); }
+
+.case-side-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.case-side-label--depois { color: var(--luxota-accent); }
+
+.case-arrow {
+  font-size: 1.2rem;
+  color: var(--primary);
+  padding-top: 5rem;
+  align-self: start;
+}
+
+.case-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-list li {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.case-x     { color: var(--error);   flex-shrink: 0; }
+.case-check { color: var(--success); flex-shrink: 0; }
+
+.case-metricas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .case-metricas { grid-template-columns: 1fr; }
+}
+
+.case-metrica {
+  background: var(--card);
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.case-metrica-valor {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.case-metrica-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.case-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const id = tab.dataset.case;
+
+      document.querySelectorAll('.case-tab').forEach((t) => {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.case-panel').forEach((p) => p.classList.remove('is-active'));
+
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      document.getElementById(`case-${id}`)?.classList.add('is-active');
+    });
+  });
+</script>
