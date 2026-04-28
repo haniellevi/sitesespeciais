@@ -1,0 +1,547 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Preços — Reforma de Site e Site Novo | Sites Especiais"
+  description="Reforma de site a partir de R$ 1.997. Site novo premium a partir de R$ 2.997. Garantia incondicional de 7 dias, 90 dias de suporte e parcelamento sem juros."
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="section precos-hero">
+      <div class="perspective-grid" aria-hidden="true" style="opacity: 0.3;"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+        <p class="eyebrow reveal">Preços</p>
+        <h1 class="precos__h1 reveal reveal-delay-1">
+          Sem surpresa.<br>
+          <span class="text-gradient-gold">Preço justo, resultado garantido.</span>
+        </h1>
+        <p class="precos__sub reveal reveal-delay-2">
+          Dois serviços, dois preços fixos. Cada projeto sai com o que precisa —
+          sem cobranças extras escondidas no final.
+        </p>
+      </div>
+    </section>
+
+    <!-- CARDS DE PREÇO -->
+    <section class="section">
+      <div class="container">
+        <div class="precos-grid">
+
+          <!-- Reforma -->
+          <div class="preco-card reveal">
+            <div class="preco-card__header">
+              <p class="preco-card__tipo">Reforma de Site</p>
+              <div class="preco-card__valor">
+                <span class="preco-card__a-partir">a partir de</span>
+                <span class="preco-card__num">R$ 1.997</span>
+              </div>
+              <p class="preco-card__parcela">ou 10x de R$ 199,70 sem juros</p>
+              <p class="preco-card__prazo">Entrega em até 14 dias</p>
+            </div>
+
+            <p class="preco-card__desc">
+              Para quem já tem site mas ele não está convertendo.
+              Reformamos tudo que está afastando seus clientes —
+              sem trocar o endereço, sem perder histórico.
+            </p>
+
+            <ul class="preco-card__lista">
+              <li>✓ Velocidade: carrega em menos de 1 segundo</li>
+              <li>✓ Mobile perfeito em qualquer tela</li>
+              <li>✓ Google entende seu site na primeira visita</li>
+              <li>✓ WhatsApp em todas as páginas</li>
+              <li>✓ Visível no ChatGPT, Gemini e Perplexity</li>
+              <li>✓ Painel para você atualizar sem programador</li>
+              <li>✓ 90 dias de suporte técnico incluso</li>
+              <li>✓ Garantia incondicional de 7 dias</li>
+            </ul>
+
+            <a href="/diagnostico" class="btn btn--primary btn--large preco-card__cta">
+              Quero reformar meu site →
+            </a>
+            <a href="/reforma" class="preco-card__link">Ver tudo que está incluso →</a>
+          </div>
+
+          <!-- Site Novo -->
+          <div class="preco-card preco-card--destaque reveal reveal-delay-1">
+            <div class="preco-card__badge-destaque">Mais completo</div>
+            <div class="preco-card__header">
+              <p class="preco-card__tipo">Site Novo Premium</p>
+              <div class="preco-card__valor">
+                <span class="preco-card__a-partir">a partir de</span>
+                <span class="preco-card__num">R$ 2.997</span>
+              </div>
+              <p class="preco-card__parcela">ou 10x de R$ 299,70 sem juros</p>
+              <p class="preco-card__prazo">Entrega em até 21 dias</p>
+            </div>
+
+            <p class="preco-card__desc">
+              Para quem ainda não tem site ou quer recomeçar do zero.
+              Design exclusivo, construído para o seu negócio e para a sua cidade.
+            </p>
+
+            <ul class="preco-card__lista">
+              <li>✓ Design exclusivo para o seu negócio</li>
+              <li>✓ Mobile perfeito + carrega em menos de 1 segundo</li>
+              <li>✓ Aparece no Google e nas IAs desde o primeiro dia</li>
+              <li>✓ WhatsApp integrado em todas as páginas</li>
+              <li>✓ Analytics com dados reais de visitas</li>
+              <li>✓ Painel para você atualizar sem programador</li>
+              <li>✓ 90 dias de suporte técnico incluso</li>
+              <li>✓ Garantia incondicional de 7 dias</li>
+            </ul>
+
+            <a href="/diagnostico" class="btn btn--primary btn--large preco-card__cta">
+              Quero meu site novo →
+            </a>
+            <a href="/site-novo" class="preco-card__link">Ver tudo que está incluso →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GARANTIA RESUMIDA -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="garantia-strip reveal">
+          <div class="garantia-strip__icon">🛡️</div>
+          <div>
+            <h2 class="garantia-strip__titulo">Garantia incondicional de 7 dias</h2>
+            <p class="garantia-strip__desc">
+              Se o resultado não for o que você imaginou — por qualquer motivo —
+              devolvemos 100% do valor investido. Sem formulários, sem burocracia, sem discussão.
+            </p>
+            <a href="/garantia" class="preco-card__link">Entender a garantia completa →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ DE PREÇOS -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">Dúvidas sobre preço</p>
+          <h2 class="section__h2">As perguntas que todo mundo faz.</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item reveal">
+            <button class="faq-btn" aria-expanded="false">
+              <span>O preço pode variar?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                Os valores indicados são os preços de entrada — projetos mais complexos
+                (e-commerce, múltiplas páginas, integrações específicas) têm orçamento personalizado.
+                O preço exato é definido após o diagnóstico gratuito.
+                Sem surpresas após o início.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-btn" aria-expanded="false">
+              <span>Tem manutenção mensal obrigatória?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                Não. O preço é por projeto — você não paga mensalidade para manter o site no ar.
+                Os 90 dias de suporte são inclusos. Depois disso, oferecemos planos opcionais,
+                mas sem obrigação.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-btn" aria-expanded="false">
+              <span>Como funciona o parcelamento?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                Parcelamos em até 10x no cartão de crédito sem acréscimo.
+                Também aceitamos PIX com 5% de desconto.
+                Normalmente trabalhamos com 50% na aprovação e 50% na entrega.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-btn" aria-expanded="false">
+              <span>E o domínio e a hospedagem?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                O domínio (ex: seunegocio.com.br) e a hospedagem são custos separados —
+                geralmente menos de R$ 100/ano no total.
+                Cuidamos de toda a configuração técnica, você só paga o custo ao provedor.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-btn" aria-expanded="false">
+              <span>Reforma ou site novo — como decidir?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                Regra geral: se seu site tem menos de 5 anos e os problemas são técnicos
+                (lento, mobile ruim, sem Google) → Reforma.
+                Se é muito antigo, mal estruturado, ou você nunca teve site → Site Novo.
+                O diagnóstico gratuito define isso com precisão.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section cta-final">
+      <div class="perspective-grid" aria-hidden="true" style="opacity: 0.2;"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <h2 class="cta-final__h2 reveal">
+          Não sabe por onde começar?<br>
+          <span class="text-gradient-gold">Comece pelo diagnóstico gratuito.</span>
+        </h2>
+
+        <p class="cta-final__sub reveal reveal-delay-1">
+          30 minutos de conversa. Você sai sabendo exatamente o que seu site precisa,
+          quanto vai custar e em quanto tempo fica pronto. Sem compromisso.
+        </p>
+
+        <div class="hero__ctas reveal reveal-delay-2">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Diagnóstico Gratuito →
+          </a>
+          <a href="https://wa.me/5589994711318" target="_blank" rel="noopener" class="btn btn--outline btn--large">
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255, 255, 255, 0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section__h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+/* Hero */
+.precos-hero {
+  padding-top: 10rem;
+  padding-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.precos__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.precos__sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* Grid de preços */
+.precos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 880px;
+  margin-inline: auto;
+}
+
+@media (max-width: 700px) {
+  .precos-grid { grid-template-columns: 1fr; }
+}
+
+.preco-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.preco-card--destaque {
+  border-color: rgba(232, 197, 71, 0.35);
+  box-shadow: 0 0 60px rgba(232, 197, 71, 0.07);
+}
+
+.preco-card__badge-destaque {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.85rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.preco-card__header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.preco-card__tipo {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.preco-card__valor {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.preco-card__a-partir {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.preco-card__num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.preco-card__parcela {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.preco-card__prazo {
+  font-size: 0.78rem;
+  color: var(--luxota-accent);
+  font-weight: 500;
+}
+
+.preco-card__desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.preco-card__lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.preco-card__lista li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+}
+
+.preco-card__cta {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.preco-card__link {
+  display: block;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.preco-card__link:hover { color: var(--primary); }
+
+/* Garantia strip */
+.garantia-strip {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid rgba(232, 197, 71, 0.2);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+}
+
+.garantia-strip__icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.garantia-strip__titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.garantia-strip__desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+
+/* FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+
+.faq-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.faq-btn:hover { background: rgba(255,255,255,0.03); }
+
+.faq-btn span:first-child {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.faq-icon {
+  font-size: 1.4rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-out);
+  line-height: 1;
+}
+
+.faq-btn[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 1.5rem 1.25rem;
+}
+
+.faq-answer p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* CTA final */
+.cta-final {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-final__h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.cta-final__sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.nextElementSibling as HTMLElement | null;
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (answer) answer.hidden = expanded;
+    });
+  });
+</script>
