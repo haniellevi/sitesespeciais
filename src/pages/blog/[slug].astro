@@ -1,0 +1,377 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getAllPostSlugs, getPostBySlug } from '../../lib/hygraph';
+
+export async function getStaticPaths() {
+  const slugs = await getAllPostSlugs();
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const post = await getPostBySlug(slug);
+
+if (!post) return Astro.redirect('/blog');
+
+function formatarData(dateStr: string) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  });
+}
+
+const tempoLeitura = Math.max(1, Math.ceil(post.content.html.replace(/<[^>]+>/g, '').split(' ').length / 200));
+---
+
+<Layout
+  title={`${post.title} — Blog Sites Especiais`}
+  description={post.excerpt}
+  ogImage={post.coverImage?.url}
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+    <!-- Cabeçalho do post -->
+    <section class="post-hero section">
+      <div class="container container--narrow">
+        <div class="post-breadcrumb reveal">
+          <a href="/blog">Blog</a>
+          {post.category?.length > 0 && (
+            <>
+              <span class="post-breadcrumb__sep">›</span>
+              <span>{post.category[0].name}</span>
+            </>
+          )}
+        </div>
+
+        <h1 class="post-title reveal reveal-delay-1">{post.title}</h1>
+
+        <p class="post-excerpt reveal reveal-delay-2">{post.excerpt}</p>
+
+        <div class="post-meta reveal reveal-delay-3">
+          {post.author && (
+            <div class="post-meta__author">
+              {post.author.picture?.url ? (
+                <img src={post.author.picture.url} alt={post.author.name} class="post-meta__avatar" width="36" height="36" />
+              ) : (
+                <div class="post-meta__avatar post-meta__avatar--placeholder">
+                  {post.author.name.charAt(0)}
+                </div>
+              )}
+              <span>{post.author.name}</span>
+            </div>
+          )}
+          <time datetime={post.date}>{formatarData(post.date)}</time>
+          <span class="post-meta__sep">·</span>
+          <span>{tempoLeitura} min de leitura</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Imagem de capa -->
+    {post.coverImage?.url && (
+      <div class="post-cover reveal">
+        <div class="container">
+          <img
+            src={post.coverImage.url}
+            alt={post.title}
+            class="post-cover__img"
+            width="1200"
+            height="630"
+            loading="eager"
+          />
+        </div>
+      </div>
+    )}
+
+    <!-- Conteúdo -->
+    <section class="section" style="padding-top: 3rem;">
+      <div class="container post-layout">
+        <article class="post-content prose reveal" set:html={post.content.html} />
+
+        <aside class="post-sidebar">
+          <div class="sidebar-card">
+            <p class="sidebar-card__title">Seu site também pode gerar resultados</p>
+            <p class="sidebar-card__desc">
+              Diagnóstico gratuito. Resultado em 14 dias. Garantia de 7 dias.
+            </p>
+            <a href="/diagnostico" class="btn btn--primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+              Diagnóstico Gratuito →
+            </a>
+            <a href="https://wa.me/5589994711318" target="_blank" rel="noopener" class="btn btn--ghost" style="width: 100%; justify-content: center; margin-top: 0.5rem; font-size: 0.85rem;">
+              Falar no WhatsApp
+            </a>
+          </div>
+
+          {post.category?.length > 0 && (
+            <div class="sidebar-card" style="margin-top: 1.25rem;">
+              <p class="sidebar-card__title">Categorias</p>
+              <div class="sidebar-cats">
+                {post.category.map((cat) => (
+                  <span class="sidebar-cat">{cat.name}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </aside>
+      </div>
+    </section>
+
+    <!-- CTA final do post -->
+    <section class="section section--alt">
+      <div class="container container--narrow text-center">
+        <h2 class="reveal" style="font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 1rem;">
+          Gostou? Agora aplique no seu negócio.
+        </h2>
+        <p class="reveal reveal-delay-1" style="color: var(--text-secondary); margin-bottom: 2rem;">
+          Diagnóstico gratuito do seu site. Sem compromisso, sem pressão de venda.
+        </p>
+        <a href="/diagnostico" class="btn btn--primary btn--large reveal reveal-delay-2">
+          Quero o diagnóstico gratuito →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Schema Article JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "image": post.coverImage?.url,
+    "author": post.author ? {
+      "@type": "Person",
+      "name": post.author.name
+    } : {
+      "@type": "Organization",
+      "name": "Sites Especiais"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sites Especiais",
+      "url": "https://sitesespeciais.com.br"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://sitesespeciais.com.br/blog/${post.slug}`
+    }
+  })} />
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255, 255, 255, 0.015); }
+
+.post-hero { padding-bottom: 2rem; }
+
+.post-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.post-breadcrumb a {
+  color: var(--luxota-accent);
+  text-decoration: none;
+}
+
+.post-breadcrumb a:hover { text-decoration: underline; }
+.post-breadcrumb__sep { opacity: 0.4; }
+
+.post-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.post-excerpt {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.post-meta__author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.post-meta__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-meta__avatar--placeholder {
+  background: linear-gradient(135deg, var(--luxota-accent), var(--primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--luxota-bg);
+  flex-shrink: 0;
+}
+
+.post-meta__sep { color: var(--border); }
+
+/* Imagem de capa */
+.post-cover { margin-bottom: 0; }
+
+.post-cover__img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+/* Layout do post */
+.post-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .post-layout {
+    grid-template-columns: 1fr;
+  }
+  .post-sidebar { order: -1; }
+}
+
+/* Prose — estilo do conteúdo rich text do Hygraph */
+.prose {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.prose :global(h2) {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--foreground);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.prose :global(h3) {
+  font-size: 1.2rem;
+  color: var(--foreground);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose :global(p) { margin-bottom: 1.25rem; }
+
+.prose :global(strong) { color: var(--foreground); font-weight: 600; }
+
+.prose :global(a) {
+  color: var(--luxota-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(79, 209, 197, 0.4);
+}
+
+.prose :global(a:hover) { color: var(--primary); }
+
+.prose :global(ul),
+.prose :global(ol) {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.prose :global(blockquote) {
+  border-left: 3px solid var(--primary);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  background: rgba(232, 197, 71, 0.04);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--foreground);
+  font-style: italic;
+}
+
+.prose :global(code) {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--bg-raised);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  color: var(--luxota-accent);
+}
+
+.prose :global(img) {
+  border-radius: var(--radius-md);
+  margin-block: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+/* Sidebar */
+.post-sidebar { position: sticky; top: 6rem; }
+
+.sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.sidebar-card__title {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.sidebar-card__desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.sidebar-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar-cat {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(79, 209, 197, 0.07);
+  border: 1px solid var(--luxota-border);
+  border-radius: 100px;
+  color: var(--luxota-accent);
+}
+</style>
