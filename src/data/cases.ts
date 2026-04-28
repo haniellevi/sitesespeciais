@@ -63,7 +63,7 @@ export const cases: Case[] = [
       '1ª página do Google para buscas de fornecedores no Nordeste',
       'Carrega em menos de 1 segundo em qualquer dispositivo',
     ],
-    cor: '#e8c547',
+    cor: '#f0d060',
   },
   {
     slug: 'emcorr',
@@ -143,7 +143,7 @@ export const cases: Case[] = [
       'Carrega em menos de 1 segundo em qualquer celular',
       'Agendamento e WhatsApp funcionando em todas as páginas',
     ],
-    cor: '#e8c547',
+    cor: '#f0d060',
   },
 ];
 

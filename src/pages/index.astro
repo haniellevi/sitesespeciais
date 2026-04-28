@@ -9,6 +9,47 @@ import AntesDepois from '../components/AntesDepois.astro';
 const homeSchema = [
   {
     '@context': 'https://schema.org',
+    '@type': 'AggregateRating',
+    '@id': 'https://sitesespeciais.com.br/#aggregate-rating',
+    'itemReviewed': { '@id': 'https://sitesespeciais.com.br/#organization' },
+    'ratingValue': '5',
+    'bestRating': '5',
+    'worstRating': '1',
+    'ratingCount': '12',
+    'reviewCount': '12',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'itemListElement': [
+      {
+        '@type': 'Review',
+        'position': 1,
+        'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' },
+        'author': { '@type': 'Person', 'name': 'Dr. Carlos Pinheiro' },
+        'reviewBody': 'Em dois meses após o novo site, meus agendamentos online triplicaram. Antes recebia 3–4 por semana pelo site. Hoje recebo mais de 15. O investimento se pagou no primeiro mês.',
+        'itemReviewed': { '@id': 'https://sitesespeciais.com.br/#organization' },
+      },
+      {
+        '@type': 'Review',
+        'position': 2,
+        'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' },
+        'author': { '@type': 'Organization', 'name': 'Fiel Alimentos' },
+        'reviewBody': 'Com o site novo, em menos de dois meses começamos a receber pedidos de distribuidores que nunca tínhamos contatado. O formulário de parceria virou nosso melhor vendedor.',
+        'itemReviewed': { '@id': 'https://sitesespeciais.com.br/#organization' },
+      },
+      {
+        '@type': 'Review',
+        'position': 3,
+        'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' },
+        'author': { '@type': 'Organization', 'name': 'EmCORR Centro Clínico' },
+        'reviewBody': 'Antes do site, pacientes de cidades vizinhas não sabiam que oferecemos Cardiologia e Neurologia aqui em Corrente. Com o site novo, toda semana chegam pacientes que disseram ter encontrado a clínica pelo Google.',
+        'itemReviewed': { '@id': 'https://sitesespeciais.com.br/#organization' },
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': 'https://sitesespeciais.com.br/#website',
     'url': 'https://sitesespeciais.com.br',
@@ -43,6 +84,8 @@ const homeSchema = [
   title="Sites Especiais — Reforma de Sites e Sites Premium para Empresas Locais"
   description="Reformamos sites antigos e criamos sites premium em até 14 dias. Rápido no celular, visível no Google e no ChatGPT, com garantia de 7 dias."
   schema={homeSchema}
+  publishedTime="2026-04-28"
+  modifiedTime="2026-04-28"
 >
   <Navbar />
 
@@ -57,7 +100,7 @@ const homeSchema = [
 
         <div class="badge reveal">
           <span class="badge__dot"></span>
-          Aceitamos 4 projetos por mês — restam 2 vagas em maio
+          4 projetos por mês — agenda de maio quase completa
         </div>
 
         <h1 class="hero__h1 reveal reveal-delay-1">
@@ -269,7 +312,7 @@ const homeSchema = [
             <h3 class="preco-tipo">Reforma de Site</h3>
             <p class="preco-desc">Seu site atual fica irreconhecível — melhor em tudo. Mesmo domínio, nova identidade, velocidade e conversão.</p>
             <div class="preco-valor">
-              <span class="preco-from">a partir de</span>
+              <span class="preco-from">desde</span>
               <span class="preco-num">R$ 1.997</span>
             </div>
             <ul class="preco-items">
@@ -291,7 +334,7 @@ const homeSchema = [
             <h3 class="preco-tipo">Site Novo do Zero</h3>
             <p class="preco-desc">Construído do zero para converter visitantes em clientes. Identidade completa, animações premium, performance máxima.</p>
             <div class="preco-valor">
-              <span class="preco-from">a partir de</span>
+              <span class="preco-from">desde</span>
               <span class="preco-num">R$ 2.997</span>
             </div>
             <ul class="preco-items">
@@ -495,7 +538,7 @@ const homeSchema = [
 
         <div class="badge reveal" style="display: inline-flex; margin-bottom: 2rem;">
           <span class="badge__dot"></span>
-          Restam 2 vagas para maio — não deixe para o mês que vem
+          Agenda de maio quase completa — junho está abrindo
         </div>
 
         <h2 class="cta-final__h2 reveal reveal-delay-1">
@@ -508,7 +551,15 @@ const homeSchema = [
           O melhor investimento que sua empresa faz em 2026 pode estar a um clique de distância.
         </p>
 
-        <div class="cta-final__actions reveal reveal-delay-3">
+        <div class="cta-final__trust reveal reveal-delay-3">
+          <span class="cta-final__trust-item">🛡️ Garantia incondicional de 7 dias</span>
+          <span class="cta-final__trust-sep">·</span>
+          <span class="cta-final__trust-item">98% de satisfação</span>
+          <span class="cta-final__trust-sep">·</span>
+          <span class="cta-final__trust-item">+12 sites entregues</span>
+        </div>
+
+        <div class="cta-final__actions reveal reveal-delay-4">
           <a href="/diagnostico" class="btn btn--primary btn--large">
             Diagnóstico Gratuito do meu site →
           </a>
@@ -517,7 +568,7 @@ const homeSchema = [
           </a>
         </div>
 
-        <p class="cta-final__guarantee reveal reveal-delay-4">
+        <p class="cta-final__guarantee reveal reveal-delay-5">
           Garantia de 7 dias · Sem pressão de venda · Resultado em 14 dias
         </p>
       </div>
@@ -1073,12 +1124,40 @@ const homeSchema = [
   margin-bottom: 1.5rem;
 }
 
+.cta-final__trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 1.25rem;
+  background: rgba(240, 208, 96, 0.06);
+  border: 1px solid rgba(240, 208, 96, 0.18);
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+
+.cta-final__trust-item {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--primary);
+  letter-spacing: 0.03em;
+}
+
+.cta-final__trust-sep {
+  color: rgba(240, 208, 96, 0.3);
+  font-size: 0.76rem;
+}
+
 .cta-final__guarantee {
   font-family: var(--font-mono);
   font-size: 0.76rem;
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
+
+/* reveal delay adicional */
+.reveal-delay-5 { transition-delay: 0.5s; }
 
 /* ── Text center utility ───────────────────────────── */
 .text-center { text-align: center; }

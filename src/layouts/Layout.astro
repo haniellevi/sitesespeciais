@@ -16,6 +16,8 @@ interface Props {
   ogImage?: string;
   noindex?: boolean;
   schema?: object | object[];
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const {
@@ -24,6 +26,8 @@ const {
   ogImage = '/og-default.jpg',
   noindex = false,
   schema,
+  publishedTime,
+  modifiedTime = new Date().toISOString().split('T')[0],
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -145,6 +149,10 @@ const localBusinessSchema = {
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Sites Especiais" />
 
+    <!-- Datas de publicação (E-E-A-T para Google e IAs) -->
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    <meta property="article:modified_time" content={modifiedTime} />
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -180,6 +188,13 @@ const localBusinessSchema = {
 
     <slot />
 
+    <!-- Sticky CTA mobile (aparece após scroll, some na /diagnostico) -->
+    <div class="sticky-cta-mobile" id="sticky-cta-mobile" aria-hidden="true">
+      <a href="/diagnostico" class="sticky-cta-mobile__btn">
+        🛡️ Diagnóstico Gratuito →
+      </a>
+    </div>
+
     <!-- WhatsApp flutuante -->
     <a
       href="https://wa.me/5589994711318?text=Olá!%20Quero%20saber%20mais%20sobre%20reforma%20de%20site."
@@ -197,6 +212,16 @@ const localBusinessSchema = {
 
 <script>
   import Lenis from 'lenis';
+
+  // Sticky CTA mobile — aparece após 400px de scroll, some na /diagnostico
+  const stickyCta = document.getElementById('sticky-cta-mobile');
+  if (stickyCta && !window.location.pathname.startsWith('/diagnostico')) {
+    stickyCta.removeAttribute('aria-hidden');
+    const handleScroll = () => {
+      stickyCta.classList.toggle('is-visible', window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+  }
 
   // Lenis smooth scroll
   const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });

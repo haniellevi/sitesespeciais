@@ -2,14 +2,14 @@
 
 /* ═══════════════════════════════════════════════════════
    SITES ESPECIAIS — Luxota Design System
-   Dark premium: preto + dourado (#e8c547) + mint (#4FD1C5)
+   Dark premium: preto + dourado (#f0d060) + mint (#4FD1C5)
    ═══════════════════════════════════════════════════════ */
 
 @theme {
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
   --font-mono: 'Space Grotesk', monospace;
-  --color-primary: #e8c547;
+  --color-primary: #f0d060;
   --color-mint: #4FD1C5;
 }
 
@@ -25,12 +25,12 @@
   --bg-overlay: #1a1a1a;
 
   /* ── Accent principal — DOURADO ────────────────── */
-  --primary: #e8c547;
+  --primary: #f0d060;
   --primary-foreground: #080808;
-  --accent: #e8c547;
-  --accent-hover: #f0d060;
-  --accent-dim: rgba(232, 197, 71, 0.12);
-  --ring: #e8c547;
+  --accent: #f0d060;
+  --accent-hover: #f5dc6a;
+  --accent-dim: rgba(240, 208, 96, 0.12);
+  --ring: #f0d060;
 
   /* ── Luxota — MINT/CYAN ────────────────────────── */
   --luxota-accent: #4FD1C5;
@@ -442,6 +442,57 @@ img, video { max-width: 100%; display: block; }
 
 .form-input:focus { border-color: var(--primary); }
 .form-input::placeholder { color: var(--text-muted); }
+
+/* ─── Sticky CTA mobile ───────────────────────────── */
+.sticky-cta-mobile {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 800;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+  background: rgba(8, 8, 8, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.sticky-cta-mobile.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-cta-mobile__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  min-height: 52px;
+}
+
+@media (min-width: 961px) {
+  .sticky-cta-mobile { display: none !important; }
+}
+
+@media (max-width: 960px) {
+  .sticky-cta-mobile { display: block; }
+  /* Empurra o WhatsApp float para não colidir */
+  .whatsapp-float {
+    bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+}
 
 /* ─── Scrollbar ───────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
