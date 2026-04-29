@@ -43,7 +43,7 @@ Sites Especiais reforma sites desatualizados e cria sites premium do zero, com f
 ## Cases
 
 - **Fiel Alimentos** — site novo para distribuidora regional. [/cases/fiel-alimentos]
-- **EmCorr Empreendimentos** — site novo para incorporadora. [/cases/emcorr-empreendimentos]
+- **EmCORR Centro Clínico** — reforma de site para centro clínico multiespecialidades. [/cases/emcorr-centro-clinico]
 - **Clínica Pinheiro** — reforma de site para clínica médica. [/cases/clinica-pinheiro]
 
 ## Garantia

@@ -29,6 +29,9 @@ const tempoLeitura = Math.max(1, Math.ceil(post.content.html.replace(/<[^>]+>/g,
   title={`${post.title} — Blog Sites Especiais`}
   description={post.excerpt}
   ogImage={post.coverImage?.url}
+  ogType="article"
+  publishedTime={post.date}
+  modifiedTime={post.date}
 >
   <Navbar />
 

@@ -14,6 +14,7 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: 'website' | 'article';
   noindex?: boolean;
   schema?: object | object[];
   publishedTime?: string;
@@ -24,6 +25,7 @@ const {
   title,
   description = 'Reformamos sites antigos e criamos sites premium para empresas locais que querem dominar o Google e parar de perder clientes para concorrentes piores.',
   ogImage = '/og-default.jpg',
+  ogType = 'website',
   noindex = false,
   schema,
   publishedTime,
@@ -144,7 +146,7 @@ const localBusinessSchema = {
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
