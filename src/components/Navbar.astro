@@ -17,10 +17,57 @@ const base = internal ? '' : '/';
     </a>
 
     <nav class="navbar__links" id="nav-links" aria-label="Navegação principal">
-      <a href={`${base}#reforma`}>Reforma de Sites</a>
+      <!-- Dropdown Serviços -->
+      <div class="navbar__dropdown-wrap" id="nav-servicos-wrap">
+        <button
+          class="navbar__dropdown-btn"
+          id="nav-servicos-btn"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="nav-servicos-menu"
+        >
+          Serviços
+          <svg class="navbar__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="navbar__dropdown-menu" id="nav-servicos-menu" role="menu">
+          <a href="/reforma" role="menuitem">
+            <span class="dropdown-icon">🔧</span>
+            <span>
+              <strong>Reforma de Site</strong>
+              <small>Site novo, mesmo domínio · 14 dias</small>
+            </span>
+          </a>
+          <a href="/site-novo" role="menuitem">
+            <span class="dropdown-icon">🚀</span>
+            <span>
+              <strong>Site Novo Premium</strong>
+              <small>Do zero, feito para converter</small>
+            </span>
+          </a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <a href="/servicos/manutencao-site" role="menuitem">
+            <span class="dropdown-icon">🛡️</span>
+            <span>
+              <strong>Manutenção Mensal</strong>
+              <small>Site sempre no ar e atualizado</small>
+            </span>
+          </a>
+          <a href="/servicos/seo-mensal" role="menuitem">
+            <span class="dropdown-icon">📈</span>
+            <span>
+              <strong>SEO Mensal</strong>
+              <small>Apareça no Google todo mês</small>
+            </span>
+          </a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <a href="/precos" role="menuitem" class="dropdown-link--muted">Ver todos os preços →</a>
+        </div>
+      </div>
+
       <a href={`${base}#como-funciona`}>Como Funciona</a>
       <a href={`${base}#cases`}>Antes e Depois</a>
-      <a href={`${base}#precos`}>Preços</a>
       <a href="/blog">Blog</a>
       <a href="/sobre">Sobre</a>
     </nav>
@@ -101,6 +148,118 @@ const base = internal ? '' : '/';
 
 .navbar__links a:hover { color: var(--text-primary); }
 
+/* ── Dropdown Serviços ──────────────────────────── */
+.navbar__dropdown-wrap {
+  position: relative;
+}
+
+.navbar__dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.navbar__dropdown-btn:hover { color: var(--text-primary); }
+
+.navbar__chevron {
+  transition: transform 0.2s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.navbar__dropdown-wrap.is-open .navbar__chevron {
+  transform: rotate(180deg);
+}
+
+.navbar__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 260px;
+  background: rgba(14, 14, 14, 0.98);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.125rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  z-index: 200;
+}
+
+.navbar__dropdown-wrap.is-open .navbar__dropdown-menu {
+  display: flex;
+}
+
+.navbar__dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-md);
+  transition: background 0.15s;
+  white-space: normal;
+}
+
+.navbar__dropdown-menu a:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+}
+
+.dropdown-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.navbar__dropdown-menu a span:not(.dropdown-icon) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.navbar__dropdown-menu a strong {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.navbar__dropdown-menu a small {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.25rem 0.5rem;
+}
+
+.dropdown-link--muted {
+  font-size: 0.78rem !important;
+  color: var(--text-muted) !important;
+  justify-content: center;
+  padding: 0.5rem !important;
+}
+
+.dropdown-link--muted:hover {
+  color: var(--primary) !important;
+}
+
 .navbar__cta {
   padding: 0.55rem 1.3rem;
   font-size: 0.82rem;
@@ -153,6 +312,27 @@ const base = internal ? '' : '/';
   .navbar__links.active a {
     font-size: 1rem;
   }
+
+  /* Dropdown no mobile — inline expandido */
+  .navbar__dropdown-btn {
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .navbar__dropdown-menu {
+    position: static;
+    transform: none;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .navbar__dropdown-wrap.is-open .navbar__dropdown-menu {
+    display: flex;
+    margin-top: 0.5rem;
+  }
 }
 </style>
 
@@ -178,5 +358,31 @@ const base = internal ? '' : '/';
       toggle?.classList.remove('active');
       toggle?.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  // Dropdown Serviços
+  const dropBtn  = document.getElementById('nav-servicos-btn') as HTMLButtonElement | null;
+  const dropWrap = document.getElementById('nav-servicos-wrap') as HTMLElement | null;
+
+  dropBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = dropWrap?.classList.toggle('is-open');
+    dropBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Fechar dropdown ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (dropWrap && !dropWrap.contains(e.target as Node)) {
+      dropWrap.classList.remove('is-open');
+      dropBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Fechar dropdown ao pressionar Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropWrap?.classList.remove('is-open');
+      dropBtn?.setAttribute('aria-expanded', 'false');
+    }
   });
 </script>
