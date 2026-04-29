@@ -59,6 +59,7 @@ async function upsertHubSpotContact(params: {
   whatsapp: string;
   setor?: string;
   problema?: string;
+  temSite?: string;
   siteUrl?: string;
   fonte: string;
 }): Promise<void> {
@@ -76,9 +77,10 @@ async function upsertHubSpotContact(params: {
     lifecyclestage: 'lead',
     hs_lead_status: 'NEW',
     lead_source: fonte,
-    ...(setor    && { industry: setor }),
+    ...(setor    && { diagnostico_setor: setor }),
     ...(problema && { diagnostico_problema: problema }),
-    ...(siteUrl  && { website: siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}` }),
+    ...(params.temSite && { diagnostico_tem_site: params.temSite }),
+    ...(siteUrl  && { diagnostico_url_site: siteUrl, website: siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}` }),
   };
 
   // Tenta criar; se duplicado (409) faz update pelo email
@@ -140,9 +142,18 @@ export const POST: APIRoute = async ({ request }) => {
         problema,
       };
 
-      // Garante propriedade customizada e salva no HubSpot
+      // Garante propriedades customizadas e salva no HubSpot
       await ensureHubSpotProperty();
-      await upsertHubSpotContact({ ...diagParams, fonte: 'diagnostico_site' }).catch(console.error);
+      await upsertHubSpotContact({
+        email,
+        nome,
+        whatsapp,
+        setor,
+        problema,
+        temSite: tem_site,
+        siteUrl: site_url,
+        fonte: 'diagnostico_site',
+      }).catch(console.error);
 
       // Email de confirmação ao lead
       const { subject: subjConf, html: htmlConf } = emailDiagnosticoConfirmacao(diagParams);
