@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 interface Props {
   internal?: boolean;
 }
@@ -10,8 +12,8 @@ const base = internal ? '' : '/';
   <div class="container navbar__inner">
     <a href="/" class="navbar__logo" aria-label="Sites Especiais — Início">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="navbar__logo-icon">
-        <path d="M12 2L20.66 7v10L12 22 3.34 17V7z" fill="none" stroke="#f0d060" stroke-width="1.5"/>
-        <path d="M12 6L17.2 9v6L12 18 6.8 15V9z" fill="#f0d060" opacity="0.15"/>
+        <path d="M12 2L20.66 7v10L12 22 3.34 17V7z" fill="none" stroke="var(--primary)" stroke-width="1.5"/>
+        <path d="M12 6L17.2 9v6L12 18 6.8 15V9z" fill="var(--primary)" opacity="0.15"/>
       </svg>
       <span>Sites<strong>Especiais</strong></span>
     </a>
@@ -72,9 +74,12 @@ const base = internal ? '' : '/';
       <a href="/sobre">Sobre</a>
     </nav>
 
-    <a href="/diagnostico" class="btn btn--primary navbar__cta">
-      Diagnóstico Grátis →
-    </a>
+    <div class="navbar__actions">
+      <ThemeToggle />
+      <a href="/diagnostico" class="btn btn--primary navbar__cta">
+        Diagnóstico Grátis →
+      </a>
+    </div>
 
     <button
       class="navbar__toggle"
@@ -102,7 +107,7 @@ const base = internal ? '' : '/';
 }
 
 .navbar.scrolled {
-  background: rgba(8, 8, 8, 0.92);
+  background: var(--surface-sticky);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -186,7 +191,7 @@ const base = internal ? '' : '/';
   left: 50%;
   transform: translateX(-50%);
   min-width: 260px;
-  background: rgba(14, 14, 14, 0.98);
+  background: var(--card);
   backdrop-filter: blur(24px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -213,7 +218,7 @@ const base = internal ? '' : '/';
 }
 
 .navbar__dropdown-menu a:hover {
-  background: rgba(255,255,255,0.05);
+  background: var(--surface-glass);
   color: var(--text-primary);
 }
 
@@ -260,6 +265,13 @@ const base = internal ? '' : '/';
   color: var(--primary) !important;
 }
 
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
 .navbar__cta {
   padding: 0.55rem 1.3rem;
   font-size: 0.82rem;
@@ -292,6 +304,7 @@ const base = internal ? '' : '/';
 @media (max-width: 960px) {
   .navbar__links { display: none; }
   .navbar__cta   { display: none; }
+  .navbar__actions { gap: 0.5rem; }
   .navbar__toggle { display: flex; }
 
   .navbar__links.active {
@@ -302,7 +315,7 @@ const base = internal ? '' : '/';
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(8, 8, 8, 0.97);
+    background: var(--surface-sticky);
     backdrop-filter: blur(20px);
     padding: 2rem 1.5rem;
     gap: 1.5rem;
@@ -322,7 +335,7 @@ const base = internal ? '' : '/';
   .navbar__dropdown-menu {
     position: static;
     transform: none;
-    background: rgba(255,255,255,0.04);
+    background: var(--surface-glass);
     border: 1px solid var(--border);
     padding: 0.5rem;
     width: 100%;

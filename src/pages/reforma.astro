@@ -93,14 +93,29 @@ const reformaSchema = {
         <div class="reforma-grid">
           <div class="reforma-col reveal">
             <p class="reforma-col__label reforma-col__label--antes">ANTES da Reforma</p>
-            <div class="reforma-mockup reforma-mockup--antes">
-              <div class="mock-nav mock-nav--dull"></div>
-              <div class="mock-hero mock-hero--dull">
-                <div class="mock-line-dull" style="width: 80%; height: 16px; margin-bottom: 8px;"></div>
-                <div class="mock-line-dull" style="width: 60%; height: 10px; margin-bottom: 16px;"></div>
-                <div class="mock-btn-dull"></div>
+            <div class="reforma-mockup reforma-mockup--antes" aria-hidden="true">
+              <div class="mock-browser mock-browser--dull">
+                <span class="mock-dot"></span>
+                <span class="mock-dot"></span>
+                <span class="mock-dot"></span>
+                <div class="mock-url mock-url--dull">www.seusite.com.br</div>
+              </div>
+              <div class="mock-page mock-page--dull">
+                <div class="mock-header mock-header--dull">
+                  <div class="mock-logo mock-logo--dull"></div>
+                  <div class="mock-menu mock-menu--dull">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="mock-content mock-content--dull">
+                  <div class="mock-title mock-title--dull"></div>
+                  <div class="mock-text mock-text--dull"></div>
+                  <div class="mock-text mock-text--dull mock-text--short"></div>
+                  <div class="mock-btn mock-btn--dull"></div>
+                </div>
               </div>
             </div>
+            <p class="reforma-mockup__caption">Exemplo ilustrativo</p>
             <ul class="reforma-lista reforma-lista--antes">
               <li><span>✗</span> Abre em 8+ segundos no celular</li>
               <li><span>✗</span> Visual dos anos 2010</li>
@@ -115,14 +130,29 @@ const reformaSchema = {
 
           <div class="reforma-col reveal reveal-delay-1">
             <p class="reforma-col__label reforma-col__label--depois">DEPOIS da Reforma</p>
-            <div class="reforma-mockup reforma-mockup--depois">
-              <div class="mock-nav mock-nav--bright"></div>
-              <div class="mock-hero mock-hero--bright">
-                <div class="mock-line-bright" style="width: 80%; height: 16px; margin-bottom: 8px;"></div>
-                <div class="mock-line-mint" style="width: 60%; height: 10px; margin-bottom: 16px;"></div>
-                <div class="mock-btn-bright"></div>
+            <div class="reforma-mockup reforma-mockup--depois" aria-hidden="true">
+              <div class="mock-browser mock-browser--bright">
+                <span class="mock-dot mock-dot--red"></span>
+                <span class="mock-dot mock-dot--yellow"></span>
+                <span class="mock-dot mock-dot--green"></span>
+                <div class="mock-url mock-url--bright">https://seusite.com.br</div>
+              </div>
+              <div class="mock-page mock-page--bright">
+                <div class="mock-header mock-header--bright">
+                  <div class="mock-logo mock-logo--bright"></div>
+                  <div class="mock-menu mock-menu--bright">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="mock-content mock-content--bright">
+                  <div class="mock-title mock-title--bright"></div>
+                  <div class="mock-text mock-text--bright"></div>
+                  <div class="mock-text mock-text--bright mock-text--short"></div>
+                  <div class="mock-btn mock-btn--bright"></div>
+                </div>
               </div>
             </div>
+            <p class="reforma-mockup__caption">Exemplo ilustrativo</p>
             <ul class="reforma-lista reforma-lista--depois">
               <li><span>✓</span> Menos de 1 segundo no 4G ruim</li>
               <li><span>✓</span> Design que passa confiança de imediato</li>
@@ -291,20 +321,6 @@ const reformaSchema = {
 
 <style>
 .text-center { text-align: center; }
-.section--alt { background: rgba(255, 255, 255, 0.015); }
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--luxota-accent);
-  margin-bottom: 0.75rem;
-}
-
-.section__h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 1rem; line-height: 1.15; }
-.section__sub { font-size: 1rem; color: var(--text-secondary); max-width: 560px; margin-inline: auto; line-height: 1.7; }
 
 /* Hero */
 .hero-reforma {
@@ -351,27 +367,137 @@ const reformaSchema = {
 .reforma-mockup {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  height: 180px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.reforma-mockup--antes  { background: #2a2a2a; border: 1px solid #333; }
+.reforma-mockup--depois { background: var(--luxota-bg); border: 1px solid var(--luxota-border); }
+
+.reforma-mockup__caption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 1.25rem;
+  opacity: 0.6;
+}
+
+/* Browser bar */
+.mock-browser {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid;
+}
+.mock-browser--dull   { background: #1f1f1f; border-bottom-color: #2c2c2c; }
+.mock-browser--bright { background: #0f1219; border-bottom-color: var(--luxota-border); }
+
+.mock-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #444;
+  flex-shrink: 0;
+}
+.mock-dot--red    { background: #ff5f56; }
+.mock-dot--yellow { background: #ffbd2e; }
+.mock-dot--green  { background: #27c93f; }
+
+.mock-url {
+  flex: 1;
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mock-url--dull   { background: #2c2c2c; color: #777; }
+.mock-url--bright { background: rgba(79,209,197,0.08); color: var(--luxota-accent); border: 1px solid var(--luxota-border); }
+
+/* Page */
+.mock-page {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
-.reforma-mockup--antes { background: #111; border: 1px solid var(--border); }
-.reforma-mockup--depois { background: var(--luxota-bg); border: 1px solid var(--luxota-border); }
+.mock-page--dull   { background: #2a2a2a; }
+.mock-page--bright { background: linear-gradient(135deg, var(--luxota-bg) 0%, #0d1622 100%); }
 
-.mock-nav { height: 32px; }
-.mock-nav--dull { background: #1a1a1a; }
-.mock-nav--bright { background: rgba(79,209,197,0.08); border-bottom: 1px solid var(--luxota-border); }
+/* Header (logo + menu) */
+.mock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+.mock-header--dull   { border-bottom: 1px solid #333; }
+.mock-header--bright { border-bottom: 1px solid var(--luxota-border); }
 
-.mock-hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 1.25rem; }
-.mock-hero--dull { background: #111; }
-.mock-hero--bright { background: linear-gradient(135deg, var(--luxota-bg), #0d1a28); }
+.mock-logo {
+  border-radius: 50%;
+}
+.mock-logo--dull   { width: 18px; height: 18px; background: #555; }
+.mock-logo--bright { width: 22px; height: 22px; background: var(--primary); box-shadow: 0 0 12px rgba(240,208,96,0.5); }
 
-.mock-line-dull { background: rgba(255,255,255,0.06); border-radius: 4px; }
-.mock-line-bright { background: rgba(245,245,240,0.15); border-radius: 4px; }
-.mock-line-mint { background: rgba(79,209,197,0.2); border-radius: 4px; }
-.mock-btn-dull { width: 80px; height: 24px; background: rgba(255,255,255,0.04); border: 1px solid #222; border-radius: 4px; }
-.mock-btn-bright { width: 100px; height: 28px; background: var(--primary); border-radius: 6px; }
+.mock-menu { display: flex; gap: 0.5rem; }
+.mock-menu span {
+  width: 28px;
+  height: 6px;
+  border-radius: 2px;
+}
+.mock-menu--dull span   { background: #444; }
+.mock-menu--bright span { background: rgba(245,245,240,0.4); }
+
+/* Content */
+.mock-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  align-items: flex-start;
+}
+.mock-content--bright { gap: 0.6rem; }
+
+.mock-title {
+  height: 14px;
+  border-radius: 3px;
+  width: 75%;
+}
+.mock-title--dull   { background: #555; }
+.mock-title--bright {
+  background: linear-gradient(90deg, #fff 30%, var(--luxota-accent) 100%);
+  height: 16px;
+}
+
+.mock-text {
+  height: 8px;
+  border-radius: 3px;
+  width: 90%;
+}
+.mock-text--dull   { background: #3a3a3a; }
+.mock-text--bright { background: rgba(245,245,240,0.18); }
+.mock-text--short  { width: 60%; }
+
+.mock-btn {
+  margin-top: 0.4rem;
+  border-radius: 4px;
+}
+.mock-btn--dull   { width: 60px; height: 18px; background: #444; }
+.mock-btn--bright {
+  width: 90px;
+  height: 26px;
+  background: var(--primary);
+  box-shadow: 0 4px 12px rgba(240,208,96,0.35);
+}
 
 .reforma-lista { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
 .reforma-lista li { display: flex; gap: 0.5rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; }
