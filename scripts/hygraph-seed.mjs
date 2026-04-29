@@ -191,7 +191,7 @@ const CREATE_CASE = `
       servico: $servico, resumo: $resumo, desafio: $desafio, solucao: $solucao,
       resultado: $resultado, depoimentoTexto: $depoimentoTexto,
       depoimentoAutor: $depoimentoAutor, depoimentoCargo: $depoimentoCargo,
-      antes: { set: $antes }, depois: { set: $depois },
+      antes: $antes, depois: $depois,
       cor: $cor, ordem: $ordem
     }) { id slug }
   }

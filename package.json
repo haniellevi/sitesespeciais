@@ -22,5 +22,8 @@
     "gsap": "^3.12.5",
     "lenis": "^1.1.14",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@hygraph/management-sdk": "^1.5.2"
   }
 }
