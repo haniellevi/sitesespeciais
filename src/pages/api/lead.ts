@@ -68,41 +68,68 @@ async function upsertHubSpotContact(params: {
   const { email, nome, whatsapp, setor, problema, siteUrl, fonte } = params;
   const [firstname, ...rest] = nome.trim().split(' ');
   const lastname = rest.join(' ');
+  const temSite = params.temSite ?? '';
 
-  const properties: Record<string, string> = {
+  // Propriedades padrão (sempre disponíveis)
+  const baseProps: Record<string, string> = {
     email,
     firstname,
     lastname,
     phone: whatsapp,
     lifecyclestage: 'lead',
     hs_lead_status: 'NEW',
-    lead_source: fonte,
-    ...(setor    && { diagnostico_setor: setor }),
-    ...(problema && { diagnostico_problema: problema }),
-    ...(params.temSite && { diagnostico_tem_site: params.temSite }),
-    ...(siteUrl  && { diagnostico_url_site: siteUrl, website: siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}` }),
+    ...(siteUrl && { website: siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}` }),
+    // fallback legível no campo "description" caso custom props não existam ainda
+    description: [
+      fonte,
+      setor    ? `setor:${setor}`    : '',
+      problema ? `problema:${problema}` : '',
+      temSite  ? `tem_site:${temSite}`  : '',
+    ].filter(Boolean).join(' | '),
+  };
+
+  // Propriedades customizadas (requerem crm.schemas.contacts.write)
+  const customProps: Record<string, string> = {
+    ...(_hs_prop_ensured && setor    ? { diagnostico_setor: setor }          : {}),
+    ...(_hs_prop_ensured && problema ? { diagnostico_problema: problema }     : {}),
+    ...(_hs_prop_ensured && temSite  ? { diagnostico_tem_site: temSite }      : {}),
+    ...(_hs_prop_ensured && siteUrl  ? { diagnostico_url_site: siteUrl }      : {}),
+    ...(_hs_prop_ensured             ? { lead_source: fonte }                 : {}),
+  };
+
+  const properties = { ...baseProps, ...customProps };
+
+  const hsHeaders = {
+    Authorization: `Bearer ${HUBSPOT_KEY}`,
+    'Content-Type': 'application/json',
   };
 
   // Tenta criar; se duplicado (409) faz update pelo email
   const createRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${HUBSPOT_KEY}`,
-      'Content-Type': 'application/json',
-    },
+    headers: hsHeaders,
     body: JSON.stringify({ properties }),
   });
 
   if (createRes.status === 409) {
     // Lead já existe — faz PATCH pelo email
-    await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email`, {
-      method: 'PATCH',
-      headers: {
-        Authorization: `Bearer ${HUBSPOT_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ properties }),
+    await fetch(
+      `https://api.hubapi.com/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email`,
+      { method: 'PATCH', headers: hsHeaders, body: JSON.stringify({ properties }) },
+    );
+  } else if (!createRes.ok && createRes.status === 400) {
+    // Alguma custom property não existe — tenta salvar só com base
+    const fallbackRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+      method: 'POST',
+      headers: hsHeaders,
+      body: JSON.stringify({ properties: baseProps }),
     });
+    if (fallbackRes.status === 409) {
+      await fetch(
+        `https://api.hubapi.com/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email`,
+        { method: 'PATCH', headers: hsHeaders, body: JSON.stringify({ properties: baseProps }) },
+      );
+    }
   }
 }
 
