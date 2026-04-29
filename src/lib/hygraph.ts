@@ -145,12 +145,13 @@ export async function getAllCasesFromHygraph(): Promise<HygraphCase[]> {
 }
 
 export async function getCaseFromHygraph(slug: string): Promise<HygraphCase | null> {
-  const data = await fetchHygraph<{ case: HygraphCase | null }>(`
+  // slug is not unique in Hygraph — use list query with filter
+  const data = await fetchHygraph<{ cases: HygraphCase[] }>(`
     query CaseBySlug($slug: String!) {
-      case(where: { slug: $slug }, stage: PUBLISHED) { ${CASE_FIELDS} }
+      cases(where: { slug: $slug }, stage: PUBLISHED, first: 1) { ${CASE_FIELDS} }
     }
   `, { slug });
-  return data.case;
+  return data.cases?.[0] ?? null;
 }
 
 // ── Testimonial ─────────────────────────────────────
