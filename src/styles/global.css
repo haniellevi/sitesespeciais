@@ -6,7 +6,7 @@
    ═══════════════════════════════════════════════════════ */
 
 @theme {
-  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
   --font-mono: 'Space Grotesk', monospace;
   --color-primary: #f0d060;
@@ -410,7 +410,6 @@ img, video { max-width: 100%; display: block; }
   width: 40px;
   height: 40px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(2px);
   transition: border-color 0.3s, background-color 0.3s, width 0.2s var(--ease-out), height 0.2s var(--ease-out);
 }
 

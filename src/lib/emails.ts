@@ -164,6 +164,232 @@ export function emailRelatorioCalculadora(params: {
   };
 }
 
+// ── Template: Diagnóstico — Confirmação ao lead ─────
+export function emailDiagnosticoConfirmacao(params: {
+  nome: string;
+  email: string;
+  whatsapp: string;
+  temSite: string;
+  siteUrl?: string;
+  setor: string;
+  problema: string;
+}) {
+  const { nome, temSite, siteUrl, setor, problema } = params;
+  const primeiroNome = nome.split(' ')[0];
+
+  const setorLabels: Record<string, string> = {
+    clinica: 'Clínica / Consultório',
+    advocacia: 'Escritório de Advocacia',
+    imobiliaria: 'Imobiliária',
+    distribuidora: 'Distribuidora / Atacado',
+    comercio: 'Comércio / Varejo',
+    servicos: 'Prestador de Serviços',
+    outro: 'Outro',
+  };
+
+  const problemaLabels: Record<string, string> = {
+    invisivel_google: 'Aparece pouco ou nada no Google',
+    nao_converte: 'Recebe visitas mas ninguém entra em contato',
+    visual_velho: 'Visual desatualizado que afasta clientes',
+    mobile_ruim: 'Não funciona bem no celular',
+    invisivel_ia: 'Não aparece no ChatGPT / Google AI / Gemini',
+    criar_site: 'Criar o primeiro site',
+  };
+
+  return {
+    subject: `${primeiroNome}, seu diagnóstico está em análise — resposta em até 48h`,
+    html: `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#080808;">
+<div style="${containerStyle}">
+
+  <div style="${headerStyle}">
+    <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#4FD1C5;margin:0 0 8px;">Sites Especiais</p>
+    <h1 style="font-size:22px;color:#f5f5f0;margin:0;font-weight:400;">Diagnóstico Recebido ✓</h1>
+  </div>
+
+  <div style="${bodyStyle}">
+    <p style="font-size:16px;color:#b0b0a8;margin:0 0 20px;">Olá, <strong style="color:#f5f5f0;">${primeiroNome}</strong>!</p>
+    <p style="font-size:15px;color:#b0b0a8;line-height:1.7;margin:0 0 24px;">
+      Recebemos sua solicitação. Em até <strong style="color:#f5f5f0;">48 horas úteis</strong>,
+      nosso time analisa ${temSite === 'sim' ? `o site <strong style="color:#f5f5f0;">${siteUrl}</strong>` : 'sua presença digital'} e envia
+      o diagnóstico completo aqui neste e-mail e também pelo WhatsApp.
+    </p>
+
+    <div style="${cardStyle}">
+      <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555550;margin:0 0 16px;">O que recebemos</p>
+      <table style="width:100%;border-collapse:collapse;">
+        ${temSite === 'sim' && siteUrl ? `
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Site</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">${siteUrl}</td>
+        </tr>` : `
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Situação</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">Ainda não tem site</td>
+        </tr>`}
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Setor</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">${setorLabels[setor] ?? setor}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;color:#b0b0a8;font-size:14px;">Principal problema</td>
+          <td style="padding:10px 0;color:#f5f5f0;font-size:14px;text-align:right;">${problemaLabels[problema] ?? problema}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(79,209,197,0.04) 0%,#141414 60%);border:1px solid rgba(79,209,197,0.15);border-radius:12px;padding:24px;margin:24px 0;">
+      <p style="font-size:14px;font-weight:700;color:#4FD1C5;margin:0 0 12px;">O que você vai receber</p>
+      <ul style="margin:0;padding:0 0 0 0;list-style:none;">
+        <li style="font-size:14px;color:#b0b0a8;padding:6px 0;display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#4FD1C5;flex-shrink:0;">✓</span> Análise completa do site e presença digital
+        </li>
+        <li style="font-size:14px;color:#b0b0a8;padding:6px 0;display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#4FD1C5;flex-shrink:0;">✓</span> Pontos críticos que estão afastando clientes
+        </li>
+        <li style="font-size:14px;color:#b0b0a8;padding:6px 0;display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#4FD1C5;flex-shrink:0;">✓</span> O que precisa mudar e por onde começar
+        </li>
+      </ul>
+    </div>
+
+    <p style="font-size:14px;color:#555550;line-height:1.65;margin:0 0 24px;">
+      Quer tirar dúvidas agora? Fale pelo WhatsApp:
+    </p>
+
+    <div style="text-align:center;">
+      <a href="https://wa.me/5589994711318?text=Oi%2C%20acabei%20de%20solicitar%20o%20diagn%C3%B3stico%20gratuito%20e%20quero%20tirar%20uma%20d%C3%BAvida." style="${btnStyle}">
+        Falar no WhatsApp →
+      </a>
+    </div>
+  </div>
+
+  <div style="${footerStyle}">
+    <p style="margin:0 0 4px;"><strong style="color:#e8c547;">Sites Especiais</strong></p>
+    <p style="margin:0 0 4px;">Feito para Gerar Autoridade</p>
+    <p style="margin:0;">
+      <a href="${BASE_URL}" style="color:#4FD1C5;text-decoration:none;">sitesespeciais.com.br</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>`,
+  };
+}
+
+// ── Template: Diagnóstico — Notificação ao owner ─────
+export function emailDiagnosticoNotificacao(params: {
+  nome: string;
+  email: string;
+  whatsapp: string;
+  temSite: string;
+  siteUrl?: string;
+  setor: string;
+  problema: string;
+}) {
+  const { nome, email, whatsapp, temSite, siteUrl, setor, problema } = params;
+
+  const setorLabels: Record<string, string> = {
+    clinica: 'Clínica / Consultório',
+    advocacia: 'Escritório de Advocacia',
+    imobiliaria: 'Imobiliária',
+    distribuidora: 'Distribuidora / Atacado',
+    comercio: 'Comércio / Varejo',
+    servicos: 'Prestador de Serviços',
+    outro: 'Outro',
+  };
+
+  const problemaLabels: Record<string, string> = {
+    invisivel_google: 'Invisível no Google',
+    nao_converte: 'Não converte visitantes',
+    visual_velho: 'Visual desatualizado',
+    mobile_ruim: 'Problema no celular',
+    invisivel_ia: 'Invisível nas IAs',
+    criar_site: 'Criar primeiro site',
+  };
+
+  const now = new Date().toLocaleString('pt-BR', { timeZone: 'America/Fortaleza' });
+
+  return {
+    subject: `🔔 Novo diagnóstico: ${nome} — ${setorLabels[setor] ?? setor}`,
+    html: `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#080808;">
+<div style="${containerStyle}">
+
+  <div style="${headerStyle}">
+    <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#e8c547;margin:0 0 8px;">Sites Especiais — Admin</p>
+    <h1 style="font-size:20px;color:#f5f5f0;margin:0;font-weight:600;">Novo Lead de Diagnóstico</h1>
+    <p style="font-size:12px;color:#555550;margin:8px 0 0;">${now}</p>
+  </div>
+
+  <div style="${bodyStyle}">
+
+    <div style="${cardStyle}border-color:rgba(232,197,71,0.3);">
+      <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#e8c547;margin:0 0 16px;">Dados do lead</p>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Nome</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;font-weight:700;text-align:right;">${nome}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">E-mail</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;font-size:14px;text-align:right;">
+            <a href="mailto:${email}" style="color:#4FD1C5;text-decoration:none;">${email}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">WhatsApp</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;font-size:14px;text-align:right;">
+            <a href="https://wa.me/55${whatsapp.replace(/\D/g,'')}" style="color:#4FD1C5;text-decoration:none;">${whatsapp}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Tem site?</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">${temSite === 'sim' ? 'Sim' : 'Não'}</td>
+        </tr>
+        ${temSite === 'sim' && siteUrl ? `
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">URL do site</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;font-size:14px;text-align:right;">
+            <a href="${siteUrl.startsWith('http') ? siteUrl : 'https://' + siteUrl}" style="color:#4FD1C5;text-decoration:none;">${siteUrl}</a>
+          </td>
+        </tr>` : ''}
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Setor</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">${setorLabels[setor] ?? setor}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;color:#b0b0a8;font-size:14px;">Problema</td>
+          <td style="padding:10px 0;color:#f5f5f0;font-size:14px;font-weight:700;text-align:right;">${problemaLabels[problema] ?? problema}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="text-align:center;margin-top:8px;">
+      <a href="https://wa.me/55${whatsapp.replace(/\D/g,'').replace(/^0/, '')}?text=Oi%20${encodeURIComponent(nome.split(' ')[0])}%2C%20vi%20seu%20pedido%20de%20diagn%C3%B3stico%20e%20vou%20analisar%20e%20enviar%20o%20resultado%20em%20breve!" style="${btnStyle}">
+        Responder no WhatsApp →
+      </a>
+    </div>
+
+  </div>
+
+  <div style="${footerStyle}">
+    <p style="margin:0;">Notificação automática — Sites Especiais</p>
+  </div>
+
+</div>
+</body>
+</html>`,
+  };
+}
+
 // ── Template: Checklist PDF ─────────────────────────
 
 const checklistItems = [

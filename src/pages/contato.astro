@@ -44,30 +44,38 @@ import Footer from '../components/Footer.astro';
             rel="noopener"
             class="canal-card canal-card--destaque reveal"
           >
-            <div class="canal-card__icon">💬</div>
+            <div class="canal-card__icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.932 15.932 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.334 22.616c-.39 1.1-1.932 2.014-3.164 2.28-.842.18-1.94.322-5.642-1.212-4.738-1.962-7.792-6.778-8.03-7.094-.228-.316-1.916-2.554-1.916-4.872 0-2.318 1.212-3.456 1.642-3.928.39-.428 1.028-.626 1.638-.626.198 0 .376.01.536.018.47.02.706.048 1.016.788.39.926 1.338 3.244 1.456 3.48.118.236.236.554.078.87-.148.326-.278.47-.514.742-.236.272-.46.48-.696.774-.218.254-.462.526-.198.996.264.46 1.174 1.878 2.52 3.044 1.732 1.498 3.192 1.964 3.644 2.182.352.17.772.138 1.046-.158.348-.376.778-.998 1.214-1.614.312-.44.704-.494 1.094-.336.396.148 2.506 1.182 2.936 1.396.43.216.716.322.822.498.104.176.104 1.022-.286 2.122z"/>
+              </svg>
+            </div>
             <div class="canal-card__content">
               <div class="canal-card__label">WhatsApp</div>
-              <div class="canal-card__titulo">Respondo em até 2h</div>
+              <div class="canal-card__titulo">Resposta em até 1 hora</div>
               <p class="canal-card__desc">
                 Melhor canal para dúvidas rápidas, orçamentos e conversa inicial.
-                Segunda a sexta, das 8h às 18h.
+                Segunda a sexta, das 8h às 18h (BRT).
               </p>
             </div>
             <div class="canal-card__arrow">→</div>
           </a>
 
-          <!-- Diagnóstico agendado -->
+          <!-- Diagnóstico -->
           <a
             href="/diagnostico"
             class="canal-card reveal reveal-delay-1"
           >
-            <div class="canal-card__icon">📅</div>
+            <div class="canal-card__icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 11l3 3L22 4"/>
+                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+              </svg>
+            </div>
             <div class="canal-card__content">
               <div class="canal-card__label">Diagnóstico gratuito</div>
-              <div class="canal-card__titulo">30 min de conversa focada</div>
+              <div class="canal-card__titulo">Análise em até 24h úteis</div>
               <p class="canal-card__desc">
-                Videochamada agendada. Analiso seu site ao vivo e você sai com um plano de ação.
-                Sem compromisso.
+                Preencha o formulário com as informações do seu negócio. Nossa equipe analisa seu site e envia o diagnóstico por e-mail e WhatsApp. Gratuito, sem compromisso.
               </p>
             </div>
             <div class="canal-card__arrow">→</div>
@@ -75,15 +83,20 @@ import Footer from '../components/Footer.astro';
 
           <!-- Email -->
           <a
-            href="mailto:pr.raniellevi@gmail.com"
+            href="mailto:contato@sitesespeciais.com.br"
             class="canal-card reveal reveal-delay-2"
           >
-            <div class="canal-card__icon">✉️</div>
+            <div class="canal-card__icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
             <div class="canal-card__content">
               <div class="canal-card__label">Email</div>
-              <div class="canal-card__titulo">pr.raniellevi@gmail.com</div>
+              <div class="canal-card__titulo">contato@sitesespeciais.com.br</div>
               <p class="canal-card__desc">
-                Para enviar materiais, briefing inicial ou assuntos que precisam de detalhamento.
+                Para enviar materiais, briefing ou assuntos que precisam de detalhamento.
                 Resposta em até 24h úteis.
               </p>
             </div>
@@ -99,24 +112,36 @@ import Footer from '../components/Footer.astro';
       <div class="container container--narrow">
         <div class="info-grid">
           <div class="info-item reveal">
-            <div class="info-item__icon">🕐</div>
+            <div class="info-item__icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
             <div>
               <h3>Horário de atendimento</h3>
-              <p>Segunda a sexta: 8h às 18h (BRT)<br>Sábados: 9h às 12h para urgências</p>
+              <p>Segunda a sexta: 8h às 18h (BRT)<br>Não trabalhamos aos sábados.</p>
             </div>
           </div>
           <div class="info-item reveal reveal-delay-1">
-            <div class="info-item__icon">📍</div>
+            <div class="info-item__icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 010 16c-4.418 0-8-3.582-8-8s3.582-8 8-8z" opacity=".4"/><path d="M12 21v1"/>
+              </svg>
+            </div>
             <div>
-              <h3>Onde estamos</h3>
-              <p>Piauí, Brasil — atendemos todo o território nacional remotamente.</p>
+              <h3>Onde atendemos</h3>
+              <p>Piauí, Brasil — atendemos remotamente toda a América Latina.</p>
             </div>
           </div>
           <div class="info-item reveal reveal-delay-2">
-            <div class="info-item__icon">⚡</div>
+            <div class="info-item__icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
             <div>
               <h3>Tempo de resposta</h3>
-              <p>WhatsApp: até 2h<br>Email: até 24h úteis<br>Diagnóstico: você escolhe o horário</p>
+              <p>WhatsApp: até 1h<br>Email: até 24h úteis<br>Diagnóstico: 24h após o envio do formulário</p>
             </div>
           </div>
         </div>
@@ -145,8 +170,8 @@ import Footer from '../components/Footer.astro';
             <p>Sim. 7 dias incondicional. Se não gostar por qualquer razão, devolvemos 100%. <a href="/garantia">Como funciona →</a></p>
           </div>
           <div class="faq-r-item reveal">
-            <strong>Atende empresas de fora do Piauí?</strong>
-            <p>Sim. Todo o trabalho é remoto. Atendemos qualquer empresa brasileira.</p>
+            <strong>Atende empresas de fora do Brasil?</strong>
+            <p>Sim. Todo o trabalho é remoto. Atendemos empresas em toda a América Latina.</p>
           </div>
           <div class="faq-r-item reveal reveal-delay-1">
             <strong>Preciso ter um site para contratar?</strong>
@@ -237,10 +262,24 @@ import Footer from '../components/Footer.astro';
   border-color: rgba(232, 197, 71, 0.5);
 }
 
-.canal-card__icon {
-  font-size: 1.75rem;
+.canal-card__icon-wrap {
+  width: 44px;
+  height: 44px;
+  background: rgba(240, 208, 96, 0.07);
+  border: 1px solid rgba(240, 208, 96, 0.15);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
   flex-shrink: 0;
   margin-top: 0.1rem;
+}
+
+.canal-card--destaque .canal-card__icon-wrap {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.2);
+  color: #25D366;
 }
 
 .canal-card__content { flex: 1; }
@@ -296,7 +335,19 @@ import Footer from '../components/Footer.astro';
 
 .info-item { display: flex; gap: 1rem; align-items: flex-start; }
 
-.info-item__icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+.info-item__icon-wrap {
+  width: 36px;
+  height: 36px;
+  background: rgba(240, 208, 96, 0.07);
+  border: 1px solid rgba(240, 208, 96, 0.12);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
 
 .info-item h3 {
   font-size: 0.95rem;

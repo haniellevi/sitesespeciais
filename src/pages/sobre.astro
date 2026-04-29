@@ -145,7 +145,9 @@ const sobreSchema = {
 
         <div class="filosofia-grid">
           <div class="filosofia-item reveal">
-            <div class="filosofia-item__icon">⏱️</div>
+            <div class="filosofia-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
             <h3>Prazo é prazo</h3>
             <p>
               Reforma em 14 dias. Site novo em 21 dias. Não "mais ou menos".
@@ -154,7 +156,9 @@ const sobreSchema = {
             </p>
           </div>
           <div class="filosofia-item reveal reveal-delay-1">
-            <div class="filosofia-item__icon">📐</div>
+            <div class="filosofia-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
             <h3>Alinhamento antes, surpresa zero</h3>
             <p>
               Briefing detalhado, proposta visual aprovada por você, etapas com feedback.
@@ -163,7 +167,9 @@ const sobreSchema = {
             </p>
           </div>
           <div class="filosofia-item reveal reveal-delay-2">
-            <div class="filosofia-item__icon">🎯</div>
+            <div class="filosofia-item__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
             <h3>Resultado acima de elogio</h3>
             <p>
               Prefiro que você me diga daqui a 6 meses que o site trouxe clientes
@@ -234,17 +240,17 @@ const sobreSchema = {
         <div class="cases-mini-grid">
           <a href="/cases/fiel-alimentos" class="case-mini reveal">
             <div class="case-mini__nome">Fiel Alimentos</div>
-            <div class="case-mini__tipo">Site novo · E-commerce regional</div>
+            <div class="case-mini__tipo">Reforma · Distribuidora regional</div>
             <div class="case-mini__arrow">→</div>
           </a>
           <a href="/cases/emcorr" class="case-mini reveal reveal-delay-1">
             <div class="case-mini__nome">EmCORR Centro Clínico</div>
-            <div class="case-mini__tipo">Site novo · Saúde</div>
+            <div class="case-mini__tipo">Reforma · Saúde</div>
             <div class="case-mini__arrow">→</div>
           </a>
           <a href="/cases/clinica-pinheiro" class="case-mini reveal reveal-delay-2">
             <div class="case-mini__nome">Clínica Pinheiro</div>
-            <div class="case-mini__tipo">Reforma · Saúde</div>
+            <div class="case-mini__tipo">Site novo · Saúde</div>
             <div class="case-mini__arrow">→</div>
           </a>
         </div>
@@ -266,13 +272,14 @@ const sobreSchema = {
         </h2>
 
         <p class="cta-final__sub reveal reveal-delay-1">
-          30 minutos de diagnóstico gratuito. Vejo o que está travando o seu site
-          e o que precisa mudar. Sem compromisso, sem pressão de venda.
+          Preencha o diagnóstico gratuito. Em 48 horas úteis, nosso time analisa
+          o seu site e manda o resultado direto no seu WhatsApp e e-mail.
+          Sem compromisso, sem pressão de venda.
         </p>
 
         <div class="hero__ctas reveal reveal-delay-2">
           <a href="/diagnostico" class="btn btn--primary btn--large">
-            Agendar Diagnóstico →
+            Quero meu Diagnóstico →
           </a>
           <a href="https://wa.me/5589994711318" target="_blank" rel="noopener" class="btn btn--outline btn--large">
             Falar no WhatsApp
@@ -439,7 +446,19 @@ const sobreSchema = {
   padding: 1.75rem;
 }
 
-.filosofia-item__icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+.filosofia-item__icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(240, 208, 96, 0.07);
+  border: 1px solid rgba(240, 208, 96, 0.15);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
 
 .filosofia-item h3 {
   font-size: 1rem;
