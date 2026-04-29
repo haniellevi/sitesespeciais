@@ -1,0 +1,458 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import SpotlightCard from '../../components/SpotlightCard.astro';
+
+const SITE_URL = 'https://sitesespeciais.com.br';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${SITE_URL}/servicos/seo-mensal/#service`,
+    'name': 'SEO Mensal',
+    'description': 'Serviço mensal de SEO para empresas locais: produção de conteúdo, otimização de Google Meu Negócio, construção de autoridade local e relatório mensal. Para aparecer no Google e nas IAs quando o cliente pesquisa.',
+    'url': `${SITE_URL}/servicos/seo-mensal`,
+    'provider': { '@id': `${SITE_URL}/#organization` },
+    'areaServed': { '@type': 'Country', 'name': 'Brasil' },
+    'offers': [
+      {
+        '@type': 'Offer',
+        'name': 'SEO Local',
+        'price': '497',
+        'priceCurrency': 'BRL',
+        'billingIncrement': 'month',
+        'availability': 'https://schema.org/InStock',
+      },
+      {
+        '@type': 'Offer',
+        'name': 'SEO + Conteúdo',
+        'price': '897',
+        'priceCurrency': 'BRL',
+        'billingIncrement': 'month',
+        'availability': 'https://schema.org/InStock',
+      },
+    ],
+    'serviceType': 'Search Engine Optimization',
+  },
+];
+
+const planos = [
+  {
+    nome: 'SEO Local',
+    preco: '497',
+    destaque: false,
+    desc: 'Para aparecer no Google quando alguém pesquisa seu serviço na sua cidade.',
+    itens: [
+      'Otimização mensal do Google Meu Negócio',
+      '2 posts no Google Meu Negócio/mês',
+      'Construção de citações locais (NAP)',
+      'Monitoramento de posição no Google',
+      'Análise de palavras-chave do seu setor',
+      'Relatório mensal de visibilidade',
+    ],
+    naoInclui: [
+      'Produção de artigos para o blog',
+      'Link building externo',
+    ],
+  },
+  {
+    nome: 'SEO + Conteúdo',
+    preco: '897',
+    destaque: true,
+    desc: 'Para dominar o Google E aparecer quando alguém pergunta no ChatGPT ou Gemini.',
+    itens: [
+      'Tudo do plano SEO Local',
+      '2 artigos para o blog/mês (escritos por nós)',
+      'Otimização de artigos existentes',
+      'Schema.org para IAs (ChatGPT, Gemini, Perplexity)',
+      'Link building de autoridade local',
+      'Google Search Console monitorado',
+      'Relatório mensal completo com ROI estimado',
+      'Reunião mensal de 30min para alinhamento',
+    ],
+    naoInclui: [],
+  },
+];
+---
+
+<Layout
+  title="SEO Mensal — Apareça no Google e no ChatGPT Todo Mês | Sites Especiais"
+  description="SEO mensal para empresas locais. Produção de conteúdo, Google Meu Negócio, visibilidade em IAs. Resultados visíveis em 45 dias. A partir de R$ 497/mês."
+  schema={schema}
+  publishedTime="2026-04-28"
+  modifiedTime="2026-04-28"
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="seo-hero section">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          A partir de R$ 497/mês · Resultados em 45 dias
+        </div>
+
+        <h1 class="seo__h1 reveal reveal-delay-1">
+          O Google não premia<br>
+          quem apareceu uma vez.<br>
+          <span class="text-gradient">Premia quem continua aparecendo.</span>
+        </h1>
+
+        <p class="seo__sub reveal reveal-delay-2">
+          SEO não é instalação — é presença contínua.
+          Cada mês sem conteúdo novo é um mês que o concorrente usa para subir na sua frente.
+          Todo mês publicamos, otimizamos e reportamos.
+        </p>
+
+        <div class="seo__ctas reveal reveal-delay-3">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Quero aparecer no Google todo mês →
+          </a>
+          <a href="#planos" class="btn btn--outline btn--large">
+            Ver planos e preços
+          </a>
+        </div>
+
+        <div class="seo__proof reveal reveal-delay-4">
+          <span>📈 1ª página em 45–90 dias</span>
+          <span class="sep">·</span>
+          <span>Google + ChatGPT + Gemini</span>
+          <span class="sep">·</span>
+          <span>Cancele quando quiser</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- POR QUE SEO MENSAL -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">Por que mensal — e não uma vez só</p>
+          <h2 class="section__h2">SEO é mais parecido com academia do que com cirurgia.</h2>
+          <p class="section__sub">
+            Uma cirurgia você faz uma vez e acabou. Academia você vai todo mês — porque parar é perder o que conquistou.
+            SEO funciona igual.
+          </p>
+        </div>
+
+        <div class="motivos-grid">
+          <SpotlightCard class="motivo-card reveal">
+            <span class="motivo-icon">🏃</span>
+            <h3>Concorrentes não param de publicar</h3>
+            <p>Enquanto seu site está estático, a clínica do bairro ao lado está publicando um artigo por semana. Em 3 meses ela passou você no Google — e você nem percebeu.</p>
+          </SpotlightCard>
+          <SpotlightCard class="motivo-card reveal reveal-delay-1">
+            <span class="motivo-icon">🤖</span>
+            <h3>ChatGPT e Gemini citam quem tem conteúdo</h3>
+            <p>As IAs aprendem com o que leem na internet. Site sem conteúdo não existe para elas. Cada artigo publicado é uma chance de aparecer quando alguém perguntar "qual é a melhor clínica em [sua cidade]".</p>
+          </SpotlightCard>
+          <SpotlightCard class="motivo-card reveal reveal-delay-2">
+            <span class="motivo-icon">📊</span>
+            <h3>Google pesa frequência de atualização</h3>
+            <p>Sites que publicam regularmente recebem visitas do Googlebot com mais frequência — o que acelera o ranqueamento de novas páginas. Parar de publicar é sinalizar para o Google que você não está ativo.</p>
+          </SpotlightCard>
+          <SpotlightCard class="motivo-card reveal">
+            <span class="motivo-icon">🗓️</span>
+            <h3>Autoridade se acumula ao longo do tempo</h3>
+            <p>Um site com 24 artigos publicados em 12 meses tem uma vantagem competitiva que não se compra em uma única entrega. A consistência é o diferencial que o concorrente mais preguiçoso nunca vai conseguir copiar.</p>
+          </SpotlightCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE FAZEMOS TODO MÊS -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">O que acontece todo mês</p>
+          <h2 class="section__h2">Cada mês, um passo a mais na direção certa.</h2>
+        </div>
+
+        <div class="timeline-lista">
+          {[
+            { semana: 'Semana 1', titulo: 'Pesquisa e pauta', desc: 'Identificamos as perguntas que seus clientes fazem no Google naquele mês. Priorizamos termos com intenção de compra — não vaidade de tráfego.' },
+            { semana: 'Semana 2', titulo: 'Produção de conteúdo', desc: 'Redigimos artigos em linguagem que seus clientes entendem. Sem jargão técnico, sem texto de IA sem revisão. Cada artigo leva o leitor até o CTA.' },
+            { semana: 'Semana 3', titulo: 'Publicação e otimização técnica', desc: 'Publicamos no seu site, configuramos Schema.org, meta tags e dados estruturados para IAs. Atualizamos o Google Meu Negócio com foto + post.' },
+            { semana: 'Semana 4', titulo: 'Monitoramento e relatório', desc: 'Você recebe: posição das suas palavras-chave, quantas visitas chegaram via Google, comparativo com o mês anterior e o plano do mês que vem.' },
+          ].map((item, i) => (
+            <div class={`timeline-item reveal${i % 2 !== 0 ? ' reveal-delay-1' : ''}`}>
+              <div class="timeline-semana">{item.semana}</div>
+              <div class="timeline-content">
+                <h3 class="timeline-titulo">{item.titulo}</h3>
+                <p class="timeline-desc">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANOS -->
+    <section class="section section--alt" id="planos">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">Planos</p>
+          <h2 class="section__h2">Dois caminhos para aparecer mais.</h2>
+          <p class="section__sub">Sem fidelidade. Cancele quando quiser, no mês seguinte.</p>
+        </div>
+
+        <div class="planos-grid">
+          {planos.map((plano, idx) => (
+            <div class={`plano-card reveal${idx > 0 ? ' reveal-delay-1' : ''}${plano.destaque ? ' plano-card--destaque' : ''}`}>
+              {plano.destaque && <div class="plano-badge">Mais completo</div>}
+              <p class="plano-nome">{plano.nome}</p>
+              <div class="plano-preco">
+                <span class="plano-currency">R$</span>
+                <span class="plano-valor">{plano.preco}</span>
+                <span class="plano-mes">/mês</span>
+              </div>
+              <p class="plano-desc">{plano.desc}</p>
+              <ul class="plano-lista">
+                {plano.itens.map(item => (
+                  <li><span class="plano-check">✓</span>{item}</li>
+                ))}
+                {plano.naoInclui.map(item => (
+                  <li class="plano-nao"><span>✗</span>{item}</li>
+                ))}
+              </ul>
+              <a href="/diagnostico" class={`btn btn--large${plano.destaque ? ' btn--primary' : ' btn--outline'}`} style="width: 100%; justify-content: center; margin-top: 1.5rem;">
+                Começar com este plano →
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p class="planos-nota reveal">
+          💡 Quem tem o <a href="/servicos/manutencao-site">Plano de Manutenção Pro</a> ganha desconto de R$ 100/mês em qualquer plano de SEO.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESULTADO REAL -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Resultado real</p>
+          <h2 class="section__h2">O que 90 dias de SEO consistente parecem.</h2>
+        </div>
+
+        <div class="resultados-grid reveal">
+          {[
+            { num: '+340%', desc: 'mais visitas orgânicas', nota: 'vs. mesmo período sem SEO' },
+            { num: '1ª página', desc: 'para 8 palavras-chave locais', nota: 'em 45–75 dias' },
+            { num: '3 IAs', desc: 'citam o site nos resultados', nota: 'ChatGPT, Gemini, Perplexity' },
+            { num: '+18 leads', desc: 'mês a mais pelo Google', nota: 'média dos clientes ativos' },
+          ].map((r, i) => (
+            <div class={`resultado-item reveal${i % 2 !== 0 ? ' reveal-delay-1' : ''}`}>
+              <span class="resultado-num">{r.num}</span>
+              <span class="resultado-desc">{r.desc}</span>
+              <span class="resultado-nota">{r.nota}</span>
+            </div>
+          ))}
+        </div>
+
+        <blockquote class="depo-seo reveal" style="margin-top: 2.5rem;">
+          <div class="depo-seo__stars">★★★★★</div>
+          <p class="depo-seo__texto">
+            "Em três meses minha clínica apareceu para buscas que eu nem sabia que existiam.
+            Hoje quando alguém pesquisa 'clínica em Teresina' no Google ou no ChatGPT, me encontram.
+            Nunca imaginei que o site pudesse fazer isso."
+          </p>
+          <footer class="depo-seo__autor">
+            <div class="depo-seo__avatar">CP</div>
+            <div>
+              <strong>Dr. Carlos Pinheiro</strong>
+              <span>Clínica Pinheiro — Teresina, PI · SEO + Conteúdo</span>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2 class="section__h2">O que você precisa saber antes de começar.</h2>
+        </div>
+
+        <div class="faq-list">
+          {[
+            { q: 'Em quanto tempo apareço na primeira página do Google?', a: 'Depende da concorrência no seu setor e cidade. Em geral, 45 a 90 dias para palavras-chave locais com intenção de compra. Termos muito disputados (como "advogado São Paulo") levam mais tempo. Mostramos uma estimativa realista antes de começar.' },
+            { q: 'Os artigos são escritos por IA ou por pessoas?', a: 'Pesquisa e estrutura usam ferramentas de IA, mas a redação, revisão e adequação ao seu tom de voz são feitas por pessoas. Não publicamos nada que soe genérico ou que você não aprovaria.' },
+            { q: 'Preciso ter blog no meu site para contratar SEO?', a: 'Para o plano SEO + Conteúdo, sim — criamos o blog se não existir (sem custo extra). Para o plano SEO Local, não: focamos em Google Meu Negócio e otimização das páginas existentes.' },
+            { q: 'Como funciona a aprovação do conteúdo?', a: 'Todo artigo é enviado para sua aprovação antes de publicar. Você lê, pede ajustes se quiser, e só vai ao ar depois do seu OK. Nunca publicamos sem sua revisão.' },
+            { q: 'SEO funciona para qualquer setor?', a: 'Para empresas locais (clínicas, escritórios, imobiliárias, serviços) o retorno é muito previsível — porque as buscas são locais e com intenção de contratação. Setores de varejo físico sem e-commerce também têm ótimo retorno.' },
+            { q: 'Posso cancelar se não ver resultado?', a: 'Sim. Sem multa, sem fidelidade. Mas temos métricas claras desde o primeiro mês — você não precisa ficar esperando no escuro para saber se está funcionando.' },
+          ].map((item, i) => (
+            <details class={`faq-item reveal${i % 2 !== 0 ? ' reveal-delay-1' : ''}`}>
+              <summary class="faq-item__q">{item.q}</summary>
+              <div class="faq-item__a"><p>{item.a}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section seo-cta-final">
+      <div class="container container--narrow text-center">
+        <div class="badge reveal" style="display: inline-flex; margin-bottom: 2rem;">
+          <span class="badge__dot"></span>
+          Resultados visíveis em 45 dias
+        </div>
+        <h2 class="cta-final__h2 reveal reveal-delay-1">
+          Cada mês que passa<br>
+          o concorrente publica.<br>
+          <span class="text-gradient">Você pode publicar mais.</span>
+        </h2>
+        <p class="cta-final__sub reveal reveal-delay-2">
+          O diagnóstico gratuito já inclui uma análise rápida do seu SEO atual —
+          quais posições você tem, o que está perdendo e quanto vale corrigir.
+        </p>
+        <a href="/diagnostico" class="btn btn--primary btn--large reveal reveal-delay-3">
+          Ver diagnóstico do meu SEO →
+        </a>
+        <p class="cta-final__guarantee reveal reveal-delay-4">
+          Cancele quando quiser · Sem fidelidade · Relatório mensal incluso
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255,255,255,0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+.section__h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 1rem; line-height: 1.15; }
+.section__sub { font-size: 1rem; color: var(--text-secondary); max-width: 560px; margin-inline: auto; line-height: 1.7; }
+
+/* Hero */
+.seo-hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.seo__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  margin: 1.5rem 0;
+  line-height: 1.08;
+}
+.seo__sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--text-secondary); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.seo__ctas { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.seo__proof { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-muted); }
+.seo__proof .sep { color: var(--border); }
+
+/* Motivos */
+.motivos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+@media (max-width: 620px) { .motivos-grid { grid-template-columns: 1fr; } }
+.motivo-card { padding: 1.75rem; }
+.motivo-icon { font-size: 1.75rem; display: block; margin-bottom: 0.75rem; }
+.motivo-card h3 { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.4rem; line-height: 1.4; }
+.motivo-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* Timeline */
+.timeline-lista { display: flex; flex-direction: column; gap: 0; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.timeline-item:last-child { border-bottom: none; }
+@media (max-width: 560px) { .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; } }
+.timeline-semana {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  padding-top: 0.15rem;
+}
+.timeline-titulo { font-family: var(--font-sans); font-size: 0.97rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.35rem; }
+.timeline-desc { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65; }
+
+/* Planos (identical to manutencao) */
+.planos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+@media (max-width: 620px) { .planos-grid { grid-template-columns: 1fr; } }
+.plano-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 2rem; position: relative; }
+.plano-card--destaque { border-color: rgba(240, 208, 96, 0.35); background: linear-gradient(145deg, rgba(240, 208, 96, 0.04) 0%, var(--card) 60%); }
+.plano-badge { position: absolute; top: -0.75rem; left: 50%; transform: translateX(-50%); background: var(--primary); color: var(--background); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.9rem; border-radius: 2rem; white-space: nowrap; }
+.plano-nome { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+.plano-preco { display: flex; align-items: baseline; gap: 0.2rem; margin-bottom: 0.75rem; line-height: 1; }
+.plano-currency { font-family: var(--font-mono); font-size: 1.1rem; color: var(--primary); }
+.plano-valor { font-family: var(--font-mono); font-size: 2.8rem; font-weight: 700; color: var(--primary); }
+.plano-mes { font-size: 0.85rem; color: var(--text-muted); align-self: flex-end; padding-bottom: 0.3rem; }
+.plano-desc { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+.plano-lista { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.plano-lista li { display: flex; gap: 0.6rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; }
+.plano-check { color: var(--success); flex-shrink: 0; }
+.plano-nao { opacity: 0.4; }
+.plano-nao span { color: var(--error); flex-shrink: 0; }
+.planos-nota { text-align: center; font-size: 0.84rem; color: var(--text-muted); background: rgba(240, 208, 96, 0.05); border: 1px solid rgba(240, 208, 96, 0.12); border-radius: var(--radius-lg); padding: 0.9rem 1.5rem; }
+.planos-nota a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Resultados */
+.resultados-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+@media (max-width: 720px) { .resultados-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 400px) { .resultados-grid { grid-template-columns: 1fr; } }
+.resultado-item { background: var(--card); padding: 1.75rem 1.25rem; display: flex; flex-direction: column; gap: 0.3rem; text-align: center; }
+.resultado-num { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 700; color: var(--primary); line-height: 1; }
+.resultado-desc { font-size: 0.88rem; font-weight: 600; color: var(--foreground); line-height: 1.35; }
+.resultado-nota { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+/* Depoimento */
+.depo-seo { background: linear-gradient(135deg, rgba(240, 208, 96, 0.05) 0%, var(--card) 60%); border: 1px solid rgba(240, 208, 96, 0.2); border-radius: var(--radius-xl); padding: 2.5rem; margin: 0; }
+.depo-seo__stars { color: var(--primary); margin-bottom: 1rem; }
+.depo-seo__texto { font-size: 1.05rem; color: var(--foreground); line-height: 1.75; font-style: italic; margin-bottom: 1.5rem; }
+.depo-seo__autor { display: flex; align-items: center; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(240, 208, 96, 0.15); }
+.depo-seo__avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--luxota-accent)); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--luxota-bg); flex-shrink: 0; }
+.depo-seo__autor strong { display: block; font-size: 0.9rem; color: var(--foreground); }
+.depo-seo__autor span { display: block; font-size: 0.78rem; color: var(--text-muted); }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.faq-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color 0.2s; }
+.faq-item[open] { border-color: rgba(240, 208, 96, 0.25); }
+.faq-item__q { padding: 1.25rem 1.5rem; font-size: 0.93rem; font-weight: 600; color: var(--foreground); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; }
+.faq-item__q::-webkit-details-marker { display: none; }
+.faq-item__q::after { content: '+'; font-size: 1.1rem; color: var(--primary); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item[open] .faq-item__q::after { transform: rotate(45deg); }
+.faq-item__a { padding: 0 1.5rem 1.25rem; }
+.faq-item__a p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+
+/* CTA Final */
+.seo-cta-final { background: radial-gradient(ellipse at center, rgba(79, 209, 197, 0.04) 0%, transparent 70%); }
+.cta-final__h2 { font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; margin-bottom: 1.25rem; }
+.cta-final__sub { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; max-width: 520px; margin-inline: auto; margin-bottom: 2rem; }
+.cta-final__guarantee { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); margin-top: 1rem; }
+</style>

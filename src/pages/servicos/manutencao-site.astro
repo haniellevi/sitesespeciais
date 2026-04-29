@@ -1,0 +1,473 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import SpotlightCard from '../../components/SpotlightCard.astro';
+
+const SITE_URL = 'https://sitesespeciais.com.br';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${SITE_URL}/servicos/manutencao-site/#service`,
+    'name': 'Manutenção Mensal de Site',
+    'description': 'Plano mensal de manutenção: atualizações de conteúdo, backups diários, monitoramento de velocidade e segurança, suporte via WhatsApp. Para empresas que não querem depender de programador para cada pequena mudança.',
+    'url': `${SITE_URL}/servicos/manutencao-site`,
+    'provider': { '@id': `${SITE_URL}/#organization` },
+    'areaServed': { '@type': 'Country', 'name': 'Brasil' },
+    'offers': [
+      {
+        '@type': 'Offer',
+        'name': 'Manutenção Essencial',
+        'price': '197',
+        'priceCurrency': 'BRL',
+        'billingIncrement': 'month',
+        'availability': 'https://schema.org/InStock',
+      },
+      {
+        '@type': 'Offer',
+        'name': 'Manutenção Pro',
+        'price': '397',
+        'priceCurrency': 'BRL',
+        'billingIncrement': 'month',
+        'availability': 'https://schema.org/InStock',
+      },
+    ],
+    'serviceType': 'Website Maintenance',
+  },
+];
+
+const planos = [
+  {
+    nome: 'Essencial',
+    preco: '197',
+    destaque: false,
+    desc: 'Para quem precisa de segurança e não quer ficar na mão.',
+    itens: [
+      'Até 4 atualizações de conteúdo/mês',
+      'Backup automático diário',
+      'Monitoramento de disponibilidade 24/7',
+      'Alerta imediato se o site cair',
+      'Suporte via WhatsApp (48h)',
+      'Relatório mensal simplificado',
+    ],
+    naoInclui: [
+      'Alterações de layout ou design',
+      'Novos textos ou copywriting',
+    ],
+  },
+  {
+    nome: 'Pro',
+    preco: '397',
+    destaque: true,
+    desc: 'Para quem quer o site sempre atualizado e no pico de performance.',
+    itens: [
+      'Atualizações ilimitadas de conteúdo',
+      'Backup automático diário + restauração em 1h',
+      'Monitoramento de velocidade e Core Web Vitals',
+      'Varredura semanal de segurança',
+      'Suporte prioritário via WhatsApp (24h)',
+      'Atualização de preços, fotos e textos',
+      'Relatório mensal completo com dados de tráfego',
+      'Até 1 nova seção por mês (sem custo extra)',
+    ],
+    naoInclui: [],
+  },
+];
+---
+
+<Layout
+  title="Manutenção Mensal de Site — Seu Site Sempre no Ar e Atualizado | Sites Especiais"
+  description="Plano mensal para manter seu site rápido, seguro e atualizado. Backups diários, suporte via WhatsApp, atualizações de conteúdo sem precisar chamar programador. A partir de R$ 197/mês."
+  schema={schema}
+  publishedTime="2026-04-28"
+  modifiedTime="2026-04-28"
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- HERO -->
+    <section class="manut-hero section">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          A partir de R$ 197/mês · Cancela quando quiser
+        </div>
+
+        <h1 class="manut__h1 reveal reveal-delay-1">
+          Seu site quebra<br>
+          num domingo à noite.<br>
+          <span class="text-gradient">Quem vai consertar?</span>
+        </h1>
+
+        <p class="manut__sub reveal reveal-delay-2">
+          Formulário que para de funcionar, imagem que some, preço desatualizado —
+          cada hora com o site errado é um cliente que vai embora sem avisar.
+          Manutenção mensal resolve antes de virar problema.
+        </p>
+
+        <div class="manut__ctas reveal reveal-delay-3">
+          <a href="/diagnostico" class="btn btn--primary btn--large">
+            Quero manter meu site funcionando →
+          </a>
+          <a href="#planos" class="btn btn--outline btn--large">
+            Ver planos e preços
+          </a>
+        </div>
+
+        <div class="manut__proof reveal reveal-delay-4">
+          <span>🛡️ Cancele quando quiser</span>
+          <span class="sep">·</span>
+          <span>Sem fidelidade</span>
+          <span class="sep">·</span>
+          <span>Resultado em 24h</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE ACONTECE SEM MANUTENÇÃO -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">O custo real de não ter manutenção</p>
+          <h2 class="section__h2">Sites que ninguém cuida têm um padrão.</h2>
+          <p class="section__sub">Não é pessimismo. É o que acontece com 9 em cada 10 sites de empresa local sem cuidado mensal.</p>
+        </div>
+
+        <div class="riscos-grid">
+          <SpotlightCard class="risco-card reveal">
+            <span class="risco-icon">🔴</span>
+            <h3>Site fora do ar — às vezes por dias</h3>
+            <p>Hospedagem expira, certificado SSL vence, servidor reinicia com erro. Você só descobre quando um cliente reclama — ou quando percebe que parou de receber leads.</p>
+          </SpotlightCard>
+          <SpotlightCard class="risco-card reveal reveal-delay-1">
+            <span class="risco-icon">📋</span>
+            <h3>Informações erradas que ninguém atualiza</h3>
+            <p>Preço diferente do WhatsApp. Horário de funcionamento de 2023. Foto de um produto que você parou de vender. Cliente chega esperando uma coisa e encontra outra.</p>
+          </SpotlightCard>
+          <SpotlightCard class="risco-card reveal reveal-delay-2">
+            <span class="risco-icon">🐌</span>
+            <h3>Velocidade caindo mês a mês</h3>
+            <p>Imagens novas sem otimizar, plugins acumulados, cache velho. O site que abria em 0,8s começa a abrir em 3s — e o Google ranqueia mais baixo a cada atualização.</p>
+          </SpotlightCard>
+          <SpotlightCard class="risco-card reveal">
+            <span class="risco-icon">🔓</span>
+            <h3>Vulnerabilidades de segurança abertas</h3>
+            <p>Sites WordPress e similares têm atualizações de segurança toda semana. Sem aplicar, qualquer script automatizado pode infectar seu site — e o Google avisa seus visitantes.</p>
+          </SpotlightCard>
+          <SpotlightCard class="risco-card reveal reveal-delay-1">
+            <span class="risco-icon">📞</span>
+            <h3>Formulários que param de enviar e-mail</h3>
+            <p>O lead preenche o formulário de contato. Você nunca recebe. O cliente acha que você não respondeu e vai pro concorrente. Você nem sabe que perdeu.</p>
+          </SpotlightCard>
+          <SpotlightCard class="risco-card reveal reveal-delay-2">
+            <span class="risco-icon">📉</span>
+            <h3>Queda de posição no Google</h3>
+            <p>Site parado = sinal de abandono para o algoritmo. Enquanto seu site envelhece, os concorrentes que publicam conteúdo novo sobem. Em 6 meses você some da primeira página.</p>
+          </SpotlightCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE ESTÁ INCLUÍDO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">O que fazemos por você todo mês</p>
+          <h2 class="section__h2">Tudo que um site precisa para não dar trabalho.</h2>
+        </div>
+
+        <div class="incluso-lista">
+          {[
+            { icon: '✏️', titulo: 'Atualizações de conteúdo sem programador', desc: 'Mudou o preço? Tem foto nova? Atualizou o horário? Manda no WhatsApp e fica pronto em até 24h — sem você precisar entender de site.' },
+            { icon: '💾', titulo: 'Backup diário automático', desc: 'Todos os dias, uma cópia completa do seu site é salva. Se algo der errado — acidente, ataque, erro humano — restauramos a versão anterior em até 1 hora.' },
+            { icon: '📡', titulo: 'Monitoramento 24h de disponibilidade', desc: 'Se seu site cair às 2 da manhã, você recebe um alerta em segundos. E nossa equipe já entra para resolver — antes do seu cliente perceber.' },
+            { icon: '⚡', titulo: 'Ajustes de velocidade mensais', desc: 'Otimizamos imagens novas, limpamos cache acumulado e verificamos se o tempo de carregamento continua abaixo de 1 segundo. O Google e os clientes agradecem.' },
+            { icon: '🔒', titulo: 'Varredura de segurança semanal', desc: 'Verificamos vulnerabilidades, aplicamos patches de segurança e monitoramos o certificado SSL. Seu site protegido sem você precisar saber o que é um firewall.' },
+            { icon: '📊', titulo: 'Relatório mensal com dados reais', desc: 'Todo mês você recebe: quantas visitas chegaram, de onde vieram, quais páginas mais acessaram e o que melhoramos. Sem gráfico de TI — em português, direto ao ponto.' },
+          ].map((item, i) => (
+            <div class={`incluso-item reveal${i % 2 !== 0 ? ' reveal-delay-1' : ''}`}>
+              <span class="incluso-icon">{item.icon}</span>
+              <div>
+                <h3 class="incluso-titulo">{item.titulo}</h3>
+                <p class="incluso-desc">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANOS -->
+    <section class="section section--alt" id="planos">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">Planos</p>
+          <h2 class="section__h2">Escolha o que faz sentido para o seu negócio.</h2>
+          <p class="section__sub">Sem fidelidade. Cancele quando quiser, no mês seguinte.</p>
+        </div>
+
+        <div class="planos-grid">
+          {planos.map((plano, idx) => (
+            <div class={`plano-card reveal${idx > 0 ? ' reveal-delay-1' : ''}${plano.destaque ? ' plano-card--destaque' : ''}`}>
+              {plano.destaque && <div class="plano-badge">Mais escolhido</div>}
+              <p class="plano-nome">{plano.nome}</p>
+              <div class="plano-preco">
+                <span class="plano-currency">R$</span>
+                <span class="plano-valor">{plano.preco}</span>
+                <span class="plano-mes">/mês</span>
+              </div>
+              <p class="plano-desc">{plano.desc}</p>
+              <ul class="plano-lista">
+                {plano.itens.map(item => (
+                  <li><span class="plano-check">✓</span>{item}</li>
+                ))}
+                {plano.naoInclui.map(item => (
+                  <li class="plano-nao"><span>✗</span>{item}</li>
+                ))}
+              </ul>
+              <a href="/diagnostico" class={`btn btn--large${plano.destaque ? ' btn--primary' : ' btn--outline'}`} style="width: 100%; justify-content: center; margin-top: 1.5rem;">
+                Começar com este plano →
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p class="planos-nota reveal">
+          💡 Clientes que já fizeram <a href="/reforma">Reforma</a> ou <a href="/site-novo">Site Novo</a> ganham 1 mês grátis no plano Pro.
+        </p>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTO -->
+    <section class="section">
+      <div class="container container--narrow">
+        <blockquote class="depo-manut reveal">
+          <div class="depo-manut__stars">★★★★★</div>
+          <p class="depo-manut__texto">
+            "Antes eu ficava com medo de mudar qualquer coisa no site — uma vez quebrei o formulário e perdi leads
+            por duas semanas sem saber. Agora mando no WhatsApp, fica pronto em um dia. Sem estresse."
+          </p>
+          <footer class="depo-manut__autor">
+            <div class="depo-manut__avatar">FI</div>
+            <div>
+              <strong>Equipe Fiel Alimentos</strong>
+              <span>Distribuidora · Corrente, PI · Plano Pro</span>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2 class="section__h2">O que você precisa saber.</h2>
+        </div>
+
+        <div class="faq-list">
+          {[
+            { q: 'Precisa ter feito o site com vocês para contratar a manutenção?', a: 'Não. Avaliamos seu site atual e, se conseguirmos dar suporte adequado, aceitamos a manutenção. Alguns sites muito antigos ou em plataformas fechadas podem não ser compatíveis — mas verificamos antes de cobrar qualquer coisa.' },
+            { q: 'O que conta como "atualização de conteúdo"?', a: 'Trocar texto, atualizar preço, adicionar ou remover foto, mudar horário de funcionamento, atualizar telefone ou endereço. Não inclui criar páginas novas, reformular o layout ou escrever novos textos de copywriting.' },
+            { q: 'Quanto tempo leva para atender um pedido de atualização?', a: 'No plano Essencial, até 48h úteis. No plano Pro, até 24h — e pedidos urgentes (algo quebrado) tratamos no mesmo dia.' },
+            { q: 'Posso cancelar quando quiser?', a: 'Sim. Sem multa, sem justificativa. Avisa até o dia 20 do mês e a cobrança não renova no mês seguinte. Simples assim.' },
+            { q: 'Como funciona o backup? Onde fica guardado?', a: 'Backup completo do site (arquivos + banco de dados) todo dia, armazenado em servidor separado da hospedagem principal. Se o servidor cair e levar o site junto, o backup segue intacto.' },
+          ].map((item, i) => (
+            <details class={`faq-item reveal${i % 2 !== 0 ? ' reveal-delay-1' : ''}`}>
+              <summary class="faq-item__q">{item.q}</summary>
+              <div class="faq-item__a"><p>{item.a}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section manut-cta-final">
+      <div class="container container--narrow text-center">
+        <div class="badge reveal" style="display: inline-flex; margin-bottom: 2rem;">
+          <span class="badge__dot"></span>
+          Sem fidelidade · Cancele quando quiser
+        </div>
+        <h2 class="cta-final__h2 reveal reveal-delay-1">
+          Cada mês sem manutenção<br>
+          é um risco que você<br>
+          <span class="text-gradient-gold">assume sem necessidade.</span>
+        </h2>
+        <p class="cta-final__sub reveal reveal-delay-2">
+          R$ 197/mês é menos que uma hora de programador avulso para resolver um problema que você nem sabia que estava se formando.
+        </p>
+        <a href="/diagnostico" class="btn btn--primary btn--large reveal reveal-delay-3">
+          Quero manter meu site protegido →
+        </a>
+        <p class="cta-final__guarantee reveal reveal-delay-4">
+          Cancele quando quiser · Sem fidelidade · Suporte via WhatsApp
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.text-center { text-align: center; }
+.section--alt { background: rgba(255,255,255,0.015); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  margin-bottom: 0.75rem;
+}
+.section__h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 1rem; line-height: 1.15; }
+.section__sub { font-size: 1rem; color: var(--text-secondary); max-width: 560px; margin-inline: auto; line-height: 1.7; }
+
+/* Hero */
+.manut-hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.manut__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  margin: 1.5rem 0;
+  line-height: 1.08;
+}
+.manut__sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--text-secondary); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.manut__ctas { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.manut__proof { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-muted); }
+.manut__proof .sep { color: var(--border); }
+
+/* Riscos */
+.riscos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+@media (max-width: 900px) { .riscos-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .riscos-grid { grid-template-columns: 1fr; } }
+.risco-card { padding: 1.75rem; }
+.risco-icon { font-size: 1.75rem; display: block; margin-bottom: 0.75rem; }
+.risco-card h3 { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.4rem; line-height: 1.4; }
+.risco-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* Incluso */
+.incluso-lista { display: flex; flex-direction: column; gap: 0; }
+.incluso-item { display: flex; align-items: flex-start; gap: 1.25rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+.incluso-item:last-child { border-bottom: none; }
+.incluso-icon { font-size: 1.5rem; flex-shrink: 0; padding-top: 0.1rem; }
+.incluso-titulo { font-family: var(--font-sans); font-size: 0.97rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.3rem; }
+.incluso-desc { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65; }
+
+/* Planos */
+.planos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+@media (max-width: 620px) { .planos-grid { grid-template-columns: 1fr; } }
+
+.plano-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  position: relative;
+}
+.plano-card--destaque {
+  border-color: rgba(240, 208, 96, 0.35);
+  background: linear-gradient(145deg, rgba(240, 208, 96, 0.04) 0%, var(--card) 60%);
+}
+.plano-badge {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--background);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+}
+.plano-nome {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.plano-preco {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+.plano-currency { font-family: var(--font-mono); font-size: 1.1rem; color: var(--primary); }
+.plano-valor { font-family: var(--font-mono); font-size: 2.8rem; font-weight: 700; color: var(--primary); }
+.plano-mes { font-size: 0.85rem; color: var(--text-muted); align-self: flex-end; padding-bottom: 0.3rem; }
+.plano-desc { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+.plano-lista { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.plano-lista li { display: flex; gap: 0.6rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; }
+.plano-check { color: var(--success); flex-shrink: 0; }
+.plano-nao { opacity: 0.4; }
+.plano-nao span { color: var(--error); flex-shrink: 0; }
+.planos-nota {
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  background: rgba(240, 208, 96, 0.05);
+  border: 1px solid rgba(240, 208, 96, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 0.9rem 1.5rem;
+}
+.planos-nota a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Depoimento */
+.depo-manut {
+  background: linear-gradient(135deg, rgba(240, 208, 96, 0.05) 0%, var(--card) 60%);
+  border: 1px solid rgba(240, 208, 96, 0.2);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  margin: 0;
+}
+.depo-manut__stars { color: var(--primary); margin-bottom: 1rem; }
+.depo-manut__texto { font-size: 1.05rem; color: var(--foreground); line-height: 1.75; font-style: italic; margin-bottom: 1.5rem; }
+.depo-manut__autor { display: flex; align-items: center; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(240, 208, 96, 0.15); }
+.depo-manut__avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--luxota-accent)); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--luxota-bg); flex-shrink: 0; }
+.depo-manut__autor strong { display: block; font-size: 0.9rem; color: var(--foreground); }
+.depo-manut__autor span { display: block; font-size: 0.78rem; color: var(--text-muted); }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.faq-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color 0.2s; }
+.faq-item[open] { border-color: rgba(240, 208, 96, 0.25); }
+.faq-item__q { padding: 1.25rem 1.5rem; font-size: 0.93rem; font-weight: 600; color: var(--foreground); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; }
+.faq-item__q::-webkit-details-marker { display: none; }
+.faq-item__q::after { content: '+'; font-size: 1.1rem; color: var(--primary); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item[open] .faq-item__q::after { transform: rotate(45deg); }
+.faq-item__a { padding: 0 1.5rem 1.25rem; }
+.faq-item__a p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+
+/* CTA Final */
+.manut-cta-final { background: radial-gradient(ellipse at center, rgba(240, 208, 96, 0.04) 0%, transparent 70%); }
+.cta-final__h2 { font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; margin-bottom: 1.25rem; }
+.cta-final__sub { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; max-width: 520px; margin-inline: auto; margin-bottom: 2rem; }
+.cta-final__guarantee { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); margin-top: 1rem; }
+</style>
