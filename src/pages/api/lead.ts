@@ -26,31 +26,8 @@ async function sendEmail(to: string, subject: string, html: string): Promise<boo
   return res.ok;
 }
 
-// ── HubSpot: garantir propriedade customizada existe ─────
-let _hs_prop_ensured = false;
-async function ensureHubSpotProperty(): Promise<void> {
-  if (!HUBSPOT_KEY || _hs_prop_ensured) return;
-  try {
-    // Tenta criar a propriedade; se já existe (409) ignora
-    await fetch('https://api.hubapi.com/crm/v3/properties/contacts', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${HUBSPOT_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        groupName: 'contactinformation',
-        name: 'diagnostico_problema',
-        label: 'Diagnóstico — Principal Problema',
-        type: 'string',
-        fieldType: 'text',
-      }),
-    });
-    _hs_prop_ensured = true;
-  } catch {
-    // Silencioso — não impede o fluxo
-  }
-}
+// Propriedades custom já criadas via scripts/hubspot-setup.mjs
+const _hs_prop_ensured = true;
 
 // ── HubSpot helper ────────────────────────────────────────
 async function upsertHubSpotContact(params: {
@@ -79,13 +56,6 @@ async function upsertHubSpotContact(params: {
     lifecyclestage: 'lead',
     hs_lead_status: 'NEW',
     ...(siteUrl && { website: siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}` }),
-    // fallback legível no campo "description" caso custom props não existam ainda
-    description: [
-      fonte,
-      setor    ? `setor:${setor}`    : '',
-      problema ? `problema:${problema}` : '',
-      temSite  ? `tem_site:${temSite}`  : '',
-    ].filter(Boolean).join(' | '),
   };
 
   // Propriedades customizadas (requerem crm.schemas.contacts.write)
@@ -169,8 +139,7 @@ export const POST: APIRoute = async ({ request }) => {
         problema,
       };
 
-      // Garante propriedades customizadas e salva no HubSpot
-      await ensureHubSpotProperty();
+      // Salva no HubSpot
       await upsertHubSpotContact({
         email,
         nome,

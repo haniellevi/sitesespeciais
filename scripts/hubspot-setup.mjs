@@ -51,7 +51,7 @@ const properties = [
     groupName: 'contactinformation',
     name: 'diagnostico_tem_site',
     label: 'Diagnóstico — Tem Site',
-    type: 'string',
+    type: 'enumeration',
     fieldType: 'select',
     options: [
       { label: 'Sim', value: 'sim', displayOrder: 0 },
