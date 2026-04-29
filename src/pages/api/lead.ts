@@ -26,6 +26,32 @@ async function sendEmail(to: string, subject: string, html: string): Promise<boo
   return res.ok;
 }
 
+// ── HubSpot: garantir propriedade customizada existe ─────
+let _hs_prop_ensured = false;
+async function ensureHubSpotProperty(): Promise<void> {
+  if (!HUBSPOT_KEY || _hs_prop_ensured) return;
+  try {
+    // Tenta criar a propriedade; se já existe (409) ignora
+    await fetch('https://api.hubapi.com/crm/v3/properties/contacts', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${HUBSPOT_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        groupName: 'contactinformation',
+        name: 'diagnostico_problema',
+        label: 'Diagnóstico — Principal Problema',
+        type: 'string',
+        fieldType: 'text',
+      }),
+    });
+    _hs_prop_ensured = true;
+  } catch {
+    // Silencioso — não impede o fluxo
+  }
+}
+
 // ── HubSpot helper ────────────────────────────────────────
 async function upsertHubSpotContact(params: {
   email: string;
@@ -114,7 +140,8 @@ export const POST: APIRoute = async ({ request }) => {
         problema,
       };
 
-      // Salva no HubSpot (silencioso se sem chave)
+      // Garante propriedade customizada e salva no HubSpot
+      await ensureHubSpotProperty();
       await upsertHubSpotContact({ ...diagParams, fonte: 'diagnostico_site' }).catch(console.error);
 
       // Email de confirmação ao lead

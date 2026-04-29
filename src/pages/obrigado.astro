@@ -17,10 +17,15 @@ import Footer from '../components/Footer.astro';
       <div class="perspective-grid" aria-hidden="true" style="opacity: 0.3;"></div>
       <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
 
-        <div class="obrigado-icon reveal">✅</div>
+        <div class="obrigado-icon reveal" id="obrigado-icon" aria-hidden="true">
+          <!-- ícone padrão: check -->
+          <svg id="icon-check" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <!-- ícone diagnóstico: lupa (oculto por padrão) -->
+          <svg id="icon-diag" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
 
         <h1 class="obrigado-h1 reveal reveal-delay-1">
-          Enviado!<br>
+          <span id="titulo-principal">Enviado!</span><br>
           <span class="text-gradient-gold" id="titulo-dinamico">Verifique seu email.</span>
         </h1>
 
@@ -30,10 +35,10 @@ import Footer from '../components/Footer.astro';
         </p>
 
         <!-- Card de próximos passos -->
-        <div class="obrigado-card reveal reveal-delay-3">
-          <p class="obrigado-card__title">Enquanto o email não chega</p>
+        <div class="obrigado-card reveal reveal-delay-3" id="obrigado-card">
+          <p class="obrigado-card__title" id="card-title">Enquanto o email não chega</p>
 
-          <div class="obrigado-steps">
+          <div class="obrigado-steps" id="steps-padrao">
             <div class="obrigado-step">
               <span class="obrigado-step__num">1</span>
               <div>
@@ -44,7 +49,7 @@ import Footer from '../components/Footer.astro';
             <div class="obrigado-step">
               <span class="obrigado-step__num">2</span>
               <div>
-                <strong>Ou fale direto no WhatsApp</strong>
+                <strong>Fale direto no WhatsApp</strong>
                 <p>Respondo em minutos. Sem roteiro de vendas, sem enrolação.</p>
               </div>
             </div>
@@ -57,7 +62,32 @@ import Footer from '../components/Footer.astro';
             </div>
           </div>
 
-          <div class="obrigado-ctas">
+          <!-- Steps específicos para diagnóstico -->
+          <div class="obrigado-steps" id="steps-diagnostico" style="display:none;">
+            <div class="obrigado-step">
+              <span class="obrigado-step__num">1</span>
+              <div>
+                <strong>Aguarde o diagnóstico</strong>
+                <p>Em até 48h úteis você recebe a análise completa no WhatsApp e no email.</p>
+              </div>
+            </div>
+            <div class="obrigado-step">
+              <span class="obrigado-step__num">2</span>
+              <div>
+                <strong>Veja os casos reais</strong>
+                <p>Conheça os resultados que outros negócios alcançaram após a reforma.</p>
+              </div>
+            </div>
+            <div class="obrigado-step">
+              <span class="obrigado-step__num">3</span>
+              <div>
+                <strong>Quer conversar agora?</strong>
+                <p>Agende uma conversa de 30min pelo Cal.com se preferir tirar dúvidas ao vivo.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="obrigado-ctas" id="ctas-padrao">
             <a href="/diagnostico" class="btn btn--primary btn--large">
               Diagnóstico Gratuito →
             </a>
@@ -66,6 +96,15 @@ import Footer from '../components/Footer.astro';
             </a>
             <a href="https://cal.com/raniellevi/30min" target="_blank" rel="noopener" class="btn btn--ghost btn--large">
               Agendar 30min
+            </a>
+          </div>
+
+          <div class="obrigado-ctas" id="ctas-diagnostico" style="display:none;">
+            <a href="https://wa.me/5589994711318?text=Ol%C3%A1%2C%20acabei%20de%20solicitar%20o%20diagn%C3%B3stico%20gratuito%21" target="_blank" rel="noopener" class="btn btn--outline btn--large">
+              WhatsApp →
+            </a>
+            <a href="https://cal.com/raniellevi/30min" target="_blank" rel="noopener" class="btn btn--ghost btn--large">
+              Agendar conversa
             </a>
           </div>
         </div>
@@ -94,9 +133,16 @@ import Footer from '../components/Footer.astro';
 }
 
 .obrigado-icon {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  display: block;
+  width: 72px;
+  height: 72px;
+  background: rgba(79, 209, 197, 0.1);
+  border: 1px solid rgba(79, 209, 197, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--luxota-accent);
+  margin: 0 auto 1.5rem;
 }
 
 .obrigado-h1 {
@@ -196,18 +242,37 @@ import Footer from '../components/Footer.astro';
 </style>
 
 <script>
-  // Personaliza o título e subtítulo com base na origem (?origem=checklist|calculadora)
   const params = new URLSearchParams(window.location.search);
   const origem = params.get('origem');
+  const nome   = params.get('nome') ?? '';
 
-  const titulo = document.getElementById('titulo-dinamico');
-  const sub    = document.getElementById('sub-dinamico');
+  const tituloPrincipal = document.getElementById('titulo-principal');
+  const tituloDinamico  = document.getElementById('titulo-dinamico');
+  const sub             = document.getElementById('sub-dinamico');
+  const iconCheck       = document.getElementById('icon-check');
+  const iconDiag        = document.getElementById('icon-diag');
+  const stepsPadrao     = document.getElementById('steps-padrao');
+  const stepsDiag       = document.getElementById('steps-diagnostico');
+  const ctasPadrao      = document.getElementById('ctas-padrao');
+  const ctasDiag        = document.getElementById('ctas-diagnostico');
 
-  if (origem === 'checklist' && titulo && sub) {
-    titulo.textContent = 'Seu checklist está chegando.';
-    sub.textContent = 'Enviamos o checklist completo para o seu email. Confira sua caixa de entrada — e a pasta de spam, só por garantia.';
-  } else if (origem === 'calculadora' && titulo && sub) {
-    titulo.textContent = 'Seu relatório está chegando.';
-    sub.textContent = 'Enviamos o relatório completo da calculadora para o seu email. Confira sua caixa de entrada — e a pasta de spam, só por garantia.';
+  const primeiroNome = nome ? `, ${nome.split(' ')[0]}` : '';
+
+  if (origem === 'diagnostico') {
+    if (tituloPrincipal) tituloPrincipal.textContent = `Recebemos${primeiroNome}!`;
+    if (tituloDinamico)  tituloDinamico.textContent  = 'Diagnóstico em análise.';
+    if (sub) sub.innerHTML = 'Em até <strong>48 horas úteis</strong> nosso time envia o diagnóstico completo no seu WhatsApp e email.';
+    iconCheck?.style.setProperty('display', 'none');
+    if (iconDiag) iconDiag.style.display = 'block';
+    stepsPadrao?.style.setProperty('display', 'none');
+    if (stepsDiag) stepsDiag.style.display = 'flex';
+    ctasPadrao?.style.setProperty('display', 'none');
+    if (ctasDiag) ctasDiag.style.display = 'flex';
+  } else if (origem === 'checklist') {
+    if (tituloDinamico) tituloDinamico.textContent = 'Seu checklist está chegando.';
+    if (sub) sub.textContent = 'Enviamos o checklist para o seu email. Confira a caixa de entrada — e a pasta de spam, só por garantia.';
+  } else if (origem === 'calculadora') {
+    if (tituloDinamico) tituloDinamico.textContent = 'Seu relatório está chegando.';
+    if (sub) sub.textContent = 'Enviamos o relatório da calculadora para o seu email. Confira a caixa de entrada — e a pasta de spam, só por garantia.';
   }
 </script>
