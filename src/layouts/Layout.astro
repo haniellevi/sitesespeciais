@@ -24,7 +24,7 @@ interface Props {
 
 const {
   title,
-  description = 'Reformamos sites antigos e criamos sites premium para empresas locais que querem dominar o Google e parar de perder clientes para concorrentes piores.',
+  description = 'Pesquisamos seu setor, diagnosticamos sua presença digital e desenvolvemos sites que comprovadamente convertem. Cases reais, método estruturado, garantia de 7 dias.',
   ogImage = '/og-default.jpg',
   ogType = 'website',
   noindex = false,
@@ -62,6 +62,7 @@ const breadcrumbLabels: Record<string, string> = {
   servicos: 'Serviços',
   'manutencao-site': 'Manutenção Mensal',
   'seo-mensal': 'SEO Mensal',
+  'pesquisa-setorial-2026': 'Pesquisa Setorial 2026',
 };
 
 const pathParts = Astro.url.pathname.split('/').filter(Boolean);
@@ -86,7 +87,7 @@ const localBusinessSchema = {
   '@id': `${SITE_URL}/#organization`,
   'name': 'Sites Especiais',
   'alternateName': 'Sites Especiais — Feito para Gerar Autoridade',
-  'description': 'Reforma e criação de sites premium para empresas locais e regionais brasileiras. Sites rápidos, exclusivos, otimizados para Google e IAs. A partir de R$ 1.997 com garantia de 7 dias.',
+  'description': 'Consultoria digital que pesquisa, diagnostica e desenvolve sites estratégicos para empresas locais e regionais brasileiras. Cases B2B, garantia de 7 dias, ticket a partir de R$ 1.997.',
   'url': SITE_URL,
   'logo': `${SITE_URL}/logo-fundo-branco-site-white.png`,
   'email': 'pr.raniellevi@gmail.com',

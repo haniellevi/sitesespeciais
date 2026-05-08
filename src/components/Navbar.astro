@@ -14,12 +14,22 @@ const base = internal ? '' : '/';
       <img
         src="/logo-fundo-site-dark.png"
         alt="Sites Especiais"
-        class="navbar__logo-img"
+        class="navbar__logo-img navbar__logo-img--dark"
         width="140"
         height="40"
         loading="eager"
         fetchpriority="high"
       />
+      <img
+        src="/logo-fundo-branco-site-white.png"
+        alt=""
+        aria-hidden="true"
+        class="navbar__logo-img navbar__logo-img--light"
+        width="140"
+        height="40"
+        loading="eager"
+      />
+      <small class="navbar__tagline">Pesquisa · Diagnóstico · Sites Estratégicos</small>
     </a>
 
     <nav class="navbar__links" id="nav-links" aria-label="Navegação principal">
@@ -74,6 +84,7 @@ const base = internal ? '' : '/';
 
       <a href={`${base}#como-funciona`}>Como Funciona</a>
       <a href={`${base}#cases`}>Antes e Depois</a>
+      <a href="/pesquisa-setorial-2026">Pesquisa</a>
       <a href="/blog">Blog</a>
       <a href="/sobre">Sobre</a>
     </nav>
@@ -127,8 +138,12 @@ const base = internal ? '' : '/';
 
 .navbar__logo {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   flex-shrink: 0;
+  gap: 2px;
+  text-decoration: none;
 }
 
 .navbar__logo-img {
@@ -136,6 +151,22 @@ const base = internal ? '' : '/';
   width: auto;
   display: block;
   object-fit: contain;
+}
+
+
+.navbar__tagline {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--luxota-accent);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+@media (max-width: 720px) {
+  .navbar__tagline { display: none; }
 }
 
 .navbar__links {
