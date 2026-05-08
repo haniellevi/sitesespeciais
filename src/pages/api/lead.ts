@@ -6,6 +6,8 @@ import {
   emailChecklist,
   emailDiagnosticoConfirmacao,
   emailDiagnosticoNotificacao,
+  emailPesquisaSetorialConfirmacao,
+  emailPesquisaSetorialNotificacao,
 } from '../../lib/emails';
 
 const RESEND_KEY   = import.meta.env.RESEND_API_KEY as string;
@@ -174,6 +176,47 @@ export const POST: APIRoute = async ({ request }) => {
       });
       const ok = await sendEmail(email, subject, html);
       if (!ok) throw new Error('Resend error');
+
+      return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
+    }
+
+    // ── Pesquisa Setorial 2026 ────────────────────────────
+    if (tipo === 'pesquisa-setorial') {
+      const {
+        cargo = '',
+        empresa = '',
+        whatsapp = '',
+        cidade = '',
+        categoria = '',
+        faturamento = '',
+        contexto = '',
+      } = body;
+
+      if (!nome || !cargo || !empresa || !whatsapp || !cidade || !categoria || !faturamento) {
+        return new Response(JSON.stringify({ ok: false, error: 'Dados incompletos' }), { status: 422, headers });
+      }
+
+      const params = { nome, cargo, empresa, email, whatsapp, cidade, categoria, faturamento, contexto };
+
+      // Salva no HubSpot (reaproveita pipeline; setor = 'distribuidora' como aproximação para B2B alimentício)
+      await upsertHubSpotContact({
+        email,
+        nome,
+        whatsapp,
+        setor: 'distribuidora',
+        problema: '',
+        temSite: '',
+        siteUrl: undefined,
+        fonte: `pesquisa_setorial_2026:${categoria}`,
+      }).catch(console.error);
+
+      // Confirmação ao lead
+      const { subject: subjConf, html: htmlConf } = emailPesquisaSetorialConfirmacao({ nome, empresa });
+      await sendEmail(email, subjConf, htmlConf);
+
+      // Notificação ao owner
+      const { subject: subjNotif, html: htmlNotif } = emailPesquisaSetorialNotificacao(params);
+      await sendEmail(OWNER_EMAIL, subjNotif, htmlNotif);
 
       return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
     }

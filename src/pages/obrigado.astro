@@ -274,5 +274,9 @@ import Footer from '../components/Footer.astro';
   } else if (origem === 'calculadora') {
     if (tituloDinamico) tituloDinamico.textContent = 'Seu relatório está chegando.';
     if (sub) sub.textContent = 'Enviamos o relatório da calculadora para o seu email. Confira a caixa de entrada — e a pasta de spam, só por garantia.';
+  } else if (origem === 'pesquisa-setorial') {
+    if (tituloPrincipal) tituloPrincipal.textContent = `Inscrição recebida${primeiroNome}!`;
+    if (tituloDinamico)  tituloDinamico.textContent  = 'Pesquisa Setorial 2026.';
+    if (sub) sub.innerHTML = 'Em até <strong>48 horas úteis</strong> entraremos em contato pelo WhatsApp ou e-mail para agendar a entrevista de 15 minutos. Confira sua caixa de entrada — enviamos uma confirmação agora.';
   }
 </script>

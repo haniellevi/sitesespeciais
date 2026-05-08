@@ -1,0 +1,803 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SpotlightCard from '../components/SpotlightCard.astro';
+
+const pesquisaSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    'name': 'Pesquisa Setorial 2026 — Indústrias Alimentícias Regionais',
+    'description': 'Estudo independente conduzido pela Sites Especiais sobre presença digital de fabricantes regionais brasileiros do setor alimentício.',
+    'url': 'https://sitesespeciais.com.br/pesquisa-setorial-2026',
+    'inLanguage': 'pt-BR',
+    'isPartOf': { '@id': 'https://sitesespeciais.com.br/#website' },
+    'about': {
+      '@type': 'Thing',
+      'name': 'Presença digital de indústrias alimentícias regionais brasileiras',
+    },
+    'publisher': { '@id': 'https://sitesespeciais.com.br/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      { '@type': 'Question', 'name': 'Quanto tempo leva a entrevista?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Exatos 15 minutos. Pode ser por videochamada (Google Meet, Zoom) ou WhatsApp, conforme sua preferência.' } },
+      { '@type': 'Question', 'name': 'Os dados da minha empresa serão expostos?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. As respostas são tratadas anonimamente no relatório consolidado. Apenas padrões agregados são publicados.' } },
+      { '@type': 'Question', 'name': 'Vocês vão me oferecer algum serviço durante a entrevista?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. A entrevista é exclusivamente de pesquisa. Eventuais conversas comerciais, se acontecerem, são apenas se a própria empresa pedir, em momento separado.' } },
+      { '@type': 'Question', 'name': 'Quando o relatório fica pronto?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Previsão: julho de 2026. Empresas participantes recebem antes do público geral.' } },
+      { '@type': 'Question', 'name': 'Quem conduz a entrevista?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Raniel, da Sites Especiais. Toda entrevista é conduzida pessoalmente.' } },
+      { '@type': 'Question', 'name': 'E se eu quiser participar mas não for o decisor?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Sem problema. Você pode nos indicar a pessoa certa da sua empresa, e nós entramos em contato com ela.' } },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Pesquisa Setorial 2026 — Presença Digital de Indústrias Alimentícias Regionais | Sites Especiais"
+  description="Estudo independente sobre o digital de fabricantes regionais brasileiros. Empresas participantes recebem o relatório completo gratuito. Saiba como contribuir."
+  schema={pesquisaSchema}
+  publishedTime="2026-05-08"
+  modifiedTime="2026-05-08"
+>
+  <Navbar />
+
+  <main style="position: relative; z-index: 1;">
+
+    <!-- ══════════════════════════════════════════════
+         S1 — HERO
+         ══════════════════════════════════════════════ -->
+    <section class="hero pesquisa-hero section">
+      <div class="perspective-grid" aria-hidden="true"></div>
+      <div class="container container--narrow text-center" style="position: relative; z-index: 1;">
+
+        <div class="badge reveal">
+          <span class="badge__dot"></span>
+          Estudo Independente · 2026
+        </div>
+
+        <h1 class="pesquisa-hero__h1 reveal reveal-delay-1">
+          Como indústrias alimentícias regionais brasileiras
+          <span class="text-gradient-gold">se posicionam no digital.</span>
+        </h1>
+
+        <p class="pesquisa-hero__sub reveal reveal-delay-2">
+          Pesquisa independente conduzida pela Sites Especiais com
+          <strong>50+ fabricantes B2B</strong>.
+          Resultados publicados em <strong>julho de 2026</strong>,
+          gratuitos para empresas participantes.
+        </p>
+
+        <div class="hero__ctas reveal reveal-delay-3">
+          <a href="#participar" class="btn btn--primary btn--large">
+            Quero participar do estudo →
+          </a>
+          <a href="#metodologia" class="btn btn--outline btn--large">
+            Ver metodologia
+          </a>
+        </div>
+
+        <div class="pesquisa-stats reveal reveal-delay-4">
+          <div class="pesquisa-stat">
+            <div class="pesquisa-stat__num">50+</div>
+            <div class="pesquisa-stat__label">Fabricantes mapeados</div>
+          </div>
+          <div class="pesquisa-stat">
+            <div class="pesquisa-stat__num">15min</div>
+            <div class="pesquisa-stat__label">Entrevista por empresa</div>
+          </div>
+          <div class="pesquisa-stat">
+            <div class="pesquisa-stat__num">Jul/26</div>
+            <div class="pesquisa-stat__label">Publicação prevista</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S2 — POR QUE EXISTE
+         ══════════════════════════════════════════════ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="reveal" style="margin-bottom: 2rem;">
+          <p class="eyebrow">Contexto</p>
+          <h2 class="section__h2">Por que esse estudo existe</h2>
+        </div>
+        <div class="prose reveal">
+          <p>
+            Indústrias alimentícias regionais brasileiras são responsáveis por uma fatia gigante do
+            mercado de condimentos, temperos, alimentos processados e distribuição. Mas o digital
+            desse setor é uma caixa preta: pouca pesquisa estruturada, poucos benchmarks acessíveis,
+            decisões tomadas no escuro.
+          </p>
+          <p>
+            A Sites Especiais decidiu mapear isso de forma independente. O resultado é um relatório
+            consolidado, gratuito para empresas participantes, com benchmarks reais do setor —
+            algo que hoje não existe organizadamente no Brasil.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S3 — O QUE INVESTIGAMOS
+         ══════════════════════════════════════════════ -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="reveal" style="margin-bottom: 2rem;">
+          <p class="eyebrow">Escopo</p>
+          <h2 class="section__h2">O que estamos mapeando</h2>
+        </div>
+        <ul class="check-list reveal">
+          <li><strong>Posicionamento no Google e nas IAs</strong> — como fabricantes regionais são (ou não) encontrados.</li>
+          <li><strong>Canais de aquisição B2B</strong> — como novos distribuidores chegam até as fábricas hoje.</li>
+          <li><strong>Maturidade digital comparada</strong> — por região, porte e segmento.</li>
+          <li><strong>Padrões de presença em redes sociais</strong> — o que funciona pra B2B alimentício.</li>
+          <li><strong>Barreiras de crescimento digital</strong> — reportadas diretamente pelos decisores.</li>
+          <li><strong>Oportunidades não exploradas</strong> — gaps de mercado que ninguém está preenchendo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S4 — METODOLOGIA
+         ══════════════════════════════════════════════ -->
+    <section class="section" id="metodologia">
+      <div class="container">
+        <div class="text-center reveal" style="margin-bottom: 3rem;">
+          <p class="eyebrow">Metodologia</p>
+          <h2 class="section__h2">Como o estudo é conduzido</h2>
+          <p class="section__sub">Cinco fases sequenciais, com publicação prevista para julho de 2026.</p>
+        </div>
+
+        <div class="fases-grid">
+          <SpotlightCard>
+            <div class="fase-card reveal">
+              <div class="fase-card__num">1</div>
+              <h3>Análise técnica</h3>
+              <p>Avaliação de 50+ sites de fabricantes regionais — performance, SEO, UX, conversão.</p>
+            </div>
+          </SpotlightCard>
+          <SpotlightCard>
+            <div class="fase-card reveal reveal-delay-1">
+              <div class="fase-card__num">2</div>
+              <h3>Presença em buscas</h3>
+              <p>Mapeamento no Google, Google Meu Negócio e nas IAs (ChatGPT, Gemini, Perplexity).</p>
+            </div>
+          </SpotlightCard>
+          <SpotlightCard>
+            <div class="fase-card reveal reveal-delay-2">
+              <div class="fase-card__num">3</div>
+              <h3>Entrevistas qualitativas</h3>
+              <p>15 minutos por empresa com decisor de marketing/vendas. Dados anonimizados no relatório.</p>
+            </div>
+          </SpotlightCard>
+          <SpotlightCard>
+            <div class="fase-card reveal">
+              <div class="fase-card__num">4</div>
+              <h3>Benchmarking</h3>
+              <p>Comparação com fabricantes nacionais e internacionais. Identificação de padrões e gaps.</p>
+            </div>
+          </SpotlightCard>
+          <SpotlightCard>
+            <div class="fase-card reveal reveal-delay-1">
+              <div class="fase-card__num">5</div>
+              <h3>Publicação</h3>
+              <p>Relatório consolidado publicado em julho de 2026. Empresas participantes recebem antes.</p>
+            </div>
+          </SpotlightCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S5 — QUEM PODE PARTICIPAR
+         ══════════════════════════════════════════════ -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="reveal" style="margin-bottom: 2rem;">
+          <p class="eyebrow">Participação</p>
+          <h2 class="section__h2">Quem pode participar</h2>
+          <p class="section__sub">
+            Buscamos 50 fabricantes regionais brasileiros do setor alimentício para a fase de entrevistas.
+          </p>
+        </div>
+        <ul class="check-list reveal">
+          <li><strong>Faturamento</strong> entre R$ 50k e R$ 5M/mês.</li>
+          <li><strong>Atuação B2B</strong> — distribuidores, atacadistas, varejistas (não consumidor final).</li>
+          <li><strong>Operação consolidada</strong> em uma ou mais regiões do Brasil.</li>
+          <li><strong>Categoria</strong>: condimentos, temperos, alimentos processados, derivados.</li>
+        </ul>
+        <p class="reveal" style="margin-top: 1.5rem; font-style: italic; color: var(--text-muted);">
+          Se sua empresa se encaixa, sua contribuição é valiosíssima.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S6 — O QUE A EMPRESA RECEBE
+         ══════════════════════════════════════════════ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="reveal" style="margin-bottom: 2rem;">
+          <p class="eyebrow">Contrapartida</p>
+          <h2 class="section__h2">O que sua empresa recebe</h2>
+          <p class="section__sub">Gratuito, em troca de 15 minutos de entrevista.</p>
+        </div>
+        <ul class="check-list reveal">
+          <li><strong>Relatório consolidado completo do setor</strong> — benchmarks, padrões, oportunidades. Documento completo, sem custo.</li>
+          <li><strong>Comparativo com concorrentes regionais diretos</strong> — onde sua empresa está à frente, onde precisa correr atrás.</li>
+          <li><strong>Análise rápida personalizada</strong> — 5 pontos específicos sobre presença digital da sua empresa.</li>
+          <li><strong>Reconhecimento opcional</strong> como empresa participante — logo no estudo publicado, se desejar.</li>
+          <li><strong>Acesso prioritário</strong> aos próximos estudos da Sites Especiais.</li>
+        </ul>
+
+        <div class="highlight-box reveal">
+          <p class="highlight-box__label">Importante</p>
+          <p>
+            <strong>Esta é uma pesquisa, não uma reunião comercial.</strong>
+            Não vamos apresentar serviço, proposta ou cobrança em nenhum momento da entrevista.
+            O foco é entender o setor.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S7 — QUEM CONDUZ
+         ══════════════════════════════════════════════ -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="reveal" style="margin-bottom: 2rem;">
+          <p class="eyebrow">Responsável</p>
+          <h2 class="section__h2">Quem está conduzindo</h2>
+        </div>
+        <div class="prose reveal">
+          <p>
+            O estudo é conduzido pela <strong>Sites Especiais</strong> (sitesespeciais.com.br),
+            consultoria digital que pesquisa, diagnostica e desenvolve para empresas que querem crescer.
+          </p>
+          <p>
+            <strong>Áreas de atuação:</strong> pesquisa setorial, auditoria digital estratégica,
+            desenvolvimento de sites, SEO técnico para B2B.
+          </p>
+          <p>
+            <strong>Cases recentes:</strong> Fiel Alimentos (produtosfiel.com.br),
+            EmCORR Centro Clínico (Corrente-PI), Clínica Pinheiro (Bom Jesus-PI).
+          </p>
+          <p style="font-style: italic; color: var(--text-muted);">
+            Esta pesquisa é independente — sem patrocínio, sem fins comerciais imediatos.
+            O objetivo é gerar conhecimento útil para o setor.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S8 — FAQ
+         ══════════════════════════════════════════════ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Dúvidas</p>
+          <h2 class="section__h2">Perguntas frequentes</h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Quanto tempo leva a entrevista?</summary>
+            <p>Exatos 15 minutos. Pode ser por videochamada (Google Meet, Zoom) ou WhatsApp, conforme sua preferência.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Os dados da minha empresa serão expostos?</summary>
+            <p>Não. As respostas são tratadas anonimamente no relatório consolidado. Apenas padrões agregados são publicados.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Vocês vão me oferecer algum serviço durante a entrevista?</summary>
+            <p>Não. A entrevista é exclusivamente de pesquisa. Eventuais conversas comerciais, se acontecerem, são apenas se a própria empresa pedir, em momento separado.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Quando o relatório fica pronto?</summary>
+            <p>Previsão: julho de 2026. Empresas participantes recebem antes do público geral.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Quem conduz a entrevista?</summary>
+            <p>Raniel, da Sites Especiais. Toda entrevista é conduzida pessoalmente.</p>
+          </details>
+          <details class="faq-item">
+            <summary>E se eu quiser participar mas não for o decisor?</summary>
+            <p>Sem problema. Você pode nos indicar a pessoa certa da sua empresa, e nós entramos em contato com ela.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         S9 — FORMULÁRIO
+         ══════════════════════════════════════════════ -->
+    <section class="section section--alt" id="participar">
+      <div class="container container--narrow">
+        <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+          <p class="eyebrow">Inscrição</p>
+          <h2 class="section__h2">Quero participar do estudo</h2>
+          <p class="section__sub">
+            Preencha o formulário abaixo e entraremos em contato em até 48h para agendar a entrevista de 15 minutos.
+          </p>
+        </div>
+
+        <form class="form-card reveal" id="pesquisa-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome completo *</label>
+              <input type="text" id="nome" name="nome" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="cargo">Cargo *</label>
+              <input type="text" id="cargo" name="cargo" required autocomplete="organization-title" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="empresa">Empresa *</label>
+            <input type="text" id="empresa" name="empresa" required autocomplete="organization" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">E-mail corporativo *</label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="whatsapp">WhatsApp *</label>
+              <input type="tel" id="whatsapp" name="whatsapp" required autocomplete="tel" placeholder="(11) 99999-9999" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cidade">Cidade / Estado *</label>
+              <input type="text" id="cidade" name="cidade" required placeholder="Ex: São Paulo, SP" />
+            </div>
+            <div class="form-group">
+              <label for="categoria">Categoria principal *</label>
+              <select id="categoria" name="categoria" required>
+                <option value="">Selecione</option>
+                <option value="condimentos">Condimentos</option>
+                <option value="temperos">Temperos</option>
+                <option value="alimentos-processados">Alimentos processados</option>
+                <option value="distribuicao">Distribuição</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="faturamento">Faturamento aproximado *</label>
+            <select id="faturamento" name="faturamento" required>
+              <option value="">Selecione</option>
+              <option value="ate-50k">Até R$ 50k/mês</option>
+              <option value="50k-200k">R$ 50k a R$ 200k/mês</option>
+              <option value="200k-1m">R$ 200k a R$ 1M/mês</option>
+              <option value="acima-1m">Acima de R$ 1M/mês</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contexto">Algo que você gostaria que entendêssemos sobre sua empresa antes da entrevista? <span style="color: var(--text-muted); font-weight: 400;">(opcional)</span></label>
+            <textarea id="contexto" name="contexto" rows="4"></textarea>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="aceite" name="aceite" required />
+            <label for="aceite">
+              Aceito ser contatado pela Sites Especiais para agendamento da entrevista de 15 minutos.
+              Os dados informados serão usados exclusivamente para esta pesquisa.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--large form-submit" id="pesquisa-submit">
+            Enviar inscrição →
+          </button>
+
+          <p class="form-feedback" id="pesquisa-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.getElementById('pesquisa-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('pesquisa-submit') as HTMLButtonElement | null;
+  const feedback = document.getElementById('pesquisa-feedback') as HTMLParagraphElement | null;
+
+  if (form && submitBtn && feedback) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const data = new FormData(form);
+      const payload: Record<string, string> = { tipo: 'pesquisa-setorial' };
+      data.forEach((value, key) => {
+        if (key !== 'aceite') payload[key] = String(value);
+      });
+
+      submitBtn.disabled = true;
+      const original = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+      feedback.textContent = '';
+      feedback.className = 'form-feedback';
+
+      try {
+        const res = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json();
+
+        if (res.ok && json.ok) {
+          window.location.href = '/obrigado?origem=pesquisa-setorial';
+        } else {
+          throw new Error(json.error || 'Erro ao enviar inscrição');
+        }
+      } catch (err) {
+        feedback.textContent = (err instanceof Error ? err.message : 'Erro inesperado') +
+          ' — tente novamente ou fale pelo WhatsApp.';
+        feedback.classList.add('form-feedback--error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = original;
+      }
+    });
+  }
+</script>
+
+<style>
+/* ── Hero ─────────────────────────────────────────── */
+.pesquisa-hero {
+  min-height: 88svh;
+  display: flex;
+  align-items: center;
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.pesquisa-hero__h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.2vw, 4rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 1.75rem 0 1.75rem;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.pesquisa-hero__h1 .text-gradient-gold {
+  display: block;
+  margin-top: 0.35em;
+}
+
+.pesquisa-hero__sub {
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin: 0 auto 2.75rem;
+  line-height: 1.65;
+}
+
+.pesquisa-hero__sub strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.pesquisa-stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.pesquisa-stat { text-align: center; }
+
+.pesquisa-stat__num {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pesquisa-stat__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.65rem;
+}
+
+@media (max-width: 600px) {
+  .pesquisa-hero { padding-top: 7rem; padding-bottom: 3.5rem; min-height: auto; }
+  .pesquisa-stats { gap: 2rem; }
+}
+
+/* ── Section alt ──────────────────────────────────── */
+.section--alt {
+  background: var(--bg-raised);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Prose ────────────────────────────────────────── */
+.prose p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+.prose strong { color: var(--text-primary); }
+
+/* ── Check-list ───────────────────────────────────── */
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 720px;
+}
+
+.check-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.check-list li::before {
+  content: '✓';
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--luxota-accent);
+  color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.check-list li strong { color: var(--text-primary); }
+
+/* ── Fases (metodologia) ──────────────────────────── */
+.fases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) { .fases-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .fases-grid { grid-template-columns: 1fr; } }
+
+.fase-card {
+  padding: 2rem 1.5rem 1.5rem;
+}
+
+.fase-card__num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent-hover) 100%);
+  color: var(--primary-foreground);
+  margin-bottom: 1rem;
+}
+
+.fase-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.fase-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Highlight box ────────────────────────────────── */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(232,197,71,0.05) 0%, var(--card) 70%);
+  border: 1px solid rgba(232,197,71,0.25);
+  border-left: 3px solid var(--primary);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0 0;
+}
+
+.highlight-box__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.highlight-box p {
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── FAQ list ─────────────────────────────────────── */
+.faq-list { max-width: 720px; margin: 0 auto; }
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.faq-item[open] summary::after { content: '−'; }
+
+.faq-item p {
+  padding: 0.5rem 0 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+/* ── Form card ────────────────────────────────────── */
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+.form-group { margin-bottom: 1.25rem; }
+
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--bg-overlay);
+}
+
+.form-group textarea { resize: vertical; min-height: 96px; }
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 1.5rem 0 1.5rem;
+}
+
+.checkbox-group input {
+  width: auto;
+  margin-top: 4px;
+  accent-color: var(--primary);
+}
+
+.checkbox-group label {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.form-submit { width: 100%; }
+
+.form-feedback {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.form-feedback--error {
+  color: var(--danger, #e53e3e);
+}
+
+@media (max-width: 600px) {
+  .form-card { padding: 1.5rem; }
+}
+</style>

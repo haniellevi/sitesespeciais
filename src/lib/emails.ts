@@ -390,6 +390,207 @@ export function emailDiagnosticoNotificacao(params: {
   };
 }
 
+// ── Template: Pesquisa Setorial — Confirmação ao lead ─
+
+export function emailPesquisaSetorialConfirmacao(params: {
+  nome: string;
+  empresa: string;
+}) {
+  const { nome, empresa } = params;
+  const primeiroNome = nome.split(' ')[0];
+
+  return {
+    subject: `${primeiroNome}, recebemos a inscrição da ${empresa} na Pesquisa Setorial 2026`,
+    html: `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#080808;">
+<div style="${containerStyle}">
+
+  <div style="${headerStyle}">
+    <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#4FD1C5;margin:0 0 8px;">Pesquisa Setorial 2026</p>
+    <h1 style="font-size:22px;color:#f5f5f0;margin:0;font-weight:400;">Inscrição Recebida ✓</h1>
+  </div>
+
+  <div style="${bodyStyle}">
+    <p style="font-size:16px;color:#b0b0a8;margin:0 0 20px;">Olá, <strong style="color:#f5f5f0;">${primeiroNome}</strong>!</p>
+    <p style="font-size:15px;color:#b0b0a8;line-height:1.7;margin:0 0 24px;">
+      Recebemos a inscrição da <strong style="color:#f5f5f0;">${empresa}</strong> para participar
+      do estudo sobre presença digital de indústrias alimentícias regionais. Em até
+      <strong style="color:#f5f5f0;">48 horas úteis</strong>, entraremos em contato pelo WhatsApp
+      ou e-mail para agendar a entrevista de 15 minutos.
+    </p>
+
+    <div style="${cardStyle}">
+      <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555550;margin:0 0 16px;">O que vem agora</p>
+      <ul style="margin:0;padding:0;list-style:none;">
+        <li style="font-size:14px;color:#b0b0a8;padding:8px 0;display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#4FD1C5;flex-shrink:0;font-weight:700;">1.</span> Entramos em contato em até 48h para agendar a entrevista de 15 min
+        </li>
+        <li style="font-size:14px;color:#b0b0a8;padding:8px 0;display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#4FD1C5;flex-shrink:0;font-weight:700;">2.</span> Conduzimos a conversa por videochamada ou WhatsApp — você escolhe
+        </li>
+        <li style="font-size:14px;color:#b0b0a8;padding:8px 0;display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#4FD1C5;flex-shrink:0;font-weight:700;">3.</span> Em julho/2026, você recebe o relatório completo antes do público geral
+        </li>
+      </ul>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(232,197,71,0.04) 0%,#141414 60%);border:1px solid rgba(232,197,71,0.2);border-radius:12px;padding:24px;margin:24px 0;">
+      <p style="font-size:14px;font-weight:700;color:#e8c547;margin:0 0 12px;">Importante</p>
+      <p style="font-size:14px;color:#b0b0a8;line-height:1.7;margin:0;">
+        Esta é uma pesquisa, não uma reunião comercial. Não vamos apresentar serviço,
+        proposta ou cobrança em nenhum momento da entrevista. O foco é entender o setor.
+      </p>
+    </div>
+
+    <p style="font-size:14px;color:#555550;line-height:1.65;margin:0 0 24px;">
+      Dúvidas? Responda este e-mail ou fale pelo WhatsApp:
+    </p>
+
+    <div style="text-align:center;">
+      <a href="https://wa.me/5589994711318?text=Oi%2C%20me%20inscrevi%20na%20Pesquisa%20Setorial%202026%20e%20quero%20tirar%20uma%20d%C3%BAvida." style="${btnStyle}">
+        Falar no WhatsApp →
+      </a>
+    </div>
+  </div>
+
+  <div style="${footerStyle}">
+    <p style="margin:0 0 4px;"><strong style="color:#e8c547;">Sites Especiais</strong></p>
+    <p style="margin:0 0 4px;">Pesquisa · Diagnóstico · Sites Estratégicos</p>
+    <p style="margin:0;">
+      <a href="${BASE_URL}" style="color:#4FD1C5;text-decoration:none;">sitesespeciais.com.br</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>`,
+  };
+}
+
+// ── Template: Pesquisa Setorial — Notificação ao owner ─
+
+export function emailPesquisaSetorialNotificacao(params: {
+  nome: string;
+  cargo: string;
+  empresa: string;
+  email: string;
+  whatsapp: string;
+  cidade: string;
+  categoria: string;
+  faturamento: string;
+  contexto?: string;
+}) {
+  const { nome, cargo, empresa, email, whatsapp, cidade, categoria, faturamento, contexto } = params;
+
+  const categoriaLabels: Record<string, string> = {
+    condimentos: 'Condimentos',
+    temperos: 'Temperos',
+    'alimentos-processados': 'Alimentos processados',
+    distribuicao: 'Distribuição',
+    outro: 'Outro',
+  };
+
+  const faturamentoLabels: Record<string, string> = {
+    'ate-50k': 'Até R$ 50k/mês',
+    '50k-200k': 'R$ 50k a R$ 200k/mês',
+    '200k-1m': 'R$ 200k a R$ 1M/mês',
+    'acima-1m': 'Acima de R$ 1M/mês',
+  };
+
+  const now = new Date().toLocaleString('pt-BR', { timeZone: 'America/Fortaleza' });
+
+  return {
+    subject: `🔬 Nova inscrição Pesquisa Setorial: ${empresa} (${cidade})`,
+    html: `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#080808;">
+<div style="${containerStyle}">
+
+  <div style="${headerStyle}">
+    <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#e8c547;margin:0 0 8px;">Pesquisa Setorial 2026 — Admin</p>
+    <h1 style="font-size:20px;color:#f5f5f0;margin:0;font-weight:600;">Nova Inscrição</h1>
+    <p style="font-size:12px;color:#555550;margin:8px 0 0;">${now}</p>
+  </div>
+
+  <div style="${bodyStyle}">
+
+    <div style="${cardStyle}border-color:rgba(232,197,71,0.3);">
+      <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#e8c547;margin:0 0 16px;">Dados da empresa</p>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Empresa</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;font-weight:700;text-align:right;">${empresa}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Cidade / UF</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">${cidade}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Categoria</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">${categoriaLabels[categoria] ?? categoria}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;color:#b0b0a8;font-size:14px;">Faturamento</td>
+          <td style="padding:10px 0;color:#f5f5f0;font-size:14px;text-align:right;">${faturamentoLabels[faturamento] ?? faturamento}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="${cardStyle}">
+      <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#4FD1C5;margin:0 0 16px;">Contato</p>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Nome</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">${nome}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">Cargo</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#f5f5f0;font-size:14px;text-align:right;">${cargo}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #222;color:#b0b0a8;font-size:14px;">E-mail</td>
+          <td style="padding:10px 0;border-bottom:1px solid #222;font-size:14px;text-align:right;">
+            <a href="mailto:${email}" style="color:#4FD1C5;text-decoration:none;">${email}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;color:#b0b0a8;font-size:14px;">WhatsApp</td>
+          <td style="padding:10px 0;font-size:14px;text-align:right;">
+            <a href="https://wa.me/55${whatsapp.replace(/\D/g,'')}" style="color:#4FD1C5;text-decoration:none;">${whatsapp}</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    ${contexto ? `
+    <div style="${cardStyle}">
+      <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555550;margin:0 0 12px;">Contexto fornecido</p>
+      <p style="font-size:14px;color:#f5f5f0;line-height:1.65;margin:0;white-space:pre-wrap;">${contexto.replace(/</g, '&lt;')}</p>
+    </div>` : ''}
+
+    <div style="text-align:center;margin-top:8px;">
+      <a href="https://wa.me/55${whatsapp.replace(/\D/g,'').replace(/^0/, '')}?text=Oi%20${encodeURIComponent(nome.split(' ')[0])}%2C%20vi%20sua%20inscri%C3%A7%C3%A3o%20na%20Pesquisa%20Setorial%202026%20e%20quero%20agendar%20a%20entrevista%20de%2015%20min." style="${btnStyle}">
+        Responder no WhatsApp →
+      </a>
+    </div>
+
+  </div>
+
+  <div style="${footerStyle}">
+    <p style="margin:0;">Notificação automática — Pesquisa Setorial 2026</p>
+  </div>
+
+</div>
+</body>
+</html>`,
+  };
+}
+
 // ── Template: Checklist PDF ─────────────────────────
 
 const checklistItems = [

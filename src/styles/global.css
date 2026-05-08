@@ -236,6 +236,25 @@ img, video { max-width: 100%; display: block; }
   animation: text-shimmer 4s ease-in-out infinite alternate;
 }
 
+/* No tema light o branco do .text-gradient some no fundo claro — usa foreground */
+[data-theme="light"] .text-gradient {
+  background: linear-gradient(135deg, var(--foreground) 20%, var(--luxota-accent) 50%, var(--foreground) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Troca de logo Navbar/Footer por tema
+   !important necessário: supera especificidade do [data-astro-cid-*] nos componentes */
+.navbar__logo-img--light { display: none !important; }
+html[data-theme="light"] .navbar__logo-img--dark  { display: none !important; }
+html[data-theme="light"] .navbar__logo-img--light { display: block !important; }
+
+.footer__logo-img--light { display: none !important; }
+html[data-theme="light"] .footer__logo-img--dark  { display: none !important; }
+html[data-theme="light"] .footer__logo-img--light { display: block !important; }
+
 /* ─── Buttons ─────────────────────────────────────── */
 .btn {
   display: inline-flex;
