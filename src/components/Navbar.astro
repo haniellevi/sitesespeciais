@@ -11,14 +11,26 @@ const base = internal ? '' : '/';
 <header class="navbar" id="navbar">
   <div class="container navbar__inner">
     <a href="/" class="navbar__logo" aria-label="Sites Especiais — Início">
+      <!-- Logo dark (fundo escuro) — visível no dark mode -->
       <img
         src="/logo-fundo-site-dark.png"
         alt="Sites Especiais"
-        class="navbar__logo-img"
+        class="navbar__logo-img navbar__logo-dark"
         width="140"
         height="40"
         loading="eager"
         fetchpriority="high"
+      />
+      <!-- Logo light (fundo claro) — visível no light mode -->
+      <img
+        src="/logo-fundo-branco-site-white.png"
+        alt="Sites Especiais"
+        class="navbar__logo-img navbar__logo-light"
+        width="140"
+        height="40"
+        loading="eager"
+        fetchpriority="high"
+        aria-hidden="true"
       />
     </a>
 
@@ -137,6 +149,12 @@ const base = internal ? '' : '/';
   display: block;
   object-fit: contain;
 }
+
+/* swap de logo por tema */
+.navbar__logo-light { display: none; }
+
+[data-theme="light"] .navbar__logo-dark  { display: none; }
+[data-theme="light"] .navbar__logo-light { display: block; }
 
 .navbar__links {
   display: flex;
