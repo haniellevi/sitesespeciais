@@ -76,14 +76,13 @@ const cases = [
   <div class="container">
 
     <div class="text-center reveal" style="margin-bottom: 3.5rem;">
-      <p class="eyebrow">Cases reais</p>
+      <p class="eyebrow">Quem já passou pela reforma</p>
       <h2 class="section__h2">
-        De problema<br>
-        <span class="text-gradient-gold">a resultado comprovado.</span>
+        Veja a diferença em<br>
+        <span class="text-gradient-gold">sites de verdade.</span>
       </h2>
       <p class="section__sub">
-        Não vendemos promessa de resultado.<br>
-        Aqui estão os números reais de três empresas piauienses que contrataram.
+        Empresas reais. Métricas reais. Sem photoshop.
       </p>
     </div>
 
@@ -126,6 +125,10 @@ const cases = [
             <div class="case-col__header">
               <span class="case-col__label">Antes</span>
             </div>
+            <!-- Placeholder de imagem: substituir por <img> quando tiver o print real -->
+            <div class="case-img-placeholder case-img-placeholder--antes" aria-hidden="true">
+              <span>Imagem em breve</span>
+            </div>
             <ul class="case-col__list">
               {c.problemas.map(p => (
                 <li>
@@ -149,6 +152,10 @@ const cases = [
           <div class="case-col case-col--depois">
             <div class="case-col__header">
               <span class="case-col__label case-col__label--depois">Depois</span>
+            </div>
+            <!-- Placeholder de imagem: substituir por <img> quando tiver o print real -->
+            <div class="case-img-placeholder case-img-placeholder--depois" aria-hidden="true">
+              <span>Imagem em breve</span>
             </div>
             <ul class="case-col__list">
               {c.resultados.map(r => (
@@ -177,9 +184,12 @@ const cases = [
       </div>
     ))}
 
-    <div class="text-center" style="margin-top: 3rem;">
+    <div class="text-center" style="margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
       <a href="/diagnostico" class="btn btn--primary btn--large reveal">
         Quero resultados assim →
+      </a>
+      <a href="/cases" class="btn btn--ghost reveal reveal-delay-1" style="font-size: 0.88rem;">
+        Ver todos os cases →
       </a>
     </div>
   </div>
@@ -394,6 +404,37 @@ const cases = [
 .case-arrow {
   color: var(--primary);
   opacity: 0.5;
+}
+
+/* ── Placeholders de imagem ───────────────────────────── */
+.case-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.case-img-placeholder--antes {
+  background: rgba(229, 62, 62, 0.04);
+  border-bottom-color: rgba(229, 62, 62, 0.08);
+}
+
+.case-img-placeholder--depois {
+  background: rgba(79, 209, 197, 0.04);
+  border-bottom-color: rgba(79, 209, 197, 0.08);
+}
+
+.case-img-placeholder span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 /* ── Métricas ─────────────────────────────────────────── */

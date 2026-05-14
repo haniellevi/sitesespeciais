@@ -1,15 +1,15 @@
 ---
-// CalculadoraMini — versão reduzida para homepage
-// 2 campos apenas (setor + ticket), resultado dramático, CTA direto para /diagnostico
+// CalculadoraMini — versão homepage com captura de lead pós-cálculo
+// Envia lead para /api/leads (Resend) após preenchimento do e-mail
 // Versão completa disponível em /calculadora
 ---
 
 <section class="section calc-mini-section" id="calculadora">
   <div class="container container--narrow">
     <div class="text-center reveal" style="margin-bottom: 2.5rem;">
-      <p class="eyebrow">Calculadora Gratuita</p>
+      <p class="eyebrow">A conta que ninguém te mostra</p>
       <h2 class="section__h2">Quanto seu site está te custando?</h2>
-      <p class="section__sub">2 perguntas. Veja o número real em 30 segundos.</p>
+      <p class="section__sub">2 perguntas. 30 segundos. Um número que vai ficar na sua cabeça.</p>
     </div>
 
     <div class="calc-mini-wrapper reveal reveal-delay-1">
@@ -44,33 +44,83 @@
         </div>
       </div>
 
-      <!-- Painel de resultado -->
+      <!-- Painel de resultado + captura -->
       <div class="calc-mini-output">
-        <p class="calc-mini-result-label">Seu site está te custando todo mês:</p>
+        <!-- Resultado -->
+        <div id="mini-result-block">
+          <p class="calc-mini-result-label">Seu site está te custando todo mês:</p>
 
-        <div class="calc-mini-valor">
-          <span class="calc-mini-currency">R$</span>
-          <span id="mini-resultado" class="calc-mini-numero">11.250</span>
-          <span class="calc-mini-mes">/mês</span>
+          <div class="calc-mini-valor">
+            <span class="calc-mini-currency">R$</span>
+            <span id="mini-resultado" class="calc-mini-numero">11.250</span>
+            <span class="calc-mini-mes">/mês</span>
+          </div>
+
+          <p class="calc-mini-footnote">
+            Sites antigos convertem 0,5% das visitas. Sites modernos convertem 3%.
+            <br>Diferença calculada para o seu setor.
+          </p>
+
+          <a href="/diagnostico" class="btn btn--primary calc-mini-cta" id="mini-cta-diag">
+            Diagnóstico Gratuito do meu site →
+          </a>
+
+          <a href="/calculadora" class="calc-mini-link">
+            Ver análise completa com mais detalhes →
+          </a>
         </div>
 
-        <p class="calc-mini-footnote">
-          Sites antigos convertem 0,5% das visitas. Sites modernos convertem 3%.
-          <br>Diferença calculada para o seu setor.
-        </p>
+        <!-- Captura de lead (aparece 2s após cálculo) -->
+        <div class="calc-mini-capture" id="mini-capture" hidden aria-live="polite">
+          <p class="calc-mini-capture-title">Receba o relatório completo no e-mail</p>
+          <p class="calc-mini-capture-sub">
+            3 ajustes que param o sangramento + como calcular a perda real
+          </p>
 
-        <a
-          href="/diagnostico"
-          class="btn btn--primary calc-mini-cta"
-        >
-          Diagnóstico Gratuito do meu site →
-        </a>
+          <form id="mini-lead-form" class="calc-mini-lead-form" novalidate>
+            <input
+              type="text"
+              id="mini-lead-nome"
+              name="nome"
+              placeholder="Seu nome"
+              class="form-input"
+              autocomplete="given-name"
+              required
+            />
+            <input
+              type="email"
+              id="mini-lead-email"
+              name="email"
+              placeholder="Seu e-mail"
+              class="form-input"
+              autocomplete="email"
+              required
+            />
+            <input
+              type="tel"
+              id="mini-lead-whatsapp"
+              name="whatsapp"
+              placeholder="WhatsApp (com DDD)"
+              class="form-input"
+              autocomplete="tel"
+            />
+            <p class="calc-mini-form-error" id="mini-form-error" hidden></p>
+            <button type="submit" class="btn btn--primary calc-mini-cta">
+              Receber agora →
+            </button>
+          </form>
 
-        <a href="/calculadora" class="calc-mini-link">
-          Ver análise completa com mais detalhes →
-        </a>
+          <div class="calc-mini-success" id="mini-success" hidden>
+            <span class="calc-mini-success-icon">✓</span>
+            Relatório voou pro seu e-mail. Confere também a pasta de promoções.
+          </div>
+
+          <button class="calc-mini-skip" id="mini-skip" type="button">
+            Não, obrigado — ir para o diagnóstico →
+          </button>
+        </div>
+
       </div>
-
     </div>
   </div>
 </section>
@@ -110,6 +160,7 @@
   flex-direction: column;
   gap: 1.25rem;
   justify-content: center;
+  min-height: 360px;
 }
 
 .calc-mini-label {
@@ -191,10 +242,89 @@
 }
 
 .calc-mini-link:hover { opacity: 1; }
+
+/* ── Captura de lead ─────────────────────────── */
+.calc-mini-capture {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  animation: fadeSlideIn 0.45s var(--ease-out) both;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.calc-mini-capture-title {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.4;
+  margin-bottom: -0.2rem;
+}
+
+.calc-mini-capture-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.calc-mini-lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.calc-mini-lead-form .form-input {
+  font-size: 0.88rem;
+  padding: 0.7rem 0.9rem;
+  min-height: 44px;
+}
+
+.calc-mini-form-error {
+  font-size: 0.78rem;
+  color: var(--error);
+  margin: 0;
+}
+
+.calc-mini-success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: var(--success-bright, #5dd39e);
+  padding: 0.75rem;
+  background: rgba(93, 211, 158, 0.06);
+  border: 1px solid rgba(93, 211, 158, 0.2);
+  border-radius: var(--radius-md);
+  animation: fadeSlideIn 0.4s var(--ease-out) both;
+}
+
+.calc-mini-success-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.calc-mini-skip {
+  background: none;
+  border: none;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.calc-mini-skip:hover { color: var(--text-secondary); }
 </style>
 
 <script>
-  // Visitas padrão por setor (visitantes mensais estimados para negócio local ativo)
+  // ── Cálculo ────────────────────────────────────────────
   const visitasPorSetor: Record<string, number> = {
     clinica:      400,
     advocacia:    280,
@@ -204,13 +334,17 @@
     servicos:     300,
   };
 
-  const setorEl    = document.getElementById('mini-setor')    as HTMLSelectElement | null;
-  const ticketEl   = document.getElementById('mini-ticket')   as HTMLInputElement  | null;
+  const setorEl     = document.getElementById('mini-setor')     as HTMLSelectElement | null;
+  const ticketEl    = document.getElementById('mini-ticket')    as HTMLInputElement  | null;
   const resultadoEl = document.getElementById('mini-resultado') as HTMLElement | null;
 
   function fmt(n: number): string {
     return Math.round(n).toLocaleString('pt-BR');
   }
+
+  let valorAtual = 0;
+  let captureShown = false;
+  let captureTimer: ReturnType<typeof setTimeout> | null = null;
 
   function calcular(): void {
     const setor   = setorEl?.value   || 'servicos';
@@ -221,12 +355,117 @@
     const taxaBom  = 0.03;
     const perdidos = visitas * (taxaBom - taxaRuim);
     const perda    = perdidos * ticket;
+    valorAtual = Math.round(perda);
 
     if (resultadoEl) resultadoEl.textContent = fmt(perda);
+
+    // Após 2s sem mexer nos campos, revela o form de captura
+    if (captureTimer) clearTimeout(captureTimer);
+    if (!captureShown) {
+      captureTimer = setTimeout(mostrarCapture, 2000);
+    }
+  }
+
+  function mostrarCapture(): void {
+    if (captureShown) return;
+    captureShown = true;
+    const resultBlock = document.getElementById('mini-result-block');
+    const capture     = document.getElementById('mini-capture');
+    if (resultBlock && capture) {
+      resultBlock.hidden = true;
+      capture.hidden = false;
+    }
   }
 
   setorEl?.addEventListener('change', calcular);
   ticketEl?.addEventListener('input', calcular);
-
   calcular();
+
+  // ── Formulário de lead ─────────────────────────────────
+  const form      = document.getElementById('mini-lead-form')   as HTMLFormElement | null;
+  const errorEl   = document.getElementById('mini-form-error')  as HTMLElement | null;
+  const successEl = document.getElementById('mini-success')     as HTMLElement | null;
+  const skipBtn   = document.getElementById('mini-skip')        as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form) return;
+
+    const nome     = (form.elements.namedItem('nome')     as HTMLInputElement)?.value.trim();
+    const email    = (form.elements.namedItem('email')    as HTMLInputElement)?.value.trim();
+    const whatsapp = (form.elements.namedItem('whatsapp') as HTMLInputElement)?.value.trim();
+
+    // Validações com microcopy calibrado
+    if (!nome) {
+      mostrarErro('Faltou o seu nome — preenche aí');
+      return;
+    }
+    if (!email || !email.includes('@')) {
+      mostrarErro('Faltou o @ no e-mail — só ajusta aí');
+      return;
+    }
+    if (whatsapp && whatsapp.replace(/\D/g, '').length < 10) {
+      mostrarErro('Esse número tá incompleto — DDD + 9 dígitos');
+      return;
+    }
+
+    ocultarErro();
+
+    const submitBtn = form.querySelector<HTMLButtonElement>('[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
+    }
+
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome,
+          email,
+          whatsapp,
+          setor: setorEl?.value ?? '',
+          ticket: ticketEl?.value ?? '',
+          visitas: visitasPorSetor[setorEl?.value ?? 'servicos'] ?? 300,
+          resultado: valorAtual,
+        }),
+      });
+
+      if (res.ok) {
+        form.hidden = true;
+        if (successEl) successEl.hidden = false;
+        const skipBtnEl = document.getElementById('mini-skip') as HTMLButtonElement | null;
+        if (skipBtnEl) skipBtnEl.hidden = true;
+      } else {
+        mostrarErro('Algo deu errado. Tente novamente ou fale pelo WhatsApp.');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Receber agora →';
+        }
+      }
+    } catch {
+      mostrarErro('Erro de conexão. Tente novamente.');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Receber agora →';
+      }
+    }
+  });
+
+  // Pular para /diagnostico
+  skipBtn?.addEventListener('click', () => {
+    window.location.href = '/diagnostico';
+  });
+
+  function mostrarErro(msg: string): void {
+    if (errorEl) {
+      errorEl.textContent = msg;
+      errorEl.hidden = false;
+    }
+  }
+
+  function ocultarErro(): void {
+    if (errorEl) errorEl.hidden = true;
+  }
 </script>

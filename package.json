@@ -14,13 +14,14 @@
     "@astrojs/vercel": "^10.0.5",
     "@fontsource/dm-sans": "^5.2.8",
     "@fontsource/instrument-serif": "^5.2.8",
-    "@fontsource/playfair-display": "^5.2.8",
     "@fontsource/inter": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
     "@fontsource/space-grotesk": "^5.2.8",
     "@tailwindcss/postcss": "^4.1.18",
     "astro": "^6.1.7",
     "gsap": "^3.12.5",
     "lenis": "^1.1.14",
+    "resend": "^6.12.3",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
