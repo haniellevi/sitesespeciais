@@ -5,6 +5,8 @@ const cases = [
     nome: 'Fiel Alimentos',
     setor: 'Distribuidora de alimentos · Piauí',
     tipo: 'REFORMA',
+    depoisImg: '/cases/depois-fiel-alimentos.png',
+    depoisAlt: 'Site Fiel Alimentos depois da reforma — produtosfiel.com.br',
     problemas: [
       'Site de 2018 sem atualização — parecia empresa fechada',
       'Invisível em buscas de distribuidores e parceiros',
@@ -28,6 +30,8 @@ const cases = [
     nome: 'EmCORR Centro Clínico',
     setor: 'Saúde · Corrente, PI',
     tipo: 'REFORMA',
+    depoisImg: '/cases/depois-emcorr.png',
+    depoisAlt: 'Site EmCORR Centro Clínico depois da reforma — emcorr.com.br',
     problemas: [
       'Presença digital desatualizada — especialidades desconhecidas',
       'Pacientes de cidades vizinhas não sabiam que a clínica existia',
@@ -51,6 +55,8 @@ const cases = [
     nome: 'Clínica Pinheiro',
     setor: 'Clínica médica · Bom Jesus, PI',
     tipo: 'SITE NOVO',
+    depoisImg: '/cases/depois-clinica-pinheiro.png',
+    depoisAlt: 'Site Clínica Pinheiro depois da reforma — clinicapinheiro.com',
     problemas: [
       'Layout desatualizado afastando pacientes exigentes',
       'Apenas 3–4 agendamentos por semana pelo digital',
@@ -153,10 +159,21 @@ const cases = [
             <div class="case-col__header">
               <span class="case-col__label case-col__label--depois">Depois</span>
             </div>
-            <!-- Placeholder de imagem: substituir por <img> quando tiver o print real -->
-            <div class="case-img-placeholder case-img-placeholder--depois" aria-hidden="true">
-              <span>Imagem em breve</span>
-            </div>
+            {c.depoisImg ? (
+              <img
+                src={c.depoisImg}
+                alt={c.depoisAlt}
+                class="case-img-real"
+                width="600"
+                height="375"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="case-img-placeholder case-img-placeholder--depois" aria-hidden="true">
+                <span>Imagem em breve</span>
+              </div>
+            )}
             <ul class="case-col__list">
               {c.resultados.map(r => (
                 <li>
@@ -404,6 +421,16 @@ const cases = [
 .case-arrow {
   color: var(--primary);
   opacity: 0.5;
+}
+
+/* ── Imagem real do depois ────────────────────────────── */
+.case-img-real {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  border-bottom: 1px solid rgba(79, 209, 197, 0.12);
 }
 
 /* ── Placeholders de imagem ───────────────────────────── */
