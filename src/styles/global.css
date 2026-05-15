@@ -142,6 +142,13 @@
   --badge-bg: rgba(15, 168, 156, 0.08);
 }
 
+/* ─── Navbar logo swap (global — não scoped) ─────── */
+/* dark mode padrão: mostra logo-dark, oculta logo-light */
+.navbar__logo-light { display: none !important; }
+/* light mode: oculta logo-dark, mostra logo-light */
+[data-theme="light"] .navbar__logo-dark  { display: none !important; }
+[data-theme="light"] .navbar__logo-light { display: block !important; }
+
 /* ─── Reset ───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
